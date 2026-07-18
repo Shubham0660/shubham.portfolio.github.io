@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubham Sharma — Growth PM</title>
+<meta name="description" content="Growth PM with ~3 years in fintech & SaaS. Data, user behaviour & product thinking into features that move metrics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════ TOKENS ═══════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#EFEDE7;
+  --ink:#111111;
+  --ink2:#4a4a46;
+  --ink3:#8a8a84;
+  --line:rgba(17,17,17,0.12);
+  --hero-fs:clamp(70px,13.5vw,220px);  /* SHARMA font-size, referenced by card size */
+}
+body{
+  font-family:'Archivo',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+/* ═══════════ NAV ═══════════ */
+.nav{
+  position:fixed;top:22px;left:50%;transform:translateX(-50%);
+  z-index:500;
+  background:var(--ink);color:#fff;
+  border-radius:18px;
+  padding:12px 14px 12px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:40px;
+  min-width:400px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.18);
+  /* entrance */
+  opacity:0;transform:translateX(-50%) translateY(-24px);
+  animation:navIn .8s cubic-bezier(.22,1,.36,1) .9s forwards;
+}
+@keyframes navIn{to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.nav-name{font-size:16px;font-weight:700;letter-spacing:-0.01em}
+.nav-menu-btn{
+  background:#f2f0ea;border:none;border-radius:12px;
+  width:44px;height:36px;
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.nav-menu-btn span{
+  width:4px;height:4px;border-radius:50%;background:#111;
+  box-shadow:8px 0 0 #111,-8px 0 0 #111;
+}
+.nav-drop{
+  position:absolute;top:calc(100% + 10px);right:0;
+  background:var(--ink);border-radius:16px;
+  padding:10px;min-width:220px;
+  display:none;flex-direction:column;gap:6px;align-items:stretch;
+  box-shadow:0 16px 48px rgba(0,0,0,0.3);
+}
+.nav-drop.open{display:flex}
+.nav-drop a{
+  background:#f2f0ea;color:#111;
+  font-size:14px;font-weight:600;
+  padding:12px 16px;border-radius:10px;width:100%;
+  text-align:center;
+  transition:background .15s;
+}
+.nav-drop a:hover{background:#e4e1d9}
+
+/* ═══════════ HERO + FLIP ZONE ═══════════ */
+/* .flip-zone spans hero + hey; card travels from SHARMA → Hey photo slot */
+.flip-zone{position:relative}
+
+/* travel card: position/size/rotation all driven by JS from scroll progress.
+   position:fixed while travelling; docks into the Hey slot at the end. */
+.travel-card{
+  position:fixed;
+  z-index:50;
+  pointer-events:none;
+  perspective:1200px;
+  /* JS sets top/left/width/height every frame */
+  opacity:0;
+  /* delayed past SHARMA's own entrance animation (~1.4s) so the card
+     only becomes visible once it's anchored to the CORRECT position —
+     no visible snap/jump */
+  transition:opacity .6s ease 1.5s;
+}
+.travel-card.ready{opacity:1}
+.travel-card.docked{position:absolute}  /* after flip completes, scrolls with page */
+
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  overflow:visible;padding-top:60px;
+}
+.hero-name{
+  font-weight:900;
+  font-size:var(--hero-fs);
+  line-height:.86;letter-spacing:-0.02em;
+  text-align:center;text-transform:uppercase;
+  user-select:none;position:relative;z-index:2;
+}
+.hero-name .line{display:block;overflow:hidden;padding-bottom:.04em}
+.hero-name .line span{
+  display:inline-block;
+  transform:translateY(115%);
+  animation:lineUp 1.1s cubic-bezier(.19,1,.22,1) forwards;
+}
+.hero-name .line:nth-child(1) span{animation-delay:.15s}
+.hero-name .line:nth-child(2) span{animation-delay:.3s}
+@keyframes lineUp{to{transform:translateY(0)}}
+
+.hero-since{
+  position:absolute;left:8%;bottom:20%;
+  font-size:clamp(14px,1.6vw,22px);font-weight:600;z-index:2;
+  opacity:0;transform:translateX(-30px);
+  animation:sinceIn 1s cubic-bezier(.22,1,.36,1) 1s forwards;
+}
+@keyframes sinceIn{to{opacity:1;transform:translateX(0)}}
+
+
+/* rotation-only card — JS owns this transform exclusively */
+.flip-card{
+  width:100%;height:100%;
+  position:relative;transform-style:preserve-3d;
+  will-change:transform;
+}
+.flip-face{
+  position:absolute;inset:0;border-radius:22px;overflow:hidden;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.28);
+  background:#101010;
+  display:flex;align-items:center;justify-content:center;
+}
+.flip-face img{width:100%;height:100%;object-fit:cover}
+.flip-back{transform:rotateY(0deg)}
+.flip-front{transform:rotateY(180deg)}
+.flip-ph{font-size:90px;opacity:.12;color:#fff}
+
+/* 3D shapes */
+.shape{position:absolute;z-index:3;pointer-events:none;will-change:transform;
+  opacity:0;animation:shapeIn 1s cubic-bezier(.34,1.56,.64,1) forwards}
+.shape-star{top:16%;left:9%;animation-delay:.8s}
+.shape-bolt{top:44%;right:8%;animation-delay:1s}
+@keyframes shapeIn{from{opacity:0;transform:scale(0) rotate(-90deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+.shape svg{filter:drop-shadow(0 10px 24px rgba(0,0,0,.25))}
+.float-a{animation:floatA 5s ease-in-out infinite 1.8s}
+.float-b{animation:floatB 6.4s ease-in-out infinite 2s}
+@keyframes floatA{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-18px) rotate(8deg)}}
+@keyframes floatB{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(-9deg)}}
+
+/* ═══════════ HEY ═══════════ */
+.hey{
+  padding:140px 8% 120px;
+  display:grid;grid-template-columns:1fr 1.15fr 1fr;
+  gap:64px;align-items:center;
+}
+.hey-title{font-size:clamp(56px,7vw,110px);font-weight:800;letter-spacing:-0.02em;align-self:start}
+.hey-left p{
+  margin-top:48px;font-size:clamp(17px,1.6vw,22px);
+  font-weight:600;line-height:1.5;max-width:320px;
+}
+.hey-spacer{width:100%;aspect-ratio:1/1.15}  /* empty slot — sticky flip card floats over this */
+.hey-right p{
+  font-size:clamp(15px,1.35vw,19px);line-height:1.6;font-weight:500;margin-bottom:22px;
+}
+.hey-cta{display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:700;margin-top:4px}
+.hey-cta .circ{
+  width:38px;height:38px;border:1.5px solid var(--ink);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;
+}
+.hey-cta:hover .circ{background:var(--ink);color:#fff}
+.hey-socials{display:flex;gap:10px;margin-top:22px}
+.hs{
+  width:44px;height:44px;border-radius:12px;background:rgba(17,17,17,0.06);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;transition:background .2s,color .2s;
+}
+.hs:hover{background:var(--ink);color:#fff}
+.hey-dl{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:#fff;
+  padding:13px 26px;border-radius:14px;
+  font-size:14px;font-weight:700;border:none;margin-top:18px;
+  transition:transform .2s;
+}
+.hey-dl:hover{transform:translateY(-2px)}
+
+/* ═══════════ MARQUEE ═══════════ */
+.mq{
+  padding:56px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  overflow:hidden;position:relative;
+}
+.mq-label{
+  text-align:center;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:26px;
+}
+.mq-inner{position:relative;overflow:hidden}
+.mq-inner::before,.mq-inner::after{
+  content:'';position:absolute;top:0;bottom:0;width:130px;z-index:2;pointer-events:none;
+}
+.mq-inner::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.mq-inner::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.mq-track{
+  display:flex;width:max-content;
+  animation:mqRoll 36s linear infinite;
+}
+.mq-track:hover{animation-play-state:paused}
+@keyframes mqRoll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.chip{
+  display:inline-flex;align-items:center;gap:11px;
+  padding:12px 24px;margin-right:14px;border-radius:16px;
+  background:#fff;border:1px solid var(--line);
+  white-space:nowrap;flex-shrink:0;transition:transform .2s;
+}
+.chip:hover{transform:translateY(-3px)}
+.chip img{width:22px;height:22px;object-fit:contain}
+.chip .cb{
+  width:22px;height:22px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;font-weight:800;color:#fff;
+}
+.chip span.t{font-size:14px;font-weight:600}
+
+/* ═══════════ SECTIONS ═══════════ */
+.sec{padding:120px 8% 100px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;gap:24px}
+.sec-title{font-size:clamp(44px,6vw,92px);font-weight:800;letter-spacing:-0.02em;line-height:.95}
+.sec-title .thin{color:var(--ink3)}
+.sec-hint{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);white-space:nowrap;padding-bottom:12px;
+}
+
+/* ═══════════ SWIPE ROWS ═══════════ */
+.hrow{
+  display:flex;gap:20px;overflow-x:auto;
+  scroll-snap-type:x mandatory;padding-bottom:18px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.hrow::-webkit-scrollbar{display:none}
+.hcard{
+  scroll-snap-align:start;
+  flex:0 0 calc(25% - 15px);min-width:270px;
+  background:#fff;border:1px solid var(--line);border-radius:24px;
+  padding:28px;display:flex;flex-direction:column;
+  transition:transform .25s,box-shadow .25s;
+}
+.hcard:hover{transform:translateY(-6px);box-shadow:0 24px 56px rgba(0,0,0,.1)}
+.hc-tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.hc-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.logo-chip{display:inline-flex;align-items:center;height:26px}
+.logo-chip img{height:100%;width:auto;object-fit:contain;display:block}
+.logo-chip.logo-brane{background:#111;padding:6px 12px;border-radius:8px;height:30px}
+.hc-logo-sub{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.hc-title{font-size:19px;font-weight:800;line-height:1.2;margin-bottom:10px;letter-spacing:-0.01em}
+.hc-desc{font-size:13px;line-height:1.6;color:var(--ink2);margin-bottom:20px;flex:1}
+.hc-metric{font-size:26px;font-weight:900;letter-spacing:-0.02em;padding-top:16px;border-top:1px solid var(--line)}
+.hc-metric small{display:block;font-size:11px;font-weight:600;color:var(--ink3);margin-top:3px}
+.hrow-nav{display:flex;gap:8px;margin-top:20px;justify-content:center}
+.hrow-nav button{
+  width:40px;height:40px;border-radius:12px;
+  border:1.5px solid var(--ink);background:transparent;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;
+}
+.hrow-nav button:hover{background:var(--ink);color:#fff}
+
+/* ═══════════ TESTIMONIALS ═══════════ */
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px}
+.tcard .q{font-size:17px;font-weight:600;line-height:1.55;margin-bottom:26px}
+.tcard .who{display:flex;align-items:center;gap:14px}
+.tcard .av{
+  width:48px;height:48px;border-radius:14px;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;
+}
+.tcard .wn{font-size:14px;font-weight:800}
+.tcard .wr{font-size:12px;color:var(--ink3);font-weight:600;margin-top:2px}
+
+/* ═══════════ CONTACT + FOOTER ═══════════ */
+.contact{padding:130px 8%;text-align:center;border-top:1px solid var(--line)}
+.contact h2{
+  font-size:clamp(48px,8vw,120px);font-weight:900;
+  letter-spacing:-0.03em;line-height:.92;text-transform:uppercase;
+}
+.contact p{margin:26px auto 40px;max-width:440px;font-size:16px;font-weight:500;color:var(--ink2);line-height:1.6}
+.contact-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cbn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 32px;border-radius:16px;font-size:15px;font-weight:700;border:none;
+  transition:transform .2s;
+}
+.cbn:hover{transform:translateY(-3px)}
+.cbn-dark{background:var(--ink);color:#fff}
+.cbn-line{background:transparent;border:1.5px solid var(--ink)}
+footer{
+  padding:26px 8%;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
+.fl{display:flex;gap:22px}
+.fl a{font-size:12.5px;font-weight:700;color:var(--ink2);transition:opacity .15s}
+.fl a:hover{opacity:.6}
+
+/* ═══════════ SCROLL REVEALS (pure CSS class toggled by JS) ═══════════ */
+.rv{opacity:0;transform:translateY(56px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:translateY(0)}
+/* stagger children inside swipe rows */
+.hrow .hcard{opacity:0;transform:translateY(64px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.hrow.in .hcard{opacity:1;transform:translateY(0)}
+.hrow.in .hcard:nth-child(1){transition-delay:.05s}
+.hrow.in .hcard:nth-child(2){transition-delay:.14s}
+.hrow.in .hcard:nth-child(3){transition-delay:.23s}
+.hrow.in .hcard:nth-child(4){transition-delay:.32s}
+.hrow.in .hcard:nth-child(5){transition-delay:.41s}
+.hrow.in .hcard:nth-child(6){transition-delay:.5s}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media(max-width:960px){
+  .nav{min-width:unset;width:88vw;gap:16px}
+  .hey{grid-template-columns:1fr;gap:44px;padding:90px 7%}
+  .hey-left p{margin-top:20px}
+  .testi-grid{grid-template-columns:1fr}
+  .hcard{flex:0 0 78%;min-width:260px}
+  .hero-since{display:none}
+  .sec{padding:80px 7% 70px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-name">Shubham Sharma</span>
+  <div class="nav-menu-btn" id="navBtn">
+    <span></span>
+    <div class="nav-drop" id="navDrop">
+      <a href="#hey">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#ai">AI Usage</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO + HEY wrapped in flip-zone: card stays sticky through both -->
+<div class="flip-zone" id="flipZone">
+
+  <!-- travelling flip card: JS moves/scales/rotates it from SHARMA → Hey slot -->
+  <div class="travel-card" id="travelCard">
+    <div class="flip-card" id="flipCard">
+      <div class="flip-face flip-back">
+        <img src="photo-back.jpg" alt="Shubham Sharma">
+      </div>
+      <div class="flip-face flip-front">
+        <img src="photo-front.jpg" alt="Shubham Sharma">
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="shape shape-star"><div class="float-a">
+      <svg width="88" height="88" viewBox="0 0 88 88"><path d="M44 0 L54 34 L88 44 L54 54 L44 88 L34 54 L0 44 L34 34 Z" fill="#111"/></svg>
+    </div></div>
+    <div class="shape shape-bolt"><div class="float-b">
+      <svg width="64" height="80" viewBox="0 0 64 80"><path d="M38 0 L8 44 L26 44 L20 80 L56 32 L36 32 Z" fill="#111"/></svg>
+    </div></div>
+
+    <h1 class="hero-name">
+      <span class="line"><span>SHUBHAM</span></span>
+      <span class="line"><span id="sharmaWord">SHARMA</span></span>
+    </h1>
+
+    <div class="hero-since">/GROWTH PM SINCE 2023</div>
+  </section>
+
+  <!-- HEY -->
+  <section class="hey" id="hey">
+    <div class="hey-left">
+      <div class="hey-title rv">Hey!</div>
+      <p class="rv">I'm Shubham, a Growth PM based in Bengaluru — turning data & user behaviour into features that move metrics.</p>
+    </div>
+    <div class="hey-spacer" id="heySlot"></div>
+    <div class="hey-right">
+      <p class="rv">I'm a Growth PM with ~3 years across fintech & SaaS, currently at wealthy.in — working at the intersection of data analytics, product features & GTM.</p>
+      <p class="rv">Over these years, I've shipped 0→1 internal tools, redesigned acquisition funnels, and built data pipelines that changed how teams make decisions.</p>
+      <a class="hey-cta rv" href="#projects">See my work <span class="circ">↗</span></a>
+      <div class="hey-socials rv">
+        <a class="hs" href="#" title="LinkedIn">in</a>
+        <a class="hs" href="mailto:sharmashubham0660@gmail.com" title="Email">✉</a>
+        <a class="hs" href="#" title="X">𝕏</a>
+      </div>
+      <button class="hey-dl rv">Download Resume ↓</button>
+    </div>
+  </section>
+
+</div><!-- /flip-zone -->
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-label">Tools & stack I work with</div>
+  <div class="mq-inner">
+    <div class="mq-track" id="mqTrack">
+      <div class="chip"><img src="https://cdn.simpleicons.org/microsoftexcel/217346" alt=""><span class="t">Microsoft Excel</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/powerbi/F2C811" alt=""><span class="t">Power BI</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/apachesuperset/20A6C9" alt=""><span class="t">Apache Superset</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/metabase/509EE3" alt=""><span class="t">Metabase</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/mixpanel/7856FF" alt=""><span class="t">Mixpanel</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/tableau/E97627" alt=""><span class="t">Tableau</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/n8n/EA4B71" alt=""><span class="t">n8n</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/openai/111111" alt=""><span class="t">ChatGPT</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/anthropic/111111" alt=""><span class="t">Claude</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/jira/0052CC" alt=""><span class="t">JIRA</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/confluence/172B4D" alt=""><span class="t">Confluence</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt=""><span class="t">Figma</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/notion/111111" alt=""><span class="t">Notion</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/python/3776AB" alt=""><span class="t">Python</span></div>
+      <div class="chip"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt=""><span class="t">SQL</span></div>
+      <div class="chip"><div class="cb" style="background:#7B61FF">WH</div><span class="t">Whimsical</span></div>
+      <div class="chip"><div class="cb" style="background:#CC0000">B</div><span class="t">Balsamiq</span></div>
+      <div class="chip"><div class="cb" style="background:#FF6B00">NC</div><span class="t">Netcore</span></div>
+      <div class="chip"><div class="cb" style="background:#3F76FF">PL</div><span class="t">Plane</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CORPORATE PROJECTS -->
+<section class="sec" id="projects">
+  <div class="sec-head">
+    <h2 class="sec-title rv">Corporate<br><span class="thin">Projects</span></h2>
+    <div class="sec-hint">Swipe →</div>
+  </div>
+  <div class="hrow" id="rowProjects"><!-- filled by data/projects.js --></div>
+  <div class="hrow-nav">
+    <button onclick="slide('rowProjects',-1)">←</button>
+    <button onclick="slide('rowProjects',1)">→</button>
+  </div>
+</section>
+
+<!-- AI USAGE -->
+<section class="sec" id="ai" style="padding-top:40px">
+  <div class="sec-head">
+    <h2 class="sec-title rv">AI<br><span class="thin">Usage</span></h2>
+    <div class="sec-hint">Swipe →</div>
+  </div>
+  <div class="hrow" id="rowAI"><!-- filled by data/ai.js --></div>
+  <div class="hrow-nav">
+    <button onclick="slide('rowAI',-1)">←</button>
+    <button onclick="slide('rowAI',1)">→</button>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="sec" id="cases" style="padding-top:40px">
+  <div class="sec-head">
+    <h2 class="sec-title rv">Case<br><span class="thin">Studies</span></h2>
+    <div class="sec-hint">Swipe →</div>
+  </div>
+  <div class="hrow" id="rowCases"><!-- filled by data/cases.js --></div>
+  <div class="hrow-nav">
+    <button onclick="slide('rowCases',-1)">←</button>
+    <button onclick="slide('rowCases',1)">→</button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="testimonials" style="padding-top:40px">
+  <div class="sec-head">
+    <h2 class="sec-title rv">Kind<br><span class="thin">Words</span></h2>
+  </div>
+  <div class="testi-grid" id="testiGrid"><!-- filled by data/testimonials.js --></div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="rv">Let's Talk</h2>
+  <p class="rv">Open to Growth PM roles in fintech, SaaS & consumer products. Always happy to talk product, data or growth.</p>
+  <div class="contact-btns rv">
+    <a class="cbn cbn-dark" href="mailto:sharmashubham0660@gmail.com">✉ Email Me</a>
+    <a class="cbn cbn-line" href="#">LinkedIn ↗</a>
+    <a class="cbn cbn-line" href="#">Resume ↓</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Shubham Sharma · Growth PM · Bengaluru</p>
+  <div class="fl">
+    <a href="#home">Home</a><a href="#hey">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- ══ CONTENT DATA — edit THESE files to add/change projects, not index.html ══ -->
+<script src="projects.js"></script>
+<script src="ai.js"></script>
+<script src="cases.js"></script>
+<script src="testimonials.js"></script>
+
+<script>
+/* ══ RENDER CARDS FROM DATA (runs first, before any animation setup) ══ */
+
+function cardHTML(item){
+  var head = item.logo
+    ? '<div class="hc-logo-row"><div class="logo-chip' + (item.logoDark ? ' logo-brane' : '') + '">'
+        + '<img src="' + item.logo + '" alt="' + item.logoAlt + '"></div>'
+        + '<span class="hc-logo-sub">' + item.subtitle + '</span></div>'
+    : '<div class="hc-tag">' + item.tag + '</div>';
+
+  return '<div class="hcard">' + head
+    + '<div class="hc-title">' + item.title + '</div>'
+    + '<div class="hc-desc">' + item.desc + '</div>'
+    + '<div class="hc-metric">' + item.metric + '<small>' + item.metricSub + '</small></div>'
+    + '</div>';
+}
+
+function renderRow(containerId, data){
+  var el = document.getElementById(containerId);
+  if (el && data) el.innerHTML = data.map(cardHTML).join('');
+}
+
+function testiHTML(t){
+  return '<div class="tcard rv">'
+    + '<p class="q">"' + t.quote + '"</p>'
+    + '<div class="who"><div class="av">' + t.initials + '</div>'
+    + '<div><div class="wn">' + t.name + '</div><div class="wr">' + t.role + '</div></div></div>'
+    + '</div>';
+}
+
+function renderTestimonials(containerId, data){
+  var el = document.getElementById(containerId);
+  if (el && data) el.innerHTML = data.map(testiHTML).join('');
+}
+
+renderRow('rowProjects', typeof PROJECTS !== 'undefined' ? PROJECTS : []);
+renderRow('rowAI', typeof AI_ITEMS !== 'undefined' ? AI_ITEMS : []);
+renderRow('rowCases', typeof CASE_ITEMS !== 'undefined' ? CASE_ITEMS : []);
+renderTestimonials('testiGrid', typeof TESTIMONIALS !== 'undefined' ? TESTIMONIALS : []);
+
+/* ══ ALL VANILLA JS — ZERO EXTERNAL LIBRARIES ══ */
+
+/* ── 1. TRAVEL FLIP: card starts stamped over SHARMA (60% of its font size),
+   travels down + grows + does ONE 180° flip, docking into the Hey photo slot
+   exactly when the Hey section's last line clears the viewport. ── */
+(function(){
+  var card    = document.getElementById('flipCard');
+  var travel  = document.getElementById('travelCard');
+  var zone    = document.getElementById('flipZone');
+  var sharma  = document.getElementById('sharmaWord');
+  var slot    = document.getElementById('heySlot');
+
+  var start = {}, end = {}, span = 1;
+  var cur = { x:0, y:0, w:0, h:0, r:0 };
+  var tgt = { x:0, y:0, w:0, h:0, r:0 };
+  var measured = false;
+
+  /* ══════════════════════════════════════════════════════
+     MANUAL CARD START — edit these 4 numbers directly.
+     No text measurement, no timing bugs — just plain pixels.
+     width/height  = card size at page load
+     top           = distance from top of PAGE (document, not viewport) in px
+     centerOffsetX = shift left(-)/right(+) from horizontal center, in px
+     ══════════════════════════════════════════════════════ */
+  var CARD_START = {
+    width:  210,
+    height: 220,
+    centerOffsetX: 0
+  };
+  var END_SHRINK = 10;  /* final docked size reduced by this many px, each dimension */
+
+  var start = {}, end = {}, span = 1;
+  var cur = { x:0, y:0, w:0, h:0, r:0 };
+  var tgt = { x:0, y:0, w:0, h:0, r:0 };
+  var measured = false;
+
+  function measure(){
+    var startW = CARD_START.width;
+    var startH = CARD_START.height;
+
+    /* Position: card covers only the LOWER 30% of SHARMA's letters —
+       top edge sits 70% down the word's height, leaving the top 70%
+       of the letters fully visible. Horizontally centered under the word. */
+    var sRect = sharma.getBoundingClientRect();
+    var startX = sRect.left + sRect.width/2 - startW/2 + CARD_START.centerOffsetX + window.scrollX;
+    var startY = sRect.top + sRect.height * 0.65 + window.scrollY;  /* covers bottom 35% of SHARMA */
+
+    /* END: the Hey photo slot, shrunk by END_SHRINK px on each dimension, centered within the slot */
+    var eRect = slot.getBoundingClientRect();
+    var endW = eRect.width  - END_SHRINK;
+    var endH = eRect.height - END_SHRINK;
+    var endX = eRect.left + window.scrollX + END_SHRINK/2;
+    var endY = eRect.top  + window.scrollY + END_SHRINK/2;
+
+    start = { x:startX, y:startY, w:startW, h:startH };
+    end   = { x:endX,   y:endY,   w:endW,   h:endH };
+
+    /* progress span: 0 at page top → 1 when zone bottom hits viewport bottom */
+    span = Math.max(zone.offsetTop + zone.offsetHeight - window.innerHeight, 1);
+    measured = true;
+  }
+
+  var easeInOut = function(t){ return t<0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; };
+
+  function calcTarget(){
+    if (!measured) return;
+    var p = Math.min(1, Math.max(0, window.scrollY / span));
+    var e = easeInOut(p);
+
+    /* interpolate document-space position & size */
+    var dx = start.x + (end.x - start.x) * e;
+    var dy = start.y + (end.y - start.y) * e;
+    tgt.w  = start.w + (end.w - start.w) * e;
+    tgt.h  = start.h + (end.h - start.h) * e;
+    /* convert document coords → viewport coords for position:fixed */
+    tgt.x  = dx - window.scrollX;
+    tgt.y  = dy - window.scrollY;
+    tgt.r  = -180 * p;   /* ONE flip, linear with scroll */
+
+    /* dock: once complete, pin card into the slot so it scrolls away naturally */
+    if (p >= 1) {
+      travel.classList.add('docked');
+      travel.style.top    = end.y + 'px';
+      travel.style.left   = end.x + 'px';
+    } else {
+      travel.classList.remove('docked');
+    }
+  }
+
+  function loop(){
+    /* lerp for silky catch-up */
+    cur.x += (tgt.x - cur.x) * 0.18;
+    cur.y += (tgt.y - cur.y) * 0.18;
+    cur.w += (tgt.w - cur.w) * 0.18;
+    cur.h += (tgt.h - cur.h) * 0.18;
+    cur.r += (tgt.r - cur.r) * 0.14;
+
+    if (!travel.classList.contains('docked')) {
+      travel.style.top    = cur.y + 'px';
+      travel.style.left   = cur.x + 'px';
+    }
+    travel.style.width  = cur.w + 'px';
+    travel.style.height = cur.h + 'px';
+    card.style.transform = 'rotateY(' + cur.r + 'deg)';
+    requestAnimationFrame(loop);
+  }
+
+  function init(){
+    measure();
+    calcTarget();
+    /* snap current to target on first frame so there's no fly-in from 0,0 */
+    cur.x = tgt.x; cur.y = tgt.y; cur.w = tgt.w; cur.h = tgt.h; cur.r = tgt.r;
+    travel.classList.add('ready');
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('scroll', calcTarget, { passive:true });
+  window.addEventListener('resize', function(){ measure(); calcTarget(); });
+  /* fonts affect SHARMA's rendered size — re-measure once they're ready */
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function(){ measure(); calcTarget(); });
+  }
+  window.addEventListener('load', function(){ measure(); calcTarget(); });
+  /* SHARMA slides up on load — re-measure once that entrance animation
+     finishes so we anchor to its REAL resting position, not mid-slide.
+     Safety timeout as a fallback. */
+  sharma.addEventListener('animationend', function(){ measure(); calcTarget(); });
+  setTimeout(function(){ measure(); calcTarget(); }, 1600);
+  init();
+})();
+
+/* ── 2. Hero parallax: name drifts slower + shapes drift ── */
+(function(){
+  var name = document.querySelector('.hero-name');
+  var star = document.querySelector('.shape-star');
+  var bolt = document.querySelector('.shape-bolt');
+  var ticking = false;
+
+  function apply(){
+    var y = window.scrollY;
+    if (y < window.innerHeight * 1.6) {
+      name.style.transform = 'translateY(' + (-y * 0.14) + 'px)';
+      star.style.transform = 'translateY(' + (-y * 0.22) + 'px)';
+      bolt.style.transform = 'translateY(' + (-y * 0.17) + 'px)';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking) { requestAnimationFrame(apply); ticking = true; }
+  }, { passive:true });
+})();
+
+/* ── 3. Scroll reveals (staggered via CSS delays) ── */
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.rv, .hrow').forEach(function(el){ io.observe(el); });
+})();
+
+/* ── 4. Marquee: duplicate chips for seamless loop ── */
+(function(){
+  var t = document.getElementById('mqTrack');
+  Array.from(t.children).forEach(function(c){ t.appendChild(c.cloneNode(true)); });
+})();
+
+/* ── 5. Swipe row arrows ── */
+function slide(id, dir){
+  var row = document.getElementById(id);
+  var card = row.querySelector('.hcard');
+  row.scrollBy({ left: dir * (card.offsetWidth + 20) * 2, behavior:'smooth' });
+}
+
+/* ── 6. Nav dropdown ── */
+document.getElementById('navBtn').addEventListener('click', function(e){
+  e.stopPropagation();
+  document.getElementById('navDrop').classList.toggle('open');
+});
+document.addEventListener('click', function(){
+  document.getElementById('navDrop').classList.remove('open');
+});
+
+/* ── 7. Smooth anchor scroll (native, no library) ── */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var tgt = document.querySelector(a.getAttribute('href'));
+    if (tgt) {
+      e.preventDefault();
+      tgt.scrollIntoView({ behavior:'smooth', block:'start' });
+      document.getElementById('navDrop').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
