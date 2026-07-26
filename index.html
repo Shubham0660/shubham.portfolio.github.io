@@ -16,6 +16,7 @@
   --ink2:#4a4a46;
   --ink3:#8a8a84;
   --line:rgba(17,17,17,0.12);
+  --card-min-h:620px;   /* ← card height knob. Raise/lower this one number. */
   --hero-fs:clamp(70px,13.5vw,220px);  /* SHARMA font-size, referenced by card size */
 }
 body{
@@ -246,7 +247,7 @@ button{font-family:inherit;cursor:pointer}
 .hrow::-webkit-scrollbar{display:none}
 .hcard{
   scroll-snap-align:start;
-  flex:0 0 calc(45% - 10px);min-width:300px;
+  flex:0 0 calc(45% - 10px);min-width:300px;min-height:var(--card-min-h);
   background:#fff;border:1px solid var(--line);border-radius:24px;
   padding:28px;display:flex;flex-direction:column;
   transition:transform .25s,box-shadow .25s;
@@ -266,7 +267,7 @@ button{font-family:inherit;cursor:pointer}
 }
 .hc-own span{display:inline-flex;align-items:center}
 .hc-own span:not(:last-child)::after{content:'·';margin-left:6px;opacity:.5}
-.hc-metric{font-size:30px;font-weight:900;letter-spacing:-0.02em;padding-top:18px;border-top:1px solid var(--line)}
+.hc-metric{font-size:30px;font-weight:900;letter-spacing:-0.02em;padding-top:18px;border-top:1px solid var(--line);margin-top:auto}
 .hc-metric small{display:block;font-size:12px;font-weight:600;color:var(--ink3);margin-top:4px}
 .hc-view{
   margin-top:18px;font-size:12px;font-weight:700;color:var(--ink);
@@ -469,7 +470,7 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
   .hey{grid-template-columns:1fr;gap:44px;padding:90px 7%}
   .hey-left p{margin-top:20px}
   .testi-grid{grid-template-columns:1fr}
-  .hcard{flex:0 0 86%;min-width:260px}
+  .hcard{flex:0 0 86%;min-width:260px;min-height:auto}
   .mv-body{padding:28px 24px 34px}
   .mv-title{font-size:26px}
   .mv-banner{height:190px}
@@ -653,7 +654,14 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 </div>
 
 <!-- ══ CONTENT DATA — edit THESE files to add/change projects, not index.html ══ -->
-<script src="projects.js"></script>
+<!-- one file per project. Order here = order on the page. -->
+<script src="project-branding.js"></script>
+<script src="project-activation.js"></script>
+<script src="project-leadfunnel.js"></script>
+<script src="project-cms.js"></script>
+<script src="project-datalayer.js"></script>
+<script src="project-hrms.js"></script>
+
 <script src="ai.js"></script>
 <script src="cases.js"></script>
 <script src="testimonials.js"></script>
