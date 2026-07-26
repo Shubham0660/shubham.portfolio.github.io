@@ -1,75 +1,103 @@
 /* ═══════════════════════════════════════════════════════════
-   PROJECT · Partner Website Builder
-   ═══════════════════════════════════════════════════════════
-   This file holds ONE project. Edit freely, nothing else breaks.
-
-   CARD fields (the 5 second scan):
-     logo, logoAlt, logoDark, subtitle, title,
-     problem    → one sentence on what was broken
-     ownership  → array of short scope chips
-     metric     → the hero number
-     metricSub  → the qualifier that makes it believable
-
-   MODAL fields (the 2 minute read):
-     banner, timeframe, context, problemFull, insight,
-     metrics [{value,label}], quant [], qual [],
-     shipped [{group, items[]}], skills [], ways [], notionUrl
+   PROJECT · Custom Website Builder for MFDs
    ═══════════════════════════════════════════════════════════ */
 
 (window.PROJECTS = window.PROJECTS || []).push({
 
+  /* ─── CARD ─── */
   logo: "wealthy-logo.png",
   logoAlt: "Wealthy.in",
   logoDark: false,
-  subtitle: "Product Led Growth",
-  title: "Partner Website Builder",
+  subtitle: "Activation",
+  title: "Custom Website Builder for MFDs",
 
-  problem: "Partners named client acquisition as their top blocker, but the real failure sat earlier: most MFDs had no digital presence a prospect could look up or trust.",
+  problem: "Client acquisition dropped 19% YoY in Q2 2025. Nine out of ten partners named the same root cause: no credible digital presence to show when reaching out to potential investors.",
   ownership: ["Owned end to end", "Cross functional with UX & Content"],
 
-  metric: "[METRIC]",
-  metricSub: "[qualifier, e.g. partners published in 60 days]",
+  metric: "4,000+",
+  metricSub: "client activations in first 7 days · 9,000+ leads",
 
-  /* ── modal ── */
-  banner: "",                    /* e.g. "banner-branding.png". Empty = dark title block */
-  timeframe: "[TIMEFRAME]",
+  /* ─── MODAL ─── */
+  banner: "banner-website-builder.jpg",
+  timeframe: "Q3 2025",
 
-  context: "Wealthy partners are independent MFDs who bring their own client base. Their income depends entirely on acquiring and converting clients themselves.",
+  context: "Wealthy.in is a digital platform that enables financial advisors to sell stocks, mutual funds, insurance, SIF and debentures in one place through goal based planning, with advisors bringing their own client base and selling via the Wealthy client app.",
+  contextMore: "It follows a B2B2C model. Wealthy does not own the end client relationship, the advisor does. That makes the advisor's own credibility the real gate on revenue.",
+  businessModel: "Wealthy onboards wealth advisors &rarr; Advisors onboard their own client base &rarr; Advisors sell financial products via the platform &rarr; Platform earns on a transaction based model",
 
-  problemFull: "Partners consistently named client acquisition as their biggest blocker, but the failure was happening earlier than the pitch. Most MFDs had no digital presence at all, nothing a prospective client could look up, verify, or trust. Onboarding drop offs traced back to low partner visibility and weak perceived credibility.",
+  problemQ: "How do you strengthen partners by equipping them to acquire a client base?",
+  thesis: "A partner who can't acquire clients never activates. And an unactivated partner is a fully borne cost with zero return.",
 
-  insight: "Partners weren't losing clients during the pitch. They were losing them before it, at the point where a prospect looks you up and finds nothing. The trust gap sat upstream of the conversation.",
+  evidence: [
+    { value: "−19% YoY", label: "Client acquisition drop, Q2 2025" },
+    { value: "9 in 10",  label: "Partners named the same root cause" }
+  ],
+
+  problemFull: "In financial advisory, trust precedes everything. Before a client believes in the product, they need to believe in the person selling it. Partners were reaching out to prospects with nothing credible to point them to, so the funnel was leaking before the first conversation even started.",
+
+  frameworkNote: "Structured using the CIRCLES method: identify users, report their needs, cut through with prioritisation, then list solutions.",
+
+  steps: [
+    {
+      title: "Identify the users",
+      body: "Two distinct personas sat on either side of the same broken moment, each needing something different from it.",
+      personas: [
+        { name: "Partner · Wealth Advisor", desc: "Needs to look credible and reach region specific audiences in their own language" },
+        { name: "Client · Individual Investor", desc: "Needs to verify who this advisor is before sharing personal details" }
+      ]
+    },
+    {
+      title: "Report customer needs",
+      body: "Mapped pain points separately for both personas, plus a third lens for the product marketing team who had no visibility into partner level performance.",
+      image: "cs-painpoints.jpg",
+      caption: "Persona wise pain points across partner, client and tracking level"
+    },
+    {
+      title: "Cut through prioritisation",
+      body: "Scored every initiative on RICE to separate genuine trust blockers from nice to have engagement features. Advisor credentials scored highest at 198, confirming that identity, not engagement tooling, was the real gate.",
+      image: "cs-rice.jpg",
+      caption: "RICE prioritisation across six candidate initiatives"
+    },
+    {
+      title: "List solutions",
+      body: "Shipped as one personalised partner page, with each element mapped to a specific pain point rather than added as decoration.",
+      solutions: [
+        { title: "Vernacular language support",
+          desc: "Language toggle on the page so partners in Tier 2 and Tier 3 markets can present in the language their client actually thinks in. Removes the relatability gap that generic English pages created." },
+        { title: "Advisor identity block",
+          desc: "Name, photo, logo, tagline and AMFI Registration Number surfaced upfront. Turns an anonymous link into a verifiable professional, which was the single highest RICE scoring fix." },
+        { title: "Products offered",
+          desc: "Makes the advisor's actual scope visible, so a client knows what they can be helped with before the first call rather than after." },
+        { title: "Goals we help you plan for",
+          desc: "Frames the conversation around retirement, education and marriage instead of products. Matches how clients think about money and how Wealthy's goal based planning works." },
+        { title: "Financial calculators",
+          desc: "A low commitment reason to engage before handing over contact details. Nudges intent without asking for anything." },
+        { title: "Lead generation form with tracking",
+          desc: "Captures client details and attributes every click, signup and transaction back to the partner. Gave partners self serve visibility and gave the team funnel data that never existed before." }
+      ]
+    }
+  ],
+
+  liveUrl: "https://www.wealthy.in/partners/shubh31019/?lang=en",
+  liveLabel: "A real partner website built with the feature",
+
+  beforeAfter: "cs-before-after.jpg",
+  beforeAfterCap: "Generic signup page versus a branded partner page",
+
+  northStar: {
+    label: "North star metric",
+    value: "4,000+ client activations in 7 days",
+    desc: "Generated 9,000+ leads in Q3 2025, within the first week of launch."
+  },
 
   metrics: [
-    { value: "[X]",       label: "[primary impact metric]" },
-    { value: "[X]",       label: "[adoption metric]" },
-    { value: "5+ / 20+",  label: "Templates and themes shipped" }
+    { value: "67%",  label: "Adoption across active partners" },
+    { value: "85%",  label: "Adoption among newly onboarded ARN partners" },
+    { value: "+37%", label: "Lead growth since branding launch" }
   ],
 
-  quant: [
-    "Traced onboarding drop off points to visibility and trust signals",
-    "[add any funnel or cohort analysis you ran]"
-  ],
-  qual: [
-    "Partner interviews surfacing client acquisition as the top blocker",
-    "Competitor scan of what credible MFD presence looks like"
-  ],
-
-  shipped: [
-    { group: "Product", items: [
-      "Website builder with 5+ templates and 20+ themes",
-      "Personalised to each partner's business details, carrying Wealthy's brand as a trust layer"
-    ]},
-    { group: "Design", items: [
-      "Collaborated with UX and Content on Figma web and app designs"
-    ]},
-    { group: "Localisation", items: [
-      "Vernacular support so partners could present in their client's language"
-    ]}
-  ],
-
-  skills: ["Product Requirements", "User Research", "Funnel Analysis", "GTM", "Figma"],
+  skills: ["Competitor Analysis", "Funnel Drop Analysis", "User Research", "Figma", "GTM"],
   ways: ["Cross functional with UX & Content", "Stakeholder Alignment", "Delivery Ownership"],
 
-  notionUrl: ""   /* public notion.site link only. Leave empty to hide the button. */
+  notionUrl: ""
 });
