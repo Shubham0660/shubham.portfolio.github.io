@@ -1,27 +1,42 @@
 /* ═══════════════════════════════════════════════════════════
    PROJECT · Custom Website Builder for MFDs
    Lives in its own folder: project-branding/
-   Images below are referenced with the "project-branding/" prefix
-   because the browser resolves paths against index.html's location,
-   not against where this script file itself sits.
-   wealthy-logo.png is the one exception, it's shared across every
-   project card so it stays at the repo root.
+   Images below are referenced with the "project-branding/" prefix.
+   wealthy-logo.png is the exception, shared across every project card.
    ═══════════════════════════════════════════════════════════ */
 
 (window.PROJECTS = window.PROJECTS || []).push({
 
-  /* ─── CARD ─── */
+  /* ─── CARD, STAR pattern ─── */
   logo: "wealthy-logo.png",
   logoAlt: "Wealthy.in",
   logoDark: false,
   subtitle: "Client Acquisition",
+  modelTag: "B2B2C",
   title: "Custom Website Builder for MFDs",
 
-  problem: "Client acquisition dropped 19% YoY in Q2 2025. Nine out of ten partners named the same root cause: no credible digital presence to show when reaching out to potential investors.",
-  ownership: ["Owned end to end", "Cross functional with UX & Content"],
+  /* Situation */
+  problem: "9 out of 10 MFDs say the same thing: client acquisition, not product knowledge, is what actually blocks them from scaling.",
+  frameQ: "How to look credible to prospective clients?",
+  scope: "Solution scope: partners didn't have the capability to build their own website or a lead tracking system.",
 
-  metric: "4,000+",
-  metricSub: "client activations in first 7 days · 9,000+ leads",
+  /* Situation, the stakes */
+  finCriticality: {
+    value: "20%",
+    desc: "MFDs couldn't retain in the business, lacking the credibility to land high potential clients."
+  },
+
+  /* Task */
+  task: "Owned it end to end. Competitor research, funnel data analysis, CIRCLES framework, built alongside Tech and UX.",
+
+  /* Action, tightened for the card. Full detail lives in the modal's solutions list. */
+  action: "RICE-prioritised the fix, then shipped a credibility-first partner page: verified identity, local language, built-in lead tracking.",
+
+  /* Result, on the card */
+  northCard: {
+    value: "4,000+ activations, 9,000+ leads, one quarter",
+    desc: "A credible page did what months of manual trust-building couldn't."
+  },
 
   /* ─── MODAL ─── */
   banner: "project-branding/banner-website-builder.jpg",
@@ -41,23 +56,22 @@
     { value: "70%",      label: "Advisors sit below ₹50 Cr AUM, too small to justify their own website" }
   ],
 
-  problemFull: "In financial advisory, trust precedes everything. Before a client believes in the product, they need to believe in the person selling it. Partners were reaching out to prospects with nothing credible to point them to, so the funnel was leaking upstream of the first conversation, before any product pitch could even happen.\n\nPersonal trust from an advisor's own network only scales so far. Nine out of ten partners named client acquisition and credibility building as their core blocker the moment they tried to grow beyond people who already knew them. Building that credibility independently wasn't realistic either: 70% of MFDs in the industry manage under ₹50 crore in AUM, well below what it takes to justify building and hosting a personal website. The existing onboarding page offered no visual credibility of its own, so partners had no way to make client acquisition any easier for themselves.",
+  /* condensed to points instead of one long paragraph */
+  trustPoints: [
+    "In financial advisory, <b>trust precedes everything</b>. Partners were reaching out to prospects with nothing credible to point them to.",
+    "Personal trust from an advisor's own network <b>only scales so far</b>. 9 in 10 partners hit this wall the moment they tried to grow past people who already knew them.",
+    "Building credibility independently wasn't realistic either: <b>70% of MFDs manage under ₹50 Cr</b> in AUM, well below what it takes to justify a personal website.",
+    "The existing onboarding page offered <b>no visual credibility</b> of its own, so partners had no way to make acquisition any easier for themselves."
+  ],
 
   approachTitle: "Approach",
   frameworkNote: "Structured on the CIRCLES method: surfaced real pain points, validated them with research, prioritised ruthlessly, then rebuilt the page with an analytical layer partners could use to follow up on leads.",
 
+  /* Identify + Report merged into one step, no repeated persona framing */
   steps: [
     {
-      title: "Identify the users",
-      body: "Two personas sat on either side of the same broken moment, each needing something different from it.",
-      personas: [
-        { name: "Partner · Wealth Advisor", desc: "Needs to look credible and reach region specific audiences in their own language" },
-        { name: "Client · Individual Investor", desc: "Needs to verify who this advisor is before sharing personal details" }
-      ]
-    },
-    {
-      title: "Report customer needs",
-      body: "Mapped concerns separately for each persona, then added a tracking lens for the product marketing team who had no partner level visibility into the funnel at all.",
+      title: "Identify users, report their needs",
+      body: "Two personas sat on either side of the same broken moment. Mapped their concerns directly, then added a third lens for the product marketing team who had no partner level visibility into the funnel at all.",
       concerns: [
         { who: "Partner · Wealth Advisor", items: [
           "Cannot serve <b>region specific audiences</b> without vernacular language support",
@@ -99,8 +113,8 @@
           desc: "Frames the conversation around retirement, education and marriage rather than products. Matches how clients think about money and mirrors Wealthy's goal based planning model." },
         { title: "Financial calculators",
           desc: "A low commitment reason to engage before handing over contact details. Builds intent without asking for anything in return." },
-        { title: "Lead capture with partner level tracking",
-          desc: "Captures client details and attributes every click, signup and transaction back to the partner. Gave partners self serve visibility and closed the team's funnel attribution gap." }
+        { title: "Lead capture with partner level tracking and reminders",
+          desc: "Captures client details, attributes every click, signup and transaction back to the partner, and reminds partners to follow up. Gave partners self serve visibility and closed the team's funnel attribution gap." }
       ]
     }
   ],
