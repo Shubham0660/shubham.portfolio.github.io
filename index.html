@@ -16,6 +16,7 @@
   --ink2:#4a4a46;
   --ink3:#8a8a84;
   --line:rgba(17,17,17,0.12);
+  --card-min-h:470px;   /* ← card height knob. Raise/lower this one number. */
   --hero-fs:clamp(70px,13.5vw,220px);  /* SHARMA font-size, referenced by card size */
 }
 body{
@@ -246,7 +247,7 @@ button{font-family:inherit;cursor:pointer}
 .hrow::-webkit-scrollbar{display:none}
 .hcard{
   scroll-snap-align:start;
-  flex:0 0 calc(45% - 10px);min-width:300px;
+  flex:0 0 calc(45% - 10px);min-width:300px;min-height:var(--card-min-h);
   background:#fff;border:1px solid var(--line);border-radius:24px;
   padding:28px;display:flex;flex-direction:column;
   transition:transform .25s,box-shadow .25s;
@@ -254,19 +255,32 @@ button{font-family:inherit;cursor:pointer}
 .hcard:hover{transform:translateY(-6px);box-shadow:0 24px 56px rgba(0,0,0,.1)}
 .hc-tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
 .hc-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.logo-chip{display:inline-flex;align-items:center;height:26px}
+.logo-chip{display:inline-flex;align-items:center;height:32px}
 .logo-chip img{height:100%;width:auto;object-fit:contain;display:block}
 .logo-chip.logo-brane{background:#111;padding:6px 12px;border-radius:8px;height:30px}
 .hc-logo-sub{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
 .hc-title{font-size:22px;font-weight:800;line-height:1.2;margin-bottom:12px;letter-spacing:-0.01em}
-.hc-problem{font-size:14px;line-height:1.6;color:var(--ink2);margin-bottom:16px;flex:1}
+.hc-rows{margin-bottom:16px;flex:1}
+.hc-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(17,17,17,.10)}
+.hc-row:last-child{border-bottom:none}
+.hc-row-k{
+  font-size:9.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink3);flex:0 0 62px;padding-top:2px;
+}
+.hc-row-v{font-size:13px;line-height:1.5;color:var(--ink2);flex:1}
+.hc-tagpill{
+  display:inline-flex;align-items:center;
+  background:#EEE9FB;color:#5B2BD9;
+  font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 9px;border-radius:5px;
+}
 .hc-own{
   font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:var(--ink3);margin-bottom:20px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;
 }
 .hc-own span{display:inline-flex;align-items:center}
 .hc-own span:not(:last-child)::after{content:'·';margin-left:6px;opacity:.5}
-.hc-metric{font-size:30px;font-weight:900;letter-spacing:-0.02em;padding-top:18px;border-top:1px solid var(--line)}
+.hc-metric{font-size:30px;font-weight:900;letter-spacing:-0.02em;padding-top:18px;border-top:1px solid var(--line);margin-top:auto}
 .hc-metric small{display:block;font-size:12px;font-weight:600;color:var(--ink3);margin-top:4px}
 .hc-view{
   margin-top:18px;font-size:12px;font-weight:700;color:var(--ink);
@@ -274,6 +288,52 @@ button{font-family:inherit;cursor:pointer}
   opacity:.55;transition:opacity .2s,gap .2s;
 }
 .hcard:hover .hc-view{opacity:1;gap:10px}
+
+/* ── STAR card pattern: problem, financial criticality, task, action, north star ── */
+.hc-tagpill-alt{
+  display:inline-flex;align-items:center;
+  background:#FEF3E2;color:#B45309;
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 11px;border-radius:6px;margin-left:6px;
+}
+.hc-problem-line{font-size:14px;line-height:1.6;color:var(--ink2);margin-bottom:10px}
+.hc-subq{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:8px;font-style:italic;line-height:1.4}
+.hc-scope{font-size:12.5px;color:var(--ink3);margin-bottom:16px;line-height:1.55}
+
+.hc-fin{
+  background:#FBEEEC;border:1px solid #F3D4CF;border-radius:12px;
+  padding:14px 16px;margin-bottom:16px;
+}
+.hc-fin-label{
+  font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:#B3261E;margin-bottom:8px;display:flex;align-items:center;gap:6px;
+}
+.hc-fin-value{font-size:28px;font-weight:900;color:#B3261E;line-height:1;letter-spacing:-0.01em}
+.hc-fin-desc{font-size:12px;color:#7A342E;line-height:1.55;margin-top:5px}
+
+.hc-task,.hc-action{font-size:12.5px;line-height:1.55;color:var(--ink2);margin-bottom:10px}
+.hc-task b,.hc-action b{
+  color:var(--ink3);font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  font-size:10px;display:block;margin-bottom:4px;
+}
+
+.hc-north{background:#111;color:#fff;border-radius:12px;padding:16px 18px;margin:14px 0 4px}
+.hc-north-label{font-size:9.5px;font-weight:800;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:7px}
+.hc-north-val{font-size:18px;font-weight:900;line-height:1.3;margin-bottom:6px;letter-spacing:-0.01em}
+.hc-north-desc{font-size:11.5px;color:rgba(255,255,255,.68);line-height:1.55}
+
+/* ── restyled CTA, was plain grey text before ── */
+.hc-view2{
+  margin-top:auto;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:#fff;
+  padding:11px 18px;border-radius:10px;
+  font-size:12.5px;font-weight:700;
+  transition:gap .2s,transform .2s,background .2s;
+  width:fit-content;
+}
+.hcard:hover .hc-view2{gap:12px;transform:translateX(2px);background:#2a2a2a}
+
 .hcard{cursor:pointer}
 
 /* ═══════════ MODAL ═══════════ */
@@ -289,7 +349,7 @@ button{font-family:inherit;cursor:pointer}
 .mv-overlay.open{opacity:1;pointer-events:auto}
 .mv-panel{
   background:#fff;border-radius:20px;
-  width:100%;max-width:860px;
+  width:100%;max-width:1030px;
   overflow:hidden;position:relative;
   transform:translateY(12px);
   transition:transform .3s cubic-bezier(.22,1,.36,1);
@@ -318,14 +378,14 @@ button{font-family:inherit;cursor:pointer}
   letter-spacing:-0.02em;padding:0 48px;text-align:center;line-height:1.2;
 }
 
-.mv-body{padding:40px 48px 48px}
+.mv-body{padding:44px 56px 52px}
 .mv-meta{
   display:flex;align-items:center;gap:10px;flex-wrap:wrap;
   font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink3);margin-bottom:14px;
 }
 .mv-meta .dot{opacity:.45}
-.mv-meta img{height:20px;width:auto;object-fit:contain}
+.mv-meta img{height:36px;width:auto;object-fit:contain}
 .mv-title{
   font-size:34px;font-weight:800;letter-spacing:-0.02em;
   line-height:1.15;margin-bottom:26px;
@@ -335,8 +395,8 @@ button{font-family:inherit;cursor:pointer}
   color:var(--ink3);margin-bottom:10px;
 }
 .mv-text{
-  font-size:15px;line-height:1.75;color:var(--ink2);
-  max-width:62ch;margin-bottom:30px;
+  font-size:16.5px;line-height:1.75;color:var(--ink2);
+  margin-bottom:30px;
 }
 .mv-divider{height:1px;background:var(--line);margin:34px 0}
 
@@ -355,10 +415,10 @@ button{font-family:inherit;cursor:pointer}
   border:1px solid var(--line);border-radius:12px;padding:18px 20px;
 }
 .mv-stat-v{font-size:28px;font-weight:900;letter-spacing:-0.02em;line-height:1}
-.mv-stat-l{font-size:11.5px;color:var(--ink3);font-weight:600;margin-top:6px;line-height:1.4}
+.mv-stat-l{font-size:12.5px;color:var(--ink3);font-weight:600;margin-top:6px;line-height:1.45}
 
 /* approach two-col */
-.mv-two{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:8px}
+.mv-two{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-bottom:8px}
 .mv-col ul{list-style:none;padding:0;margin:8px 0 0}
 .mv-col li{
   font-size:13.5px;line-height:1.6;color:var(--ink2);
@@ -402,6 +462,328 @@ button{font-family:inherit;cursor:pointer}
   color:var(--ink);transition:background .2s,color .2s;
 }
 .mv-deep:hover{background:var(--ink);color:#fff}
+
+
+/* ── context read-more ── */
+.mv-ctx-more{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease;
+}
+.mv-ctx-more.open{max-height:600px}
+.mv-ctx-inner{
+  margin-top:14px;padding:18px 22px;
+  background:#f7f6f3;border-left:2px solid var(--ink3);border-radius:0 10px 10px 0;
+  font-size:14px;line-height:1.7;color:var(--ink2);max-width:none;
+}
+.mv-ctx-inner .bm{
+  display:block;margin-top:12px;font-size:12.5px;
+  font-weight:600;color:var(--ink);letter-spacing:.01em;
+}
+.mv-ctx-flow{
+  margin-top:8px;font-size:12.5px;line-height:1.9;color:var(--ink2);
+  font-weight:500;
+}
+.mv-readmore{
+  background:none;border:none;padding:0;margin-top:4px;
+  font-size:12.5px;font-weight:700;color:var(--ink);
+  cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+  border-bottom:1.5px solid var(--ink);line-height:1.5;
+}
+.mv-readmore:hover{opacity:.6}
+
+/* ── problem: highlighted thesis line ── */
+.mv-thesis{
+  font-size:21px;line-height:1.5;font-weight:700;
+  color:#5B2BD9;
+  margin:6px 0 26px;max-width:58ch;
+  letter-spacing:-0.01em;
+}
+.mv-evidence{
+  display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;
+}
+.mv-ev{
+  flex:1;min-width:190px;background:#fff;
+  border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+}
+.mv-ev-v{font-size:22px;font-weight:900;letter-spacing:-0.02em;color:var(--ink)}
+.mv-ev-l{font-size:13px;color:var(--ink3);font-weight:600;margin-top:6px;line-height:1.5}
+
+/* ── CIRCLES framework steps ── */
+.mv-frame-note{
+  font-size:13.5px;color:var(--ink3);font-weight:600;
+  margin-bottom:24px;line-height:1.6;
+}
+.mv-step{margin-bottom:30px}
+.mv-step-hd{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.mv-step-n{
+  font-size:11px;font-weight:800;letter-spacing:.1em;
+  color:#5B2BD9;flex-shrink:0;
+}
+.mv-step-t{font-size:18px;font-weight:800;letter-spacing:-0.01em}
+.mv-step-body{font-size:15px;line-height:1.75;color:var(--ink2);margin-bottom:16px}
+.mv-persona{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.mv-pcard{
+  flex:1;min-width:230px;background:#f7f6f3;
+  border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+}
+.mv-pcard-t{font-size:16px;font-weight:800;margin-bottom:6px}
+.mv-pcard-d{font-size:14.5px;color:var(--ink3);line-height:1.55}
+.mv-fig{
+  margin:0 0 8px;border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;background:#fff;
+}
+.mv-fig img{width:100%;height:auto;display:block}
+.mv-fig-cap{
+  font-size:11.5px;color:var(--ink3);font-weight:600;
+  padding:10px 14px;border-top:1px solid var(--line);background:#fbfaf8;
+}
+
+/* ── solutions list ── */
+.mv-sol{
+  display:flex;gap:14px;padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+.mv-sol:last-of-type{border-bottom:none}
+.mv-sol-n{
+  font-size:11px;font-weight:800;color:var(--ink3);
+  flex-shrink:0;width:22px;padding-top:3px;
+}
+.mv-sol-t{font-size:16px;font-weight:800;margin-bottom:5px;letter-spacing:-0.01em}
+.mv-sol-d{font-size:14.5px;line-height:1.65;color:var(--ink2);max-width:none}
+
+/* ── live link card ── */
+.mv-live{
+  display:flex;align-items:stretch;gap:0;
+  margin:26px 0 34px;max-width:560px;
+  background:#f7f6f3;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;transition:background .2s,border-color .2s;
+}
+
+.mv-live:hover{background:#f2f1ed;border-color:rgba(17,17,17,.22)}
+.mv-live-l{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
+.mv-live-t{font-size:14px;font-weight:700;color:var(--ink);line-height:1.4}
+.mv-live-a{
+  flex-shrink:0;font-size:12.5px;font-weight:700;color:var(--ink);
+  display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+}
+
+/* ── impact: north star vs secondary ── */
+.mv-north{
+  background:#111;color:#fff;border-radius:16px;
+  padding:26px 28px;margin-bottom:12px;
+}
+.mv-north-l{
+  font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:12px;
+}
+.mv-north-v{font-size:34px;font-weight:900;letter-spacing:-0.02em;line-height:1.1;margin-bottom:8px}
+.mv-north-d{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.72);max-width:56ch}
+
+
+/* ── meta row: subtitle as a tag pill ── */
+.mv-meta{align-items:center}
+.mv-tag{
+  display:inline-flex;align-items:center;
+  background:#EEE9FF;color:#5B2BD9;
+  border:1px solid #DCD2FF;
+  padding:5px 12px;border-radius:7px;
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+}
+.mv-when{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink3)}
+
+/* ── shaded company context container ── */
+.mv-ctx{
+  background:#F6F3FF;border:1px solid #E7E0FF;
+  border-radius:14px;padding:24px 26px;margin-bottom:34px;
+}
+.mv-ctx-lead{
+  font-size:15px;line-height:1.75;color:#2E2A3A;
+  font-style:italic;max-width:none;
+}
+.mv-ctx-lead strong{font-style:normal;font-weight:700;color:#5B2BD9}
+
+/* ── prominent section heading (Approach etc.) ── */
+.mv-h2{
+  font-size:26px;font-weight:800;letter-spacing:-0.02em;
+  margin-bottom:8px;line-height:1.2;
+}
+
+/* ── full-width body copy ── */
+.mv-wide{max-width:none}
+
+/* ── concern groups (expressive pain points) ── */
+.mv-concerns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.mv-cgroup{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+}
+.mv-cgroup.span{grid-column:1 / -1;background:#FBFAF8}
+.mv-cg-who{
+  font-size:13px;font-weight:800;margin-bottom:3px;letter-spacing:-0.01em;
+}
+.mv-cg-role{
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#5B2BD9;margin-bottom:14px;
+}
+.mv-cg-list{list-style:none;padding:0;margin:0}
+.mv-cg-list li{
+  font-size:13px;line-height:1.55;color:var(--ink2);
+  padding-left:18px;position:relative;margin-bottom:11px;
+}
+.mv-cg-list li:last-child{margin-bottom:0}
+.mv-cg-list li::before{
+  content:'';position:absolute;left:0;top:6px;
+  width:7px;height:7px;border-radius:2px;
+  background:#DCD2FF;border:1px solid #C4B4FF;
+}
+.mv-cg-list li b{color:var(--ink);font-weight:700}
+
+/* ── live card with preview thumb ── */
+.mv-live{align-items:stretch}
+.mv-live-thumb{
+  flex-shrink:0;width:132px;border-radius:9px;overflow:hidden;
+  border:1px solid var(--line);background:#fff;align-self:center;
+}
+.mv-live-thumb img{width:100%;height:auto;display:block}
+.mv-live-mid{flex:1;display:flex;flex-direction:column;justify-content:center}
+.mv-live-dot{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:#1E9E5A;margin-bottom:6px;
+}
+.mv-live-dot i{
+  width:6px;height:6px;border-radius:50%;background:#1E9E5A;
+  animation:livePulse 1.9s ease-in-out infinite;
+}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+
+
+
+
+/* ── 2. metric-type tag pill ── */
+.mv-tag{
+  display:inline-flex;align-items:center;
+  background:#EDE9FE;color:#5B2BD9;
+  font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 11px;border-radius:6px;
+}
+
+/* ── 3. company context as a shaded container ── */
+.mv-ctx-box{
+  background:#F6F4FF;border:1px solid #E4DEFB;
+  border-radius:14px;padding:22px 26px;margin-bottom:12px;
+}
+.mv-ctx-box .row{display:flex;gap:14px;align-items:flex-start}
+.mv-ctx-box .ico{
+  flex-shrink:0;width:30px;height:30px;border-radius:7px;
+  background:#fff;border:1px solid #E4DEFB;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.mv-ctx-box .ico img{width:22px;height:auto;object-fit:contain}
+.mv-ctx-box p{
+  margin:0;font-size:16px;line-height:1.75;color:#2A2340;
+}
+.mv-ctx-box p b{font-weight:700;color:#1B1533}
+
+/* ── 5. prominent section title ── */
+.mv-h2{
+  font-size:24px;font-weight:800;letter-spacing:-0.02em;
+  margin-bottom:8px;
+}
+
+/* ── thesis emphasis ── */
+.mv-thesis .hl{
+  color:#3B0F9E;font-weight:800;
+  border-bottom:2px solid rgba(91,43,217,.28);
+}
+
+/* ── expressive persona concern columns ── */
+.mv-concerns{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.mv-cc{
+  background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:22px 24px;
+}
+.mv-cc-hd{
+  font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:#5B2BD9;margin-bottom:14px;padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+}
+.mv-cc ul{list-style:none;padding:0;margin:0}
+.mv-cc li{
+  font-size:14.5px;line-height:1.65;color:var(--ink2);
+  padding-left:18px;position:relative;margin-bottom:12px;
+}
+.mv-cc li:last-child{margin-bottom:0}
+.mv-cc li::before{
+  content:'';position:absolute;left:0;top:8px;
+  width:7px;height:7px;border-radius:2px;background:#DDD5F7;
+}
+.mv-cc li b{font-weight:700;color:var(--ink)}
+.mv-cc.wide{grid-column:1 / -1}
+.mv-cc.wide .mv-cc-hd{color:var(--ink3)}
+
+/* ── 6. live preview card, subtle ── */
+.mv-livep{
+  display:flex;align-items:stretch;gap:0;
+  margin:26px 0 34px;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;background:#fff;max-width:640px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.mv-livep:hover{border-color:rgba(17,17,17,.24);box-shadow:0 10px 30px rgba(0,0,0,.07)}
+.mv-livep-thumb{
+  width:200px;flex-shrink:0;background:#f2f1ed;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.mv-livep-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.mv-livep-body{
+  padding:18px 22px;display:flex;flex-direction:column;justify-content:center;gap:5px;
+}
+.mv-livep-l{
+  font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#5B2BD9;display:inline-flex;align-items:center;gap:6px;
+}
+.mv-livep-l .dotlive{
+  width:6px;height:6px;border-radius:50%;background:#22C55E;
+  box-shadow:0 0 0 3px rgba(34,197,94,.18);
+}
+.mv-livep-t{font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.35}
+.mv-livep-u{font-size:11.5px;color:var(--ink3);font-weight:500;word-break:break-all}
+.mv-livep-a{font-size:12px;font-weight:700;color:var(--ink);margin-top:3px}
+
+
+/* ── center the live preview + before/after block ── */
+.mv-center-block{display:flex;flex-direction:column;align-items:center;margin:26px 0 34px}
+.mv-center-block .mv-livep{margin:0 0 24px}
+.mv-center-block .mv-fig{margin:0}
+
+/* ── live badge, always-on pulse so it reads as "alive" not just on hover ── */
+.dotlive{
+  width:6px;height:6px;border-radius:50%;background:#22C55E;
+  animation:liveDotPulse 1.8s ease-in-out infinite;
+}
+@keyframes liveDotPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}
+  50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}
+}
+.mv-livep-l{
+  font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#16A34A;display:inline-flex;align-items:center;gap:7px;
+  background:#F0FDF4;border:1px solid #DCFCE7;
+  padding:4px 10px;border-radius:20px;width:fit-content;
+}
+
+/* ── condensed problem points, replaces the long paragraph ── */
+.mv-points{list-style:none;padding:0;margin:0 0 26px}
+.mv-points li{
+  font-size:15px;line-height:1.6;color:var(--ink2);
+  padding-left:20px;position:relative;margin-bottom:14px;
+}
+.mv-points li:last-child{margin-bottom:0}
+.mv-points li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:7px;height:7px;border-radius:2px;background:#5B2BD9;opacity:.55;
+}
+.mv-points li b{color:var(--ink);font-weight:700}
 
 body.mv-lock{overflow:hidden}
 .hrow-nav{display:flex;gap:8px;margin-top:20px;justify-content:center}
@@ -469,11 +851,24 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
   .hey{grid-template-columns:1fr;gap:44px;padding:90px 7%}
   .hey-left p{margin-top:20px}
   .testi-grid{grid-template-columns:1fr}
-  .hcard{flex:0 0 86%;min-width:260px}
+  .hcard{flex:0 0 86%;min-width:260px;min-height:auto}
   .mv-body{padding:28px 24px 34px}
   .mv-title{font-size:26px}
   .mv-banner{height:190px}
   .mv-two{grid-template-columns:1fr;gap:20px}
+  .mv-thesis{font-size:17px}
+  .mv-north-v{font-size:26px}
+  .mv-live{flex-direction:column;align-items:flex-start}
+  .mv-concerns{grid-template-columns:1fr}
+  .mv-livep{flex-direction:column;max-width:100%}
+  .mv-livep-thumb{width:100%;height:150px}
+  .mv-h2{font-size:20px}
+  .mv-panel{max-width:96vw}
+  .mv-pcard{min-width:100%}
+  .mv-body{padding:32px 26px 38px}
+  .mv-concerns{grid-template-columns:1fr}
+  .mv-h2{font-size:21px}
+  .mv-live-thumb{width:100%;align-self:stretch}
   .mv-overlay{padding:20px 12px}
   .hero-since{display:none}
   .sec{padding:80px 7% 70px}
@@ -653,7 +1048,14 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 </div>
 
 <!-- ══ CONTENT DATA — edit THESE files to add/change projects, not index.html ══ -->
-<script src="projects.js"></script>
+<!-- one file per project. Order here = order on the page. -->
+<script src="project-branding/project-branding.js"></script>
+<script src="project-activation.js"></script>
+<script src="project-leadfunnel.js"></script>
+<script src="project-cms.js"></script>
+<script src="project-datalayer.js"></script>
+<script src="project-hrms.js"></script>
+
 <script src="ai.js"></script>
 <script src="cases.js"></script>
 <script src="testimonials.js"></script>
@@ -670,26 +1072,59 @@ function cardHTML(item, key){
   var head = item.logo
     ? '<div class="hc-logo-row"><div class="logo-chip' + (item.logoDark ? ' logo-brane' : '') + '">'
         + '<img src="' + item.logo + '" alt="' + esc(item.logoAlt) + '"></div>'
-        + '<span class="hc-logo-sub">' + esc(item.subtitle) + '</span></div>'
+        + '<span class="hc-tagpill">' + esc(item.subtitle) + '</span>'
+        + (item.modelTag ? '<span class="hc-tagpill-alt">' + esc(item.modelTag) + '</span>' : '')
+        + '</div>'
     : '<div class="hc-tag">' + esc(item.tag) + '</div>';
 
-  /* problem line is the headline signal; falls back to desc if not written yet */
-  var problem = item.problem || item.desc || '';
+  var body;
 
-  /* ownership chips row */
-  var own = '';
-  if (item.ownership && item.ownership.length){
-    own = '<div class="hc-own">'
-        + item.ownership.map(function(o){ return '<span>' + esc(o) + '</span>'; }).join('')
-        + '</div>';
+  if (item.finCriticality){
+    /* STAR pattern: problem, financial criticality, task, action, north star */
+    body = ''
+      + (item.problem ? '<div class="hc-problem-line">' + esc(item.problem) + '</div>' : '')
+      + (item.frameQ  ? '<div class="hc-subq">&ldquo;' + esc(item.frameQ) + '&rdquo;</div>' : '')
+      + (item.scope   ? '<div class="hc-scope">' + esc(item.scope) + '</div>' : '')
+      + '<div class="hc-fin">'
+        + '<div class="hc-fin-label">&#9888; Financial Criticality</div>'
+        + '<div class="hc-fin-value">' + esc(item.finCriticality.value) + '</div>'
+        + '<div class="hc-fin-desc">' + esc(item.finCriticality.desc) + '</div>'
+        + '</div>'
+      + (item.task   ? '<div class="hc-task"><b>Task</b>' + esc(item.task) + '</div>' : '')
+      + (item.action ? '<div class="hc-action"><b>Action</b>' + esc(item.action) + '</div>' : '')
+      + (item.northCard
+          ? '<div class="hc-north">'
+            + '<div class="hc-north-label">North Star Metric</div>'
+            + '<div class="hc-north-val">' + esc(item.northCard.value) + '</div>'
+            + '<div class="hc-north-desc">' + esc(item.northCard.desc) + '</div>'
+            + '</div>'
+          : '');
+  } else {
+    /* fallback for projects not yet filled in with the STAR fields */
+    function row(k, v){
+      return v ? '<div class="hc-row"><div class="hc-row-k">' + k + '</div>'
+               + '<div class="hc-row-v">' + esc(v) + '</div></div>' : '';
+    }
+    var rows = '<div class="hc-rows">'
+      + row('Problem', item.problem || item.desc)
+      + row('Context', item.cardContext)
+      + row('Built',   item.cardAction)
+      + '</div>';
+
+    var own = '';
+    if (item.ownership && item.ownership.length){
+      own = '<div class="hc-own">'
+          + item.ownership.map(function(o){ return '<span>' + esc(o) + '</span>'; }).join('')
+          + '</div>';
+    }
+    body = rows + own
+      + '<div class="hc-metric">' + esc(item.metric) + '<small>' + esc(item.metricSub) + '</small></div>';
   }
 
   return '<div class="hcard" data-mv="' + key + '">' + head
     + '<div class="hc-title">' + esc(item.title) + '</div>'
-    + '<div class="hc-problem">' + esc(problem) + '</div>'
-    + own
-    + '<div class="hc-metric">' + esc(item.metric) + '<small>' + esc(item.metricSub) + '</small></div>'
-    + '<div class="hc-view">View case <span>&rarr;</span></div>'
+    + body
+    + '<div class="hc-view2">See the full case study <span>&rarr;</span></div>'
     + '</div>';
 }
 
@@ -720,29 +1155,135 @@ function modalHTML(d){
   h += '<div class="mv-meta">';
   if (d.logo) h += '<img src="' + d.logo + '" alt="' + esc(d.logoAlt) + '">';
   else if (d.tag) h += '<span>' + esc(d.tag) + '</span>';
-  if (d.subtitle) h += '<span class="dot">·</span><span>' + esc(d.subtitle) + '</span>';
-  if (d.timeframe) h += '<span class="dot">·</span><span>' + esc(d.timeframe) + '</span>';
+  if (d.subtitle) h += '<span class="mv-tag">' + esc(d.subtitle) + '</span>';
+  if (d.timeframe) h += '<span class="mv-when">' + esc(d.timeframe) + '</span>';
   h += '</div>';
 
   h += '<div class="mv-title">' + esc(d.title) + '</div>';
 
+  /* ── COMPANY CONTEXT with read-more ── */
   if (d.context){
-    h += '<div class="mv-label">Context</div>'
-       + '<div class="mv-text">' + esc(d.context) + '</div>';
+    h += '<div class="mv-label">Company context</div>'
+       + '<div class="mv-ctx-box"><div class="row">'
+       + (d.logo ? '<span class="ico"><img src="' + d.logo + '" alt=""></span>' : '')
+       + '<p>' + d.context + '</p></div>';
+    if (d.contextMore || d.businessModel){
+      h += '<button class="mv-readmore" data-ctx-toggle>Read more <span>&darr;</span></button>'
+         + '<div class="mv-ctx-more" id="mvCtxMore"><div class="mv-ctx-inner">';
+      if (d.contextMore) h += esc(d.contextMore);
+      if (d.businessModel){
+        h += '<span class="bm">Business model</span>'
+           + '<div class="mv-ctx-flow">' + d.businessModel + '</div>';
+      }
+      h += '</div></div>';
+    }
+    h += '</div>';
   }
 
-  if (d.problemFull || d.problem){
-    h += '<div class="mv-label">The problem</div>'
-       + '<div class="mv-text">' + esc(d.problemFull || d.problem) + '</div>';
+  /* ── PROBLEM: framing question, highlighted thesis, evidence ── */
+  if (d.problemFull || d.problem || d.thesis){
+    h += '<div class="mv-label">The problem</div>';
+    if (d.problemQ) h += '<div class="mv-text" style="margin-bottom:6px;font-weight:600;color:var(--ink)">' + esc(d.problemQ) + '</div>';
+    if (d.thesis)   h += '<div class="mv-thesis">' + d.thesis + '</div>';
+    if (d.evidence && d.evidence.length){
+      h += '<div class="mv-evidence">';
+      d.evidence.forEach(function(e){
+        h += '<div class="mv-ev"><div class="mv-ev-v">' + esc(e.value) + '</div>'
+           + '<div class="mv-ev-l">' + esc(e.label) + '</div></div>';
+      });
+      h += '</div>';
+    }
+    if (d.trustPoints && d.trustPoints.length){
+      h += '<ul class="mv-points">' + d.trustPoints.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
+    } else if (d.problemFull){
+      h += '<div class="mv-text mv-wide">' + esc(d.problemFull) + '</div>';
+    }
   }
 
   if (d.insight){
     h += '<div class="mv-quote">' + esc(d.insight) + '</div>';
   }
 
+  /* ── FRAMEWORK STEPS (CIRCLES) ── */
+  if (d.steps && d.steps.length){
+    h += '<div class="mv-divider"></div>';
+    h += '<div class="mv-h2">' + esc(d.approachTitle || 'Approach') + '</div>';
+    if (d.frameworkNote) h += '<div class="mv-frame-note">' + esc(d.frameworkNote) + '</div>';
+    d.steps.forEach(function(s, i){
+      h += '<div class="mv-step">'
+         + '<div class="mv-step-hd"><span class="mv-step-n">0' + (i+1) + '</span>'
+         + '<span class="mv-step-t">' + esc(s.title) + '</span></div>';
+      if (s.body) h += '<div class="mv-step-body mv-wide">' + esc(s.body) + '</div>';
+      if (s.personas && s.personas.length){
+        h += '<div class="mv-persona">';
+        s.personas.forEach(function(p){
+          h += '<div class="mv-pcard"><div class="mv-pcard-t">' + esc(p.name) + '</div>'
+             + '<div class="mv-pcard-d">' + esc(p.desc) + '</div></div>';
+        });
+        h += '</div>';
+      }
+      if (s.concerns && s.concerns.length){
+        h += '<div class="mv-concerns">';
+        s.concerns.forEach(function(c){
+          h += '<div class="mv-cc' + (c.wide ? ' wide' : '') + '">'
+             + '<div class="mv-cc-hd">' + esc(c.who) + '</div><ul>'
+             + c.items.map(function(x){ return '<li>' + x + '</li>'; }).join('')
+             + '</ul></div>';
+        });
+        h += '</div>';
+      }
+      if (s.image){
+        h += '<figure class="mv-fig"><img src="' + s.image + '" alt="' + esc(s.title) + '">'
+           + (s.caption ? '<div class="mv-fig-cap">' + esc(s.caption) + '</div>' : '')
+           + '</figure>';
+      }
+      if (s.solutions && s.solutions.length){
+        s.solutions.forEach(function(sol, j){
+          h += '<div class="mv-sol"><div class="mv-sol-n">' + (j+1) + '</div><div>'
+             + '<div class="mv-sol-t">' + esc(sol.title) + '</div>'
+             + '<div class="mv-sol-d">' + esc(sol.desc) + '</div></div></div>';
+        });
+      }
+      h += '</div>';
+    });
+  }
+
+  /* ── LIVE LINK CARD ── */
+  h += '<div class="mv-center-block">';
+
+  if (d.liveUrl){
+    h += '<a class="mv-livep" href="' + d.liveUrl + '" target="_blank" rel="noopener">'
+       + (d.livePreview ? '<span class="mv-livep-thumb"><img src="' + d.livePreview + '" alt="Live partner site preview"></span>' : '')
+       + '<span class="mv-livep-body">'
+       + '<span class="mv-livep-l"><span class="dotlive"></span>Live in production</span>'
+       + '<span class="mv-livep-t">' + esc(d.liveLabel || 'View a real partner website') + '</span>'
+       + (d.liveDomain ? '<span class="mv-livep-u">' + esc(d.liveDomain) + '</span>' : '')
+       + '<span class="mv-livep-a">Open site &#8599;</span>'
+       + '</span></a>';
+  }
+
+  /* ── BEFORE / AFTER ── */
+  if (d.beforeAfter){
+    h += '<figure class="mv-fig" style="margin-bottom:0;max-width:520px">'
+       + '<img src="' + d.beforeAfter + '" alt="Before and after">'
+       + (d.beforeAfterCap ? '<div class="mv-fig-cap">' + esc(d.beforeAfterCap) + '</div>' : '')
+       + '</figure>';
+  }
+
+  h += '</div>';
+
+  /* ── NORTH STAR METRIC ── */
+  if (d.northStar){
+    h += '<div class="mv-divider"></div><div class="mv-label">Impact</div>'
+       + '<div class="mv-north"><div class="mv-north-l">' + esc(d.northStar.label || 'North star metric') + '</div>'
+       + '<div class="mv-north-v">' + esc(d.northStar.value) + '</div>'
+       + '<div class="mv-north-d">' + esc(d.northStar.desc) + '</div></div>';
+  }
+
   /* impact strip */
   if (d.metrics && d.metrics.length){
-    h += '<div class="mv-label">Impact</div><div class="mv-stats">';
+    if (!d.northStar) h += '<div class="mv-divider"></div><div class="mv-label">Impact</div>';
+    h += '<div class="mv-stats">';
     d.metrics.forEach(function(m){
       h += '<div class="mv-stat"><div class="mv-stat-v">' + esc(m.value) + '</div>'
          + '<div class="mv-stat-l">' + esc(m.label) + '</div></div>';
@@ -813,6 +1354,14 @@ function modalHTML(d){
     var d = MV_REGISTRY[key];
     if (!d) return;
     content.innerHTML = modalHTML(d);
+    var tog = content.querySelector('[data-ctx-toggle]');
+    if (tog){
+      tog.addEventListener('click', function(){
+        var box = content.querySelector('#mvCtxMore');
+        var open = box.classList.toggle('open');
+        tog.innerHTML = open ? 'Read less <span>&uarr;</span>' : 'Read more <span>&darr;</span>';
+      });
+    }
     overlay.classList.add('open');
     document.body.classList.add('mv-lock');
     overlay.scrollTop = 0;
