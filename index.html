@@ -942,6 +942,55 @@ button{font-family:inherit;cursor:pointer}
   .hc-abstract{width:130px;height:130px;top:-24px;right:-24px}
 }
 
+
+/* ── hypotheses, rendered as testable statements not cards ── */
+.mv-hyp{margin:0 0 26px;border-top:1px solid var(--line)}
+.mv-hyp-row{
+  display:grid;grid-template-columns:44px 1fr 200px;gap:18px;
+  padding:16px 0;border-bottom:1px solid var(--line);align-items:start;
+}
+.mv-hyp-id{
+  font-size:12px;font-weight:800;color:#5B2BD9;letter-spacing:.04em;
+  padding-top:1px;
+}
+.mv-hyp-q{font-size:15px;line-height:1.55;color:var(--ink);font-weight:600}
+.mv-hyp-m{
+  font-size:12.5px;line-height:1.5;color:var(--ink3);
+  display:flex;align-items:center;gap:7px;
+}
+.mv-hyp-m::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:#5B2BD9;opacity:.4;flex-shrink:0;
+}
+@media(max-width:960px){
+  .mv-hyp-row{grid-template-columns:34px 1fr;gap:12px}
+  .mv-hyp-m{grid-column:2;margin-top:2px}
+}
+
+/* ── cost cascade: every line moved up, activation stayed flat ── */
+.mv-cascade{margin:0 0 30px}
+.mv-casc-row{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 16px;border-radius:10px;margin-bottom:8px;
+  background:#FBEEEC;border:1px solid #F3D4CF;
+}
+.mv-casc-row.flat{background:#F4F4F2;border-color:var(--line);margin-top:14px}
+.mv-casc-ico{
+  flex-shrink:0;width:26px;height:26px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;
+  background:#F6D7D2;color:#B3261E;
+}
+.mv-casc-row.flat .mv-casc-ico{background:#E4E4E0;color:#6B6B66}
+.mv-casc-t{font-size:14.5px;font-weight:700;color:#7A342E;line-height:1.4}
+.mv-casc-row.flat .mv-casc-t{color:var(--ink)}
+.mv-casc-d{font-size:12.5px;color:#8A5A54;line-height:1.45;margin-top:2px}
+.mv-casc-row.flat .mv-casc-d{color:var(--ink3)}
+.mv-casc-note{
+  font-size:13.5px;font-weight:700;color:var(--ink);
+  text-align:center;padding:14px 0 0;
+}
+
 body.mv-lock{overflow:hidden}
 .hrow-nav{display:flex;gap:8px;margin-top:20px;justify-content:center}
 .hrow-nav button{
@@ -1371,7 +1420,21 @@ function modalHTML(d){
       });
       h += '</div>';
     }
-    if (d.trustPoints && d.trustPoints.length){
+    if (d.cascade && d.cascade.rows){
+      h += '<div class="mv-cascade">';
+      d.cascade.rows.forEach(function(r){
+        h += '<div class="mv-casc-row"><div class="mv-casc-ico">&uarr;</div>'
+           + '<div><div class="mv-casc-t">' + esc(r.t) + '</div>'
+           + (r.d ? '<div class="mv-casc-d">' + esc(r.d) + '</div>' : '') + '</div></div>';
+      });
+      if (d.cascade.flat){
+        h += '<div class="mv-casc-row flat"><div class="mv-casc-ico">&rarr;</div>'
+           + '<div><div class="mv-casc-t">' + esc(d.cascade.flat.t) + '</div>'
+           + (d.cascade.flat.d ? '<div class="mv-casc-d">' + esc(d.cascade.flat.d) + '</div>' : '') + '</div></div>';
+      }
+      if (d.cascade.note) h += '<div class="mv-casc-note">' + esc(d.cascade.note) + '</div>';
+      h += '</div>';
+    } else if (d.trustPoints && d.trustPoints.length){
       h += '<ul class="mv-points">' + d.trustPoints.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
     } else if (d.problemFull){
       h += '<div class="mv-text mv-wide">' + esc(d.problemFull) + '</div>';
@@ -1397,6 +1460,17 @@ function modalHTML(d){
         s.personas.forEach(function(p){
           h += '<div class="mv-pcard"><div class="mv-pcard-t">' + esc(p.name) + '</div>'
              + '<div class="mv-pcard-d">' + esc(p.desc) + '</div></div>';
+        });
+        h += '</div>';
+      }
+      if (s.hypotheses && s.hypotheses.length){
+        h += '<div class="mv-hyp">';
+        s.hypotheses.forEach(function(x, k){
+          h += '<div class="mv-hyp-row">'
+             + '<div class="mv-hyp-id">H' + (k+1) + '</div>'
+             + '<div class="mv-hyp-q">' + esc(x.q) + '</div>'
+             + '<div class="mv-hyp-m">' + esc(x.m) + '</div>'
+             + '</div>';
         });
         h += '</div>';
       }
