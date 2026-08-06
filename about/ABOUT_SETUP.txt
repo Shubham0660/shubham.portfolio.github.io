@@ -1,0 +1,18 @@
+ABOUT PAGE ASSETS
+
+Create folder: about/
+
+Then upload these files to about/:
+- about_profile.jpg (profile photo, ~400×600px)
+- wealthy_1.jpg (Wealthy team photo 1)
+- wealthy_2.jpg (Wealthy team photo 2)  
+- wealthy_3.jpg (Wealthy team photo 3)
+- brane_1.jpg (BRANE company photo 1)
+- brane_2.jpg (BRANE company photo 2)
+
+The HTML is configured to reference these paths:
+- about/about_profile.jpg
+- about/wealthy_1.jpg, wealthy_2.jpg, wealthy_3.jpg
+- about/brane_1.jpg, brane_2.jpg
+
+All images should be JPG format, 82% quality.
