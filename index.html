@@ -135,10 +135,10 @@ button{font-family:inherit;cursor:pointer}
   position:absolute;inset:0;border-radius:22px;overflow:hidden;
   backface-visibility:hidden;-webkit-backface-visibility:hidden;
   box-shadow:0 30px 80px rgba(0,0,0,0.28);
-  background:#101010;
+  background:#F3F1EC;
   display:flex;align-items:center;justify-content:center;
 }
-.flip-face img{width:100%;height:100%;object-fit:cover}
+.flip-face img{width:100%;height:100%;object-fit:contain;object-position:center}
 .flip-back{transform:rotateY(0deg)}
 .flip-front{transform:rotateY(180deg)}
 .flip-ph{font-size:90px;opacity:.12;color:#fff}
@@ -158,16 +158,16 @@ button{font-family:inherit;cursor:pointer}
 /* ═══════════ HEY ═══════════ */
 .hey{
   padding:140px 8% 120px;
-  display:grid;grid-template-columns:1.2fr 1fr 1.05fr;
-  gap:clamp(28px,3.4vw,48px);align-items:center;
+  display:grid;grid-template-columns:1.05fr 1fr 1.05fr;
+  gap:clamp(18px,2.2vw,32px);align-items:center;
 }
-.hey-title{font-size:clamp(34px,4.2vw,60px);font-weight:800;letter-spacing:-0.03em;line-height:1.06;align-self:start;max-width:11ch}
+.hey-title{font-size:clamp(32px,3.9vw,54px);font-weight:800;letter-spacing:-0.03em;line-height:1.07;align-self:start;max-width:none}
 .hey-title em{font-style:normal;color:#5B2BD9}
 .hey-lead{
   margin-top:28px;font-size:clamp(15.5px,1.45vw,19px);
-  font-weight:600;line-height:1.45;max-width:26ch;color:var(--ink2);
+  font-weight:600;line-height:1.45;max-width:none;color:var(--ink2);
 }
-.hey-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;max-width:30ch}
+.hey-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;max-width:none}
 .hey-tags span{
   font-size:11.5px;font-weight:700;color:var(--ink2);
   padding:8px 14px;border-radius:24px;
@@ -178,7 +178,7 @@ button{font-family:inherit;cursor:pointer}
   font-size:clamp(15px,1.35vw,18px);line-height:1.62;font-weight:500;margin-bottom:22px;
 }
 .hey-venn{display:flex;align-items:center;gap:16px;margin:4px 0 24px;flex-wrap:wrap}
-.hey-venn svg{width:132px;height:104px;flex-shrink:0}
+.hey-venn svg{width:182px;height:143px;flex-shrink:0}
 .hey-venn p{font-size:12.5px;font-weight:700;color:var(--ink3);line-height:1.55;margin:0;max-width:23ch}
 .hey-venn p b{color:#5B2BD9;font-weight:800}
 .hey-cta{display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:700;margin-top:4px}
@@ -191,12 +191,12 @@ button{font-family:inherit;cursor:pointer}
 .hey-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
 .hey-btn{
   display:inline-flex;align-items:center;gap:8px;
-  padding:11px 20px;border-radius:26px;
+  width:44px;height:44px;justify-content:center;border-radius:50%;
   background:rgba(255,255,255,.6);border:1px solid var(--line);
-  font-size:13px;font-weight:800;color:var(--ink);text-decoration:none;
+  color:var(--ink);text-decoration:none;
   transition:background .2s,color .2s,transform .2s;
 }
-.hey-btn svg{width:15px;height:15px;flex-shrink:0}
+.hey-btn svg{width:17px;height:17px;flex-shrink:0}
 .hey-btn:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
 .hey-dl{
   display:inline-flex;align-items:center;gap:8px;
@@ -223,8 +223,126 @@ button{font-family:inherit;cursor:pointer}
 /* ── hey section on phones ── */
 @media(max-width:900px){
   .hey-lead,.hey-tags{max-width:none}
-  .hey-venn svg{width:112px;height:88px}
+  .hey-venn svg{width:148px;height:116px}
 }
+
+
+/* ═══════════ AI FEATURE: automation pipeline ═══════════ */
+.aif{
+  position:relative;border-radius:24px;overflow:hidden;margin-bottom:26px;
+  background:linear-gradient(150deg,#F6F4FF 0%,#FDFCFF 46%,#F3F7F6 100%);
+  border:1px solid var(--line);
+}
+.aif-in{padding:clamp(24px,3vw,38px)}
+
+.aif-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:#5B2BD9;background:rgba(91,43,217,.09);
+  border:1px solid rgba(91,43,217,.22);padding:6px 13px;border-radius:20px;
+}
+.aif-kicker{
+  font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--ink3);
+  margin:16px 0 6px;text-transform:uppercase;
+}
+.aif-title{
+  font-size:clamp(24px,3vw,38px);font-weight:900;letter-spacing:-.03em;
+  line-height:1.1;margin-bottom:14px;
+}
+.aif-lede{
+  font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.65;color:var(--ink2);
+  max-width:64ch;margin-bottom:6px;
+}
+.aif-lede b{color:var(--ink);font-weight:800}
+
+/* the cost, framed as lost creative time */
+.aif-cost{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 8px;
+}
+.aif-cost-c{
+  background:rgba(255,255,255,.72);border:1px solid var(--line);
+  border-radius:14px;padding:15px 16px 17px;
+}
+.aif-cost-k{
+  font-size:9.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;
+  color:#B3261E;margin-bottom:9px;
+}
+.aif-cost-v{font-size:21px;font-weight:900;letter-spacing:-.02em;line-height:1;margin-bottom:6px}
+.aif-cost-d{font-size:12.5px;line-height:1.5;color:var(--ink3);font-weight:600}
+@media(max-width:760px){.aif-cost{grid-template-columns:1fr}}
+
+/* pipeline strip, dark inset */
+.aif-pipe{
+  margin:22px 0 0;border-radius:18px;padding:22px 22px 24px;
+  background:linear-gradient(135deg,#151318 0%,#221B33 58%,#2E1F4D 100%);
+  position:relative;overflow:hidden;
+}
+.aif-pipe::after{
+  content:'';position:absolute;right:-60px;top:-80px;width:230px;height:230px;
+  border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.3) 0%,transparent 68%);
+}
+.aif-pipe-k{
+  position:relative;z-index:1;font-size:9.5px;font-weight:900;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px;
+}
+.aif-flow{
+  position:relative;z-index:1;display:flex;align-items:center;gap:10px;
+  flex-wrap:wrap;margin-bottom:14px;
+}
+.aif-node{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 15px;border-radius:22px;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
+  font-size:12.5px;font-weight:800;color:#fff;white-space:nowrap;
+}
+.aif-node svg{width:14px;height:14px;flex-shrink:0;opacity:.9}
+.aif-arrow{color:rgba(196,176,255,.75);font-size:14px;font-weight:700;flex-shrink:0}
+.aif-pipe-d{
+  position:relative;z-index:1;font-size:13px;line-height:1.6;
+  color:rgba(255,255,255,.62);max-width:62ch;
+}
+
+/* outcome band */
+.aif-out{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;margin-top:22px}
+.aif-out-c{
+  border-radius:14px;padding:17px 18px 19px;
+  background:rgba(255,255,255,.72);border:1px solid var(--line);
+}
+.aif-out-c.hero{background:#111;border-color:#111}
+.aif-out-k{
+  font-size:9.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:9px;
+}
+.aif-out-c.hero .aif-out-k{color:rgba(255,255,255,.45)}
+.aif-out-v{font-size:27px;font-weight:900;letter-spacing:-.03em;line-height:1}
+.aif-out-c.hero .aif-out-v{
+  background:linear-gradient(92deg,#fff 0%,#C4B0FF 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.aif-out-d{font-size:12.5px;line-height:1.5;color:var(--ink3);font-weight:600;margin-top:7px}
+.aif-out-c.hero .aif-out-d{color:rgba(255,255,255,.6)}
+@media(max-width:760px){.aif-out{grid-template-columns:1fr}}
+
+/* the real payoff */
+.aif-payoff{
+  margin-top:16px;padding:16px 18px;border-radius:14px;
+  background:rgba(91,43,217,.06);border:1px solid rgba(91,43,217,.16);
+  font-size:14px;line-height:1.6;color:var(--ink2);font-weight:600;
+}
+.aif-payoff b{color:#5B2BD9;font-weight:800}
+
+.aif-stack{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:18px}
+.aif-stack-k{
+  font-size:9.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink3);margin-right:4px;
+}
+.aif-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:800;color:var(--ink2);
+  padding:7px 13px;border-radius:20px;
+  background:rgba(255,255,255,.8);border:1px solid var(--line);
+}
+.aif-chip img{width:13px;height:13px;object-fit:contain}
 
 /* ═══════════ MARQUEE ═══════════ */
 .mq{
@@ -279,7 +397,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* ═══════════ SECTIONS ═══════════ */
 .sec{padding:120px 8% 100px}
-.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;gap:24px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:30px;gap:24px}
 
 /* ── career ribbon, sits in the empty middle of the section head ── */
 .career-ribbon{
@@ -348,8 +466,11 @@ button{font-family:inherit;cursor:pointer}
   .about-strip-btn span{font-size:11px}
 }
 .sec-title{font-size:clamp(34px,4vw,56px);font-weight:800;letter-spacing:-0.02em;line-height:1.0}
-.sec-mark{width:34px;height:34px;display:block;margin-bottom:14px;opacity:.85}
-@media(max-width:640px){.sec-mark{width:28px;height:28px;margin-bottom:10px}}
+.sec-mark{
+  width:clamp(26px,2.6vw,38px);height:clamp(26px,2.6vw,38px);
+  display:inline-block;vertical-align:-.12em;margin-right:14px;opacity:.85;
+}
+@media(max-width:640px){.sec-mark{width:24px;height:24px;margin-right:10px}}
 .sec-title .thin{color:var(--ink3)}
 .sec-hint{
   font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -1523,17 +1644,14 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 
       <a class="hey-cta rv" href="#projects">See my work <span class="circ">↗</span></a>
       <div class="hey-btns rv">
-        <a class="hey-btn" href="https://www.linkedin.com/in/shubham0660" target="_blank" rel="noopener">
+        <a class="hey-btn" href="https://www.linkedin.com/in/shubham0660" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.4 5.6H.9V14h2.5V5.6ZM2.15 1.4a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9ZM15.1 9.2c0-2.4-1.3-3.8-3.2-3.8-1.2 0-2 .66-2.35 1.3H9.5V5.6H7.1V14h2.5V9.6c0-1.15.2-2.25 1.65-2.25 1.4 0 1.4 1.3 1.4 2.3V14h2.45V9.2Z"/></svg>
-          LinkedIn
         </a>
-        <a class="hey-btn" href="https://www.instagram.com/" target="_blank" rel="noopener">
+        <a class="hey-btn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.9" y="1.9" width="12.2" height="12.2" rx="3.6"/><circle cx="8" cy="8" r="3"/><circle cx="11.7" cy="4.3" r=".9" fill="currentColor" stroke="none"/></svg>
-          Instagram
         </a>
-        <a class="hey-btn" href="mailto:sharmashubham0660@gmail.com">
+        <a class="hey-btn" href="mailto:sharmashubham0660@gmail.com" aria-label="Email" title="Email">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.6" y="3.2" width="12.8" height="9.6" rx="1.6"/><path d="m2.2 4.2 5.8 4.2 5.8-4.2"/></svg>
-          Email
         </a>
       </div>
       <button class="hey-dl rv">Download Resume ↓</button>
@@ -1629,7 +1747,7 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 </section>
 
 <!-- AI USAGE -->
-<section class="sec" id="ai" style="padding-top:40px">
+<section class="sec" id="ai" style="padding-top:8px">
   <div class="sec-head">
     <h2 class="sec-title rv"><svg class="sec-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="9.5" y="9.5" width="15" height="15" rx="3" stroke="#5B2BD9" stroke-width="1.9"/>
@@ -1638,6 +1756,91 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
       </svg>AI<br><span class="thin">Usage</span></h2>
     <div class="sec-hint">Swipe →</div>
   </div>
+  <div class="aif rv">
+    <div class="aif-in">
+      <span class="aif-eyebrow">Workflow Automation &middot; Partner Marketing</span>
+      <div class="aif-kicker">From manual workflows to automated systems</div>
+      <div class="aif-title">One-Click Partner Recognition Pipeline</div>
+      <p class="aif-lede">
+        Recognising 200+ top partners every month is a retention lever, not an admin task.
+        But the work was <b>four teams manually assembling the same artefact</b>, every cycle,
+        forever. The cost was never the hours. It was a marketing team spending its best
+        thinking on formatting instead of on what the recognition should say.
+      </p>
+
+      <div class="aif-cost">
+        <div class="aif-cost-c">
+          <div class="aif-cost-k">Recurring drag</div>
+          <div class="aif-cost-v">4 teams</div>
+          <div class="aif-cost-d">BA, Content, Design and Campaign pulled in monthly for the same output</div>
+        </div>
+        <div class="aif-cost-c">
+          <div class="aif-cost-k">Cycle length</div>
+          <div class="aif-cost-v">~3 days</div>
+          <div class="aif-cost-d">Data pull, design, generation, distribution, all hand-run</div>
+        </div>
+        <div class="aif-cost-c">
+          <div class="aif-cost-k">Real cost</div>
+          <div class="aif-cost-v">Creative bandwidth</div>
+          <div class="aif-cost-d">Campaign thinking traded for repetitive execution, every single month</div>
+        </div>
+      </div>
+
+      <div class="aif-pipe">
+        <div class="aif-pipe-k">The pipeline I built</div>
+        <div class="aif-flow">
+          <span class="aif-node"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="7" cy="3.2" rx="5" ry="2"/><path d="M2 3.2v7.6c0 1.1 2.2 2 5 2s5-.9 5-2V3.2M2 7c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg>Database</span>
+          <span class="aif-arrow">&rarr;</span>
+          <span class="aif-node"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 1.5 8.4 5 12 6.5 8.4 8 7 11.5 5.6 8 2 6.5 5.6 5 7 1.5Z" stroke-linejoin="round"/></svg>Gemini</span>
+          <span class="aif-arrow">&rarr;</span>
+          <span class="aif-node"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="3" cy="7" r="1.8"/><circle cx="11" cy="3.4" r="1.8"/><circle cx="11" cy="10.6" r="1.8"/><path d="m4.7 6.1 4.6-2M4.7 7.9l4.6 2"/></svg>n8n + Sheets</span>
+          <span class="aif-arrow">&rarr;</span>
+          <span class="aif-node"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5.2 1.8h3.6l3.4 6-1.8 3.1H3.6L1.8 7.8l3.4-6Z" stroke-linejoin="round"/></svg>Drive</span>
+          <span class="aif-arrow">&rarr;</span>
+          <span class="aif-node"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1.5" y="3" width="11" height="8" rx="1.4"/><path d="m2 3.8 5 3.6 5-3.6"/></svg>Partner inbox</span>
+        </div>
+        <p class="aif-pipe-d">
+          Data extraction, monthly design refresh, certificate generation, compilation, storage
+          and distribution, chained end to end. The team now approves the creative direction once
+          and the cycle runs itself.
+        </p>
+      </div>
+
+      <div class="aif-out">
+        <div class="aif-out-c hero">
+          <div class="aif-out-k">Cycle time</div>
+          <div class="aif-out-v">~3 days &rarr; 5 min</div>
+          <div class="aif-out-d">Same output, every month, without a person in the loop</div>
+        </div>
+        <div class="aif-out-c">
+          <div class="aif-out-k">Scale</div>
+          <div class="aif-out-v">200+</div>
+          <div class="aif-out-d">Partner certificates per cycle</div>
+        </div>
+        <div class="aif-out-c">
+          <div class="aif-out-k">Build cost</div>
+          <div class="aif-out-v">2 days</div>
+          <div class="aif-out-d">One-time setup against a permanent monthly cost</div>
+        </div>
+      </div>
+
+      <div class="aif-payoff">
+        The point was never speed. Four teams got their month back, and partner recognition
+        stopped competing with campaign work for the same people. <b>Automate the artefact,
+        keep the judgement.</b>
+      </div>
+
+      <div class="aif-stack">
+        <span class="aif-stack-k">Stack</span>
+        <span class="aif-chip"><img src="https://cdn.simpleicons.org/anthropic/111111" alt="">Claude</span>
+        <span class="aif-chip"><img src="https://cdn.simpleicons.org/googlegemini/8E75B2" alt="">Gemini</span>
+        <span class="aif-chip"><img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="">n8n</span>
+        <span class="aif-chip"><img src="https://cdn.simpleicons.org/googlesheets/34A853" alt="">Sheets</span>
+        <span class="aif-chip"><img src="https://cdn.simpleicons.org/googledrive/4285F4" alt="">Drive</span>
+      </div>
+    </div>
+  </div>
+
   <div class="hrow" id="rowAI"><!-- filled by data/ai.js --></div>
   <div class="hrow-nav">
     <button onclick="slide('rowAI',-1)">←</button>
@@ -1646,7 +1849,7 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 </section>
 
 <!-- CASE STUDIES -->
-<section class="sec" id="cases" style="padding-top:40px">
+<section class="sec" id="cases" style="padding-top:8px">
   <div class="sec-head">
     <h2 class="sec-title rv"><svg class="sec-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6.5 4.5a2 2 0 0 1 2-2h10l7 7v18a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2v-23Z" stroke="#5B2BD9" stroke-width="1.9" stroke-linejoin="round"/>
