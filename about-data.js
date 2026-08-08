@@ -21,7 +21,7 @@ window.ABOUT_CAREER = [
     ],
     photos: ["about/wealthy_1.jpg", "about/wealthy_2.jpg", "about/wealthy_3.jpg"],
 
-    summary: "End-to-end ownership across product, analytics and growth — research through execution to measurement.",
+    summary: "End-to-end ownership across product, analytics and growth - research through execution to measurement.",
 
     detail: [
       { k: "Partner Activation", v: "Led a 6-intern team on learning modules, gamified flows and a reclaimed-fee policy. <b>85% activation in 50 days</b>, with SQL dashboards giving sales leadership live KPI visibility." },
