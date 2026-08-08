@@ -38,6 +38,13 @@ a{color:inherit}
 .focus span{font-size:12px;font-weight:700;color:var(--ink2);padding:8px 15px;border-radius:24px;border:1px solid var(--line);background:rgba(255,255,255,.5)}
 @media(max-width:920px){.hero{grid-template-columns:1fr;gap:30px}}
 
+/* ═══ VENN: where the work overlaps ═══ */
+.venn-wrap{margin-top:30px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.venn-svg{width:168px;height:132px;flex-shrink:0}
+.venn-note{font-size:12px;font-weight:700;color:var(--ink3);line-height:1.6;max-width:22ch}
+.venn-note b{color:var(--violet);font-weight:800}
+@media(max-width:480px){.venn-wrap{gap:16px}.venn-svg{width:140px;height:110px}}
+
 /* ═══ SECTION HEAD ═══ */
 .blk{padding:clamp(36px,4.5vw,56px) 0;border-top:1px solid var(--line)}
 .blk-k{font-size:12.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:30px;display:flex;align-items:center;gap:13px}
@@ -50,8 +57,8 @@ a{color:inherit}
 .tl-item:last-child{padding-bottom:0}
 .tl-item::before{content:'';position:absolute;left:-44px;top:2px;width:24px;height:24px;border-radius:50%;background:var(--bg);border:3px solid rgba(17,17,17,.2);z-index:2}
 .tl-item.now::before{border-color:var(--violet);background:var(--violet);box-shadow:0 0 0 5px rgba(91,43,217,.13)}
-.tl-item.now::after{content:'';position:absolute;left:-52px;top:-6px;width:40px;height:40px;border-radius:50%;border:2px solid rgba(91,43,217,.28);animation:pulse 2.6s ease-out infinite;z-index:1}
-@keyframes pulse{0%{transform:scale(.62);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.tl-item.now::after{content:'';position:absolute;left:-72px;top:-26px;width:80px;height:80px;border-radius:50%;border:2px solid rgba(91,43,217,.28);animation:pulse 2.6s ease-out infinite;z-index:1}
+@keyframes pulse{0%{transform:scale(.55);opacity:1}100%{transform:scale(1.3);opacity:0}}
 
 .tl-org{font-size:clamp(21px,2.4vw,26px);font-weight:900;letter-spacing:-.025em;margin-bottom:5px}
 .tl-org-type{font-size:11px;font-weight:800;color:var(--ink3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:9px}
@@ -160,14 +167,31 @@ a{color:inherit}
       <div class="hero-k">About Me</div>
       <h1 class="hero-h">I find where the <em>funnel actually breaks.</em></h1>
       <p class="hero-p">
-        Three years across product, marketing and data, currently at <b>Wealthy.in</b> in Bengaluru.
-        My work sits where those three meet: diagnosing what a metric is really telling you, then
-        building the thing that moves it. Most of what I have shipped started as a number nobody
-        could explain.
+        <b>3 years. From problem discovery to measurable impact.</b><br><br>
+        I find the friction, understand the user, build the solution and get it into the market.
+        My work spans product, growth, data, operations and GTM — but the approach stays the same:
+        find the constraint, solve the right problem, and prove the impact.
       </p>
       <div class="focus">
         <span>Funnel Optimisation</span><span>User Activation</span>
         <span>Product-Led Growth</span><span>Data Analytics</span><span>AI Automation</span>
+      </div>
+
+      <div class="venn-wrap">
+        <svg class="venn-svg" viewBox="0 0 210 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g style="mix-blend-mode:multiply">
+            <circle cx="78" cy="68" r="52" fill="#5B2BD9" fill-opacity=".5"/>
+            <circle cx="132" cy="68" r="52" fill="#0F7B63" fill-opacity=".45"/>
+            <circle cx="105" cy="112" r="52" fill="#B45309" fill-opacity=".4"/>
+          </g>
+          <circle cx="78" cy="68" r="52" stroke="#5B2BD9" stroke-width="1.2" stroke-opacity=".35"/>
+          <circle cx="132" cy="68" r="52" stroke="#0F7B63" stroke-width="1.2" stroke-opacity=".35"/>
+          <circle cx="105" cy="112" r="52" stroke="#B45309" stroke-width="1.2" stroke-opacity=".35"/>
+          <text x="46" y="42" font-family="Archivo" font-size="11.5" font-weight="800" fill="#3A1B8F">Product</text>
+          <text x="140" y="42" font-family="Archivo" font-size="11.5" font-weight="800" fill="#0A4C3D">Marketing</text>
+          <text x="90" y="158" font-family="Archivo" font-size="11.5" font-weight="800" fill="#7A3A08">Data</text>
+        </svg>
+        <div class="venn-note">The overlap is the job — <b>where product, marketing and data agree</b> on what to build next.</div>
       </div>
     </div>
     <div class="hero-r">
