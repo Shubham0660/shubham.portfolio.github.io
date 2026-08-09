@@ -1,5 +1,5 @@
 [
-  { "name": "niranjan.html",   "order": 1, "enabled": true },
+  { "name": "niranjan.html",   "order": 3, "enabled": true },
   { "name": "siddharth.html",  "order": 2, "enabled": true },
-  { "name": "astha.html",      "order": 3, "enabled": true }
+  { "name": "astha.html",      "order": 1, "enabled": true }
 ]
