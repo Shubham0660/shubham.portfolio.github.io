@@ -6,22 +6,26 @@
 .cert{
   flex:0 0 calc(40% - 12px);min-width:310px;scroll-snap-align:start;
   position:relative;overflow:hidden;
-  background:linear-gradient(150deg,#F6F3FF 0%,#FCFBFF 44%,#F1F6F5 100%);
+  background:#FAFAF8;
   border:1px solid rgba(17,17,17,.12);border-radius:20px;
-  padding:19px 19px 20px;display:flex;flex-direction:column;gap:11px;
+  padding:19px 19px 20px;display:flex;flex-direction:column;gap:0;
 }
 @media(max-width:1100px){.cert{flex:0 0 calc(58% - 12px)}}
 @media(max-width:768px){.cert{flex:0 0 88%;padding:17px}}
 
-.cert-kick{font-size:8.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#5B2BD9}
-.cert-title{font-size:18px;font-weight:900;letter-spacing:-.028em;line-height:1.13;margin-top:-3px}
+/* ── header ── */
+.cert-kick{font-size:8.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#5B2BD9;margin-bottom:6px}
+.cert-title{font-size:18px;font-weight:900;letter-spacing:-.028em;line-height:1.13;margin-bottom:14px}
 .cert-title em{font-style:normal;color:#5B2BD9}
 
-/* ── scale claim beside the cost stack ── */
-.cert-top{display:grid;grid-template-columns:.86fr 1fr;gap:9px}
+/* ── WHY block: context + scale ── */
+.cert-why{
+  display:grid;grid-template-columns:.72fr 1fr;gap:8px;margin-bottom:12px;
+}
 
+/* scale (dark) */
 .cert-scale{
-  position:relative;overflow:hidden;border-radius:14px;padding:14px 14px 15px;
+  position:relative;overflow:hidden;border-radius:14px;padding:14px 12px 14px;
   background:linear-gradient(155deg,#171425 0%,#241C36 60%,#2E1F4D 100%);
   display:flex;flex-direction:column;
 }
@@ -31,58 +35,126 @@
   background:linear-gradient(93deg,#fff 0%,#C4B0FF 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-.cert-scale-l{position:relative;z-index:1;font-size:10.5px;font-weight:800;color:rgba(255,255,255,.72);line-height:1.35;margin-top:6px}
-.cert-scale-q{
-  position:relative;z-index:1;margin-top:auto;padding-top:10px;
-  border-top:1px solid rgba(255,255,255,.15);
-  font-size:10.5px;font-weight:700;font-style:italic;color:rgba(196,176,255,.9);line-height:1.4;
+.cert-scale-l{position:relative;z-index:1;font-size:10px;font-weight:800;color:rgba(255,255,255,.72);line-height:1.35;margin-top:5px}
+
+/* context: why certs exist */
+.cert-context{
+  display:flex;flex-direction:column;gap:6px;
+}
+.cert-ctx-item{
+  border-radius:10px;padding:8px 10px;
+  background:rgba(255,255,255,.85);border:1px solid rgba(17,17,17,.09);
+  display:flex;align-items:flex-start;gap:8px;
+}
+.cert-ctx-ico{
+  width:20px;height:20px;border-radius:6px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:1px;
+}
+.cert-ctx-ico svg{width:12px;height:12px}
+.cert-ctx-ico.purple{background:#EEE9FB}
+.cert-ctx-ico.orange{background:#FEF3E2}
+.cert-ctx-ico.green{background:#E6F4EE}
+.cert-ctx-ico.purple svg{stroke:#5B2BD9}
+.cert-ctx-ico.orange svg{stroke:#B45309}
+.cert-ctx-ico.green svg{stroke:#1E7A50}
+.cert-ctx-txt{font-size:9.5px;font-weight:700;color:#4a4a46;line-height:1.4}
+.cert-ctx-txt b{color:#111;font-weight:800}
+
+/* ── BEFORE section ── */
+.cert-section-label{
+  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:#8a8a84;margin-bottom:7px;display:flex;align-items:center;gap:7px;
+}
+.cert-section-label::after{content:'';flex:1;height:1px;background:rgba(17,17,17,.1)}
+
+.cert-before{
+  background:linear-gradient(135deg,#FDF5F4 0%,#FFF8F7 70%);
+  border:1px solid rgba(240,180,175,.5);
+  border-radius:13px;padding:11px 12px;margin-bottom:10px;
 }
 
-.cert-costs{display:flex;flex-direction:column;gap:7px}
-.cert-cost{
-  position:relative;overflow:hidden;border-radius:12px;padding:9px 11px 10px;
-  background:rgba(255,255,255,.8);border:1px solid rgba(17,17,17,.1);
+/* 3-item before grid */
+.cert-before-grid{display:flex;flex-direction:column;gap:6px}
+.cert-b-row{display:flex;align-items:center;gap:8px}
+.cert-b-ico{
+  width:22px;height:22px;border-radius:7px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.9);border:1px solid rgba(179,38,30,.14);
 }
-.cert-cost-wm{position:absolute;right:-8px;top:50%;transform:translateY(-50%);width:54px;height:54px;opacity:.12;pointer-events:none}
-.cert-cost > span{position:relative;z-index:1;display:block}
-.cert-cost-k{font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#8a8a84;margin-bottom:2px}
-.cert-cost-v{font-size:14px;font-weight:900;letter-spacing:-.025em;line-height:1.12}
-.cert-cost-d{font-size:10px;font-weight:600;color:#8a8a84;line-height:1.35;margin-top:2px}
-.cert-cost.loss{background:linear-gradient(135deg,#FBEBE9 0%,#FEF8F7 76%);border-color:#F0CFC9}
-.cert-cost.loss .cert-cost-k{color:#B3261E}
-.cert-cost.loss .cert-cost-v{color:#8F2A22}
-.cert-cost.loss .cert-cost-d{color:#9A5750}
+.cert-b-ico svg{width:12px;height:12px;stroke:#B3261E}
+.cert-b-text{flex:1}
+.cert-b-k{font-size:7px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#B3261E;line-height:1}
+.cert-b-v{font-size:11.5px;font-weight:900;letter-spacing:-.02em;color:#4a1c18;line-height:1.2}
+.cert-b-d{font-size:9.5px;font-weight:600;color:#9A5750;line-height:1.3}
 
-/* ── pipeline, tactile ── */
-.cert-built{margin-top:1px}
-.cert-k{font-size:8px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#5B2BD9;margin-bottom:8px}
-.cert-flow{display:flex;flex-wrap:wrap;gap:5px}
+/* intellectual loss as a highlight bar */
+.cert-loss{
+  margin-top:8px;padding-top:8px;
+  border-top:1px dashed rgba(179,38,30,.2);
+  display:flex;align-items:center;gap:8px;
+}
+.cert-loss-bar{flex:1;height:6px;border-radius:3px;background:rgba(179,38,30,.1);overflow:hidden;position:relative}
+.cert-loss-fill{
+  position:absolute;left:0;top:0;bottom:0;width:80%;border-radius:3px;
+  background:linear-gradient(90deg,#E53935,#EF9A9A);
+}
+.cert-loss-txt{font-size:9px;font-weight:800;color:#8F2A22;white-space:nowrap}
+
+/* ── transition arrow ── */
+.cert-divider{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin:8px 0;
+}
+.cert-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(91,43,217,.2),transparent)}
+.cert-divider-pill{
+  font-size:8px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  color:#5B2BD9;background:#EEE9FB;border:1px solid #DDD5F7;
+  padding:4px 10px;border-radius:20px;white-space:nowrap;
+}
+
+/* ── BUILT section (premium) ── */
+.cert-built-wrap{
+  background:linear-gradient(150deg,#171425 0%,#1E1630 55%,#221B33 100%);
+  border-radius:13px;padding:12px 12px 13px;margin-bottom:8px;
+}
+.cert-built-label{
+  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(196,176,255,.6);margin-bottom:9px;display:flex;align-items:center;gap:7px;
+}
+.cert-built-label::after{content:'';flex:1;height:1px;background:rgba(196,176,255,.15)}
+
+/* pipeline nodes */
+.cert-flow{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .cert-n{
-  position:relative;display:inline-flex;align-items:center;gap:6px;
-  padding:7px 11px;border-radius:11px;
-  background:rgba(255,255,255,.86);border:1px solid rgba(17,17,17,.1);
-  font-size:10.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;cursor:default;
-  transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s ease,border-color .28s ease;
+  position:relative;display:inline-flex;align-items:center;gap:5px;
+  padding:6px 10px;border-radius:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  font-size:10px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;cursor:default;
+  color:rgba(255,255,255,.9);
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s ease,border-color .28s ease,background .28s ease;
 }
-.cert-n img{width:14px;height:14px;object-fit:contain;transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
-.cert-n svg{width:14px;height:14px;flex-shrink:0}
+.cert-n img{width:13px;height:13px;object-fit:contain;transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
+.cert-n svg{width:13px;height:13px;flex-shrink:0}
 .cert-n:hover{
-  transform:translateY(-5px) scale(1.07);z-index:3;
-  box-shadow:0 12px 26px rgba(91,43,217,.2);border-color:rgba(91,43,217,.4);
+  transform:translateY(-4px) scale(1.07);z-index:3;
+  box-shadow:0 10px 22px rgba(91,43,217,.35);
+  border-color:rgba(196,176,255,.5);
+  background:rgba(255,255,255,.14);
 }
 .cert-n:hover img{transform:scale(1.14)}
 .cert-n::after{
   content:attr(data-step);position:absolute;left:50%;bottom:calc(100% + 7px);
   transform:translate(-50%,4px);white-space:nowrap;
-  background:#171425;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;
+  background:#000;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;
   padding:5px 9px;border-radius:7px;opacity:0;pointer-events:none;
   transition:opacity .22s ease,transform .22s ease;
 }
 .cert-n:hover::after{opacity:1;transform:translate(-50%,0)}
-.cert-arrow{display:flex;align-items:center;color:rgba(91,43,217,.4);font-size:10px}
+.cert-arrow{display:flex;align-items:center;color:rgba(196,176,255,.4);font-size:10px}
 
 /* ── impact, side by side ── */
-.cert-impact{display:grid;grid-template-columns:1.22fr 1fr;gap:8px;margin-top:auto}
+.cert-impact{display:grid;grid-template-columns:1.22fr 1fr;gap:8px}
 .cert-imp{border-radius:12px;padding:10px 12px 11px;position:relative;overflow:hidden}
 .cert-imp.win{background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%)}
 .cert-imp.win::after{
@@ -93,7 +165,7 @@
 .cert-imp-k{position:relative;z-index:1;font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
 .cert-imp.win .cert-imp-k{color:rgba(167,243,208,.62)}
 .cert-imp.flat .cert-imp-k{color:#8a8a84}
-.cert-imp-v{position:relative;z-index:1;font-size:16px;font-weight:900;letter-spacing:-.03em;line-height:1.05}
+.cert-imp-v{position:relative;z-index:1;font-size:15px;font-weight:900;letter-spacing:-.03em;line-height:1.05}
 .cert-imp.win .cert-imp-v{
   background:linear-gradient(93deg,#fff 0%,#6EE7B7 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
@@ -105,10 +177,13 @@
 
 <article class="cert">
 
+  <!-- header -->
   <div class="cert-kick">From manual workflows to automated systems</div>
   <div class="cert-title">One-Click Partner <em>Certification Pipeline</em></div>
 
-  <div class="cert-top">
+  <!-- WHY: context + scale -->
+  <div class="cert-section-label">The recurring task</div>
+  <div class="cert-why">
 
     <div class="cert-scale">
       <svg class="cert-scale-wm" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -118,62 +193,100 @@
       </svg>
       <div class="cert-scale-v">500+</div>
       <div class="cert-scale-l">partner certificates,<br>every single month</div>
-      <div class="cert-scale-q">Identical work. Every cycle. Forever.</div>
     </div>
 
-    <div class="cert-costs">
+    <div class="cert-context">
+      <div class="cert-ctx-item">
+        <div class="cert-ctx-ico purple">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 1l1.5 3H11l-2.5 2 1 3L6 7.5 3.5 9l1-3L2 4h3.5z"/>
+          </svg>
+        </div>
+        <div class="cert-ctx-txt"><b>Partner recognition</b> for sales milestones</div>
+      </div>
+      <div class="cert-ctx-item">
+        <div class="cert-ctx-ico orange">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 1v3M1 6h3M8 6h3M6 8v3"/><circle cx="6" cy="6" r="2"/>
+          </svg>
+        </div>
+        <div class="cert-ctx-txt">Reward & <b>retain partners</b> driving revenue</div>
+      </div>
+      <div class="cert-ctx-item">
+        <div class="cert-ctx-ico green">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="10" height="7" rx="1.5"/><path d="M4 3V2a2 2 0 0 1 4 0v1"/>
+          </svg>
+        </div>
+        <div class="cert-ctx-txt">Personalised per partner — <b>every cycle</b></div>
+      </div>
+    </div>
 
-      <div class="cert-cost">
-        <svg class="cert-cost-wm" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="18" r="8" stroke="#5B2BD9" stroke-width="3.4"/>
-          <path d="M6 44a14 14 0 0 1 28 0" stroke="#5B2BD9" stroke-width="3.4" stroke-linecap="round"/>
-          <circle cx="39" cy="14" r="6" stroke="#5B2BD9" stroke-width="3.4"/>
-          <path d="M37 28a11 11 0 0 1 10 9" stroke="#5B2BD9" stroke-width="3.4" stroke-linecap="round"/>
-        </svg>
-        <span class="cert-cost-k">Recurring drag</span>
-        <span class="cert-cost-v">4 teams</span>
-        <span class="cert-cost-d">BA, Content, Design, Campaign</span>
+  </div>
+
+  <!-- BEFORE -->
+  <div class="cert-section-label" style="margin-top:4px">What we used to do</div>
+  <div class="cert-before">
+    <div class="cert-before-grid">
+
+      <div class="cert-b-row">
+        <div class="cert-b-ico">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="4" cy="4" r="2.5"/><path d="M1 10a3 3 0 0 1 6 0"/><circle cx="9" cy="4" r="2"/><path d="M8 8.5a2.5 2.5 0 0 1 3 2"/>
+          </svg>
+        </div>
+        <div class="cert-b-text">
+          <div class="cert-b-k">Teams pulled in</div>
+          <div class="cert-b-v">4 teams every cycle</div>
+          <div class="cert-b-d">BA · Content · Design · Campaign</div>
+        </div>
       </div>
 
-      <div class="cert-cost">
-        <svg class="cert-cost-wm" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="27" cy="29" r="18" stroke="#B45309" stroke-width="3.4"/>
-          <path d="M27 18v11l7 5" stroke="#B45309" stroke-width="3.4" stroke-linecap="round"/>
-          <path d="m12 9 5-4M42 9l-5-4" stroke="#B45309" stroke-width="3.4" stroke-linecap="round"/>
-        </svg>
-        <span class="cert-cost-k">Cycle length</span>
-        <span class="cert-cost-v">~3 days</span>
-        <span class="cert-cost-d">Collect, create, distribute. All by hand</span>
+      <div class="cert-b-row">
+        <div class="cert-b-ico">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="6" cy="7" r="4"/><path d="M6 5v2l1.5 1.5"/><path d="m3 2 1.2-1M9 2 7.8 1"/>
+          </svg>
+        </div>
+        <div class="cert-b-text">
+          <div class="cert-b-k">Time per cycle</div>
+          <div class="cert-b-v">~3 days, fully manual</div>
+          <div class="cert-b-d">Collect → create → distribute by hand</div>
+        </div>
       </div>
 
-      <div class="cert-cost loss">
-        <svg class="cert-cost-wm" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M27 8a13 13 0 0 1 8 23.2V38H19v-6.8A13 13 0 0 1 27 8Z" stroke="#B3261E" stroke-width="3.2" stroke-linejoin="round"/>
-          <path d="M21 43h12M23 48h8" stroke="#B3261E" stroke-width="3.2" stroke-linecap="round"/>
-          <path d="m38 14 8-5M40 22l9-1" stroke="#B3261E" stroke-width="3.2" stroke-linecap="round" opacity=".6"/>
-        </svg>
-        <span class="cert-cost-k">Real cost</span>
-        <span class="cert-cost-v">Intellectual loss</span>
-        <span class="cert-cost-d">Marketers formatting, not thinking</span>
-      </div>
+    </div>
 
+    <!-- intellectual loss bar -->
+    <div class="cert-loss">
+      <div class="cert-loss-txt">80% time lost</div>
+      <div class="cert-loss-bar"><div class="cert-loss-fill"></div></div>
+      <div class="cert-loss-txt" style="color:#9A5750;font-weight:700;font-size:8.5px">formatting, not thinking</div>
     </div>
   </div>
 
-  <div class="cert-built">
-    <div class="cert-k">What I built</div>
+  <!-- transition -->
+  <div class="cert-divider">
+    <div class="cert-divider-line"></div>
+    <div class="cert-divider-pill">↓ What I built instead</div>
+    <div class="cert-divider-line"></div>
+  </div>
+
+  <!-- BUILT (premium) -->
+  <div class="cert-built-wrap">
+    <div class="cert-built-label">One trigger → fully automated</div>
     <div class="cert-flow">
       <span class="cert-n" data-step="Always current">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#5B2BD9" stroke-width="1.5"><ellipse cx="7" cy="3.2" rx="5" ry="2"/><path d="M2 3.2v7.6c0 1.1 2.2 2 5 2s5-.9 5-2V3.2M2 7c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg>
+        <svg viewBox="0 0 14 14" fill="none" stroke="#C4B0FF" stroke-width="1.5"><ellipse cx="7" cy="3.2" rx="5" ry="2"/><path d="M2 3.2v7.6c0 1.1 2.2 2 5 2s5-.9 5-2V3.2M2 7c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg>
         Data from DB
       </span>
       <span class="cert-arrow">&rarr;</span>
       <span class="cert-n" data-step="Auto-refreshed templates">
-        <img src="https://cdn.simpleicons.org/googlegemini/5B2BD9" alt="">Design via Gemini
+        <img src="https://cdn.simpleicons.org/googlegemini/C4B0FF" alt="">Design via Gemini
       </span>
       <span class="cert-arrow">&rarr;</span>
       <span class="cert-n" data-step="Personalised, bulk">
-        <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="">Generation via n8n
+        <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="">n8n orchestration
       </span>
       <span class="cert-arrow">&rarr;</span>
       <span class="cert-n" data-step="Structured and trackable">
@@ -181,11 +294,12 @@
       </span>
       <span class="cert-arrow">&rarr;</span>
       <span class="cert-n" data-step="Zero manual sends">
-        <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="">Gmail distribution
+        <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="">Gmail
       </span>
     </div>
   </div>
 
+  <!-- impact -->
   <div class="cert-impact">
     <div class="cert-imp win">
       <div class="cert-imp-k">Cycle time</div>
