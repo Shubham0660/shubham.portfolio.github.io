@@ -1,0 +1,237 @@
+<!-- ═══════════════════════════════════════════════════════════
+     AI PROJECT · Dashboards Built by AI
+     Self-contained card. Sits inside index.html's #rowAI swipe row.
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+.adb{
+  flex:0 0 calc(40% - 12px);min-width:320px;scroll-snap-align:start;
+  position:relative;overflow:hidden;
+  background:linear-gradient(168deg,#F5F3F9 0%,#F0EEF6 100%);
+  border:1px solid rgba(79,70,229,.09);
+  border-radius:22px;
+  padding:17px 18px 17px;display:flex;flex-direction:column;gap:0;
+  box-shadow:0 1px 2px rgba(17,17,17,.03),0 12px 32px rgba(17,17,17,.05);
+}
+@media(max-width:1100px){.adb{flex:0 0 calc(58% - 12px)}}
+@media(max-width:768px){.adb{flex:0 0 88%;padding:15px}}
+
+.adb-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;flex-wrap:wrap}
+.adb-kick{font-size:8.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#4F46E5}
+.adb-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:4px 4px 4px 10px;border-radius:22px;
+  background:rgba(79,70,229,.06);color:#4a4a46;
+  font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(79,70,229,.1);
+}
+.adb-tag-arw{color:rgba(17,17,17,.3);font-size:11px}
+.adb-tag-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:16px;
+  background:linear-gradient(135deg,#4F46E5,#6366F1);color:#fff;
+}
+.adb-tag-dot{width:5px;height:5px;border-radius:50%;background:#fff;animation:adbBlink 2s ease-in-out infinite}
+@keyframes adbBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.adb-title{font-size:18px;font-weight:900;letter-spacing:-.028em;line-height:1.1;margin-bottom:11px;color:#111}
+.adb-title em{font-style:normal;color:#4F46E5}
+
+/* problem scene */
+.adb-scene{
+  position:relative;overflow:hidden;
+  border-radius:15px;padding:12px 13px 11px;margin-bottom:10px;
+  background:linear-gradient(150deg,#F8F7FC 0%,#F2F0FA 100%);
+  border:1px solid rgba(79,70,229,.12);
+}
+.adb-scene-text{font-size:11px;font-weight:600;line-height:1.55;color:#3E3A52}
+.adb-scene-text strong{font-weight:800;color:#1B1533}
+
+/* time cost */
+.adb-cost{
+  display:flex;align-items:center;gap:9px;
+  padding:8px 11px;border-radius:10px;margin-bottom:10px;
+  background:rgba(179,38,30,.05);border:1px solid rgba(179,38,30,.1);
+}
+.adb-cost-ico{
+  width:22px;height:22px;border-radius:7px;background:rgba(179,38,30,.08);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.adb-cost-ico svg{width:12px;height:12px;stroke:#9C4A42;fill:none;stroke-width:1.4}
+.adb-cost-text{font-size:9.5px;font-weight:700;color:#7A342E;line-height:1.4}
+
+/* divider */
+.adb-div{display:flex;align-items:center;gap:8px;margin:6px 0}
+.adb-div-line{flex:1;height:1px;background:rgba(79,70,229,.15)}
+.adb-div-text{
+  font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;
+  color:#4F46E5;padding:3px 9px;border-radius:12px;
+  background:rgba(79,70,229,.06);border:1px solid rgba(79,70,229,.1);
+  display:flex;align-items:center;gap:5px;flex-shrink:0;
+}
+.adb-div-text svg{width:10px;height:10px;fill:#4F46E5}
+
+/* pipeline */
+.adb-pipe{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  padding:10px 0;margin-bottom:8px;
+}
+.adb-pn{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
+.adb-pn-ico{
+  width:32px;height:32px;border-radius:9px;
+  background:#fff;border:1px solid rgba(79,70,229,.12);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.adb-pn-ico img{width:18px;height:18px;object-fit:contain}
+.adb-pn-name{font-size:7px;font-weight:800;color:#3E3A52;text-align:center;max-width:50px;line-height:1.2}
+.adb-pn.hero .adb-pn-ico{
+  border-color:#4F46E5;border-width:2px;
+  background:linear-gradient(135deg,#EEF2FF,#F0F0FF);
+  box-shadow:0 0 0 4px rgba(79,70,229,.08);
+}
+.adb-arr{
+  display:flex;align-items:center;margin:0 3px;flex-shrink:0;
+}
+.adb-arr-line{width:12px;height:2px;background:rgba(79,70,229,.2);border-radius:1px}
+.adb-arr-tip{
+  width:0;height:0;
+  border-top:3px solid transparent;border-bottom:3px solid transparent;
+  border-left:4px solid rgba(79,70,229,.25);
+}
+
+/* PII note */
+.adb-pii{
+  display:flex;align-items:center;gap:5px;
+  padding:4px 9px;border-radius:8px;margin-bottom:8px;
+  background:rgba(79,70,229,.04);border:1px solid rgba(79,70,229,.08);
+  font-size:7.5px;font-weight:700;color:#4F46E5;
+}
+.adb-pii svg{width:9px;height:9px;fill:none;stroke:#4F46E5;stroke-width:1.6;flex-shrink:0}
+
+/* impact tiles */
+.adb-impact{display:flex;gap:6px;margin-bottom:8px}
+.adb-imp{
+  flex:1;border-radius:10px;padding:8px 9px;
+  border:1px solid rgba(17,17,17,.06);
+}
+.adb-imp-ico{
+  width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:4px;
+}
+.adb-imp-ico svg{width:11px;height:11px}
+.adb-imp-t{font-size:9px;font-weight:800;line-height:1.2;color:#111;margin-bottom:2px}
+.adb-imp-d{font-size:7.5px;font-weight:600;color:#8a8a84;line-height:1.3}
+
+/* intent tags */
+.adb-intent{display:flex;flex-wrap:wrap;gap:5px}
+.adb-itag{
+  font-size:8px;font-weight:700;letter-spacing:.03em;color:#4F46E5;
+  padding:3px 8px;border-radius:6px;
+  background:rgba(79,70,229,.05);border:1px solid rgba(79,70,229,.08);
+}
+</style>
+
+<article class="adb">
+  <div class="adb-head">
+    <span class="adb-kick">AI Project</span>
+    <span class="adb-tag">
+      Activation Analytics
+      <span class="adb-tag-arw">&#8250;</span>
+      <span class="adb-tag-pill"><span class="adb-tag-dot"></span> AI Native</span>
+    </span>
+  </div>
+  <div class="adb-title">Dashboards <em>Built by AI</em></div>
+
+  <!-- problem -->
+  <div class="adb-scene">
+    <div class="adb-scene-text">
+      Setting up dashboards meant <strong>hours on formulas, spreadsheet layouts, and BI tool limits</strong>. Every new chart or slice meant rebuilding from scratch.
+    </div>
+  </div>
+
+  <div class="adb-cost">
+    <div class="adb-cost-ico">
+      <svg viewBox="0 0 14 14" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><path d="M7 4v3.5l2.5 1.5"/></svg>
+    </div>
+    <div class="adb-cost-text">Time spent setting up charts, not reading them</div>
+  </div>
+
+  <!-- the new approach -->
+  <div class="adb-div">
+    <span class="adb-div-line"></span>
+    <span class="adb-div-text">
+      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 1l2 5h5l-4 3.5 1.5 5L8 11.5 3.5 14.5 5 9.5 1 6h5z"/></svg>
+      The New Approach
+    </span>
+    <span class="adb-div-line"></span>
+  </div>
+
+  <!-- pipeline: Metabase > Python > Hash PII > Claude AI > Dashboard -->
+  <div class="adb-pipe">
+    <div class="adb-pn">
+      <div class="adb-pn-ico"><img src="https://cdn.simpleicons.org/metabase/509EE3" alt="Metabase"></div>
+      <div class="adb-pn-name">Metabase</div>
+    </div>
+    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
+    <div class="adb-pn">
+      <div class="adb-pn-ico"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></div>
+      <div class="adb-pn-name">Python</div>
+    </div>
+    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
+    <div class="adb-pn">
+      <div class="adb-pn-ico">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#4F46E5" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="2" width="10" height="12" rx="2"/><path d="M6 6h4M6 9h4"/></svg>
+      </div>
+      <div class="adb-pn-name">Hash PII</div>
+    </div>
+    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
+    <div class="adb-pn hero">
+      <div class="adb-pn-ico"><img src="https://cdn.simpleicons.org/anthropic/4F46E5" alt="Claude AI"></div>
+      <div class="adb-pn-name">Claude AI</div>
+    </div>
+    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
+    <div class="adb-pn">
+      <div class="adb-pn-ico" style="background:#F0FDF4;border-color:rgba(22,163,74,.15)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="3" width="12" height="8" rx="1.5"/><path d="M3 7h2v4H3zM6 5h2v6H6zM9 6h2v5H9z"/></svg>
+      </div>
+      <div class="adb-pn-name" style="color:#16A34A">Dashboard</div>
+    </div>
+  </div>
+
+  <!-- PII note -->
+  <div class="adb-pii">
+    <svg viewBox="0 0 12 12"><rect x="2" y="1" width="8" height="10" rx="1.5"/><path d="M5 4h2M5 6h2"/></svg>
+    PII hashed before AI processing
+  </div>
+
+  <!-- impact -->
+  <div class="adb-impact">
+    <div class="adb-imp" style="background:linear-gradient(150deg,#F5F3FF 0%,#fff 60%)">
+      <div class="adb-imp-ico" style="background:#EDE9FE">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#4F46E5" stroke-width="1.3"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.2 3.3 12.3l.7-4.1-3-2.9 4.2-.7z"/></svg>
+      </div>
+      <div class="adb-imp-t">AI Insights</div>
+      <div class="adb-imp-d">Numbers read alongside you</div>
+    </div>
+    <div class="adb-imp" style="background:linear-gradient(150deg,#FEF2F2 0%,#fff 60%)">
+      <div class="adb-imp-ico" style="background:#FEE2E2">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#DC2626" stroke-width="1.3"><path d="M7 1v8M4 9h6M3.5 12h7"/></svg>
+      </div>
+      <div class="adb-imp-t">Hygiene Alerts</div>
+      <div class="adb-imp-d">Metric drops trigger email</div>
+    </div>
+    <div class="adb-imp" style="background:linear-gradient(150deg,#F0FDF4 0%,#fff 60%)">
+      <div class="adb-imp-ico" style="background:#DCFCE7">
+        <svg viewBox="0 0 14 14" fill="none" stroke="#16A34A" stroke-width="1.3"><path d="M3 7h8M8 4l3 3-3 3"/></svg>
+      </div>
+      <div class="adb-imp-t">Beyond BI</div>
+      <div class="adb-imp-d">No platform limits</div>
+    </div>
+  </div>
+
+  <!-- intent -->
+  <div class="adb-intent">
+    <span class="adb-itag">Focus on what to track</span>
+    <span class="adb-itag">Not how to build</span>
+    <span class="adb-itag">Privacy-Safe</span>
+  </div>
+</article>
