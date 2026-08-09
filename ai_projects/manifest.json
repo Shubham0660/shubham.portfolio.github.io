@@ -1,0 +1,6 @@
+[
+  { "name": "certificate.html",   "order": 1, "enabled": true },
+  { "name": "market-news.html",   "order": 2, "enabled": true },
+  { "name": "zoom_data.html",     "order": 3, "enabled": true },
+  { "name": "dashboard_ai.html",  "order": 4, "enabled": true }
+]
