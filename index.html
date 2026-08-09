@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shubham Sharma · Product</title>
-<meta name="description" content="Growth PM with ~3 years in fintech & SaaS. Data, user behaviour & product thinking into features that move metrics.">
+<meta name="description" content="PM with ~3 years in fintech & SaaS. Data, user behaviour & product thinking into features that move metrics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* ═══════════ TOKENS ═══════════ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#EFEDE7;
+  --bg:#F3F1EB;
   --ink:#111111;
   --ink2:#4a4a46;
   --ink3:#8a8a84;
@@ -1549,6 +1549,92 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 .fl a{font-size:12.5px;font-weight:700;color:var(--ink2);transition:opacity .15s}
 .fl a:hover{opacity:.6}
 
+/* ═══════════ ABOUT-STRIP BTN OVERRIDE — white text on dark pill ═══════════ */
+.about-strip-btn{
+  background:#fff !important;
+  color:#111 !important;
+}
+
+/* ═══════════ SHARMA word — slightly lighter weight ═══════════ */
+#sharmaWord{font-weight:800;letter-spacing:-0.025em}
+
+/* ═══════════ KIND WORDS — dark swipe cards ═══════════ */
+.kw-row{
+  display:flex;flex-direction:row;overflow-x:auto;gap:20px;
+  scroll-snap-type:x mandatory;scrollbar-width:none;
+  padding-bottom:8px;
+}
+.kw-row::-webkit-scrollbar{display:none}
+.kw-card{
+  flex:0 0 calc(38% - 10px);min-width:300px;
+  background:#111;border-radius:24px;padding:34px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  scroll-snap-align:start;
+  min-height:300px;
+  opacity:0;transform:rotateY(70deg);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);
+}
+.kw-card.in{opacity:1;transform:rotateY(0deg)}
+.kw-card:nth-child(1).in{transition-delay:.0s}
+.kw-card:nth-child(2).in{transition-delay:.12s}
+.kw-card:nth-child(3).in{transition-delay:.24s}
+.kw-quote{
+  font-size:clamp(15px,1.4vw,17px);font-weight:500;line-height:1.6;
+  color:rgba(255,255,255,.9);flex:1;margin-bottom:28px;
+}
+.kw-quote::before{content:'\201C';font-size:1.3em;line-height:0;vertical-align:-.15em;margin-right:3px;color:rgba(255,255,255,.35)}
+.kw-who{display:flex;align-items:center;gap:13px}
+.kw-av{
+  width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;
+  background:#333;border:2px solid rgba(255,255,255,.15);
+}
+.kw-av img{width:100%;height:100%;object-fit:cover;object-position:top}
+.kw-av-fallback{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;color:#fff;
+}
+.kw-name{font-size:14px;font-weight:800;color:#fff}
+.kw-role{font-size:11.5px;color:rgba(255,255,255,.5);font-weight:600;margin-top:2px;line-height:1.35}
+
+/* ═══════════ LET'S CONNECT SECTION ═══════════ */
+.connect{
+  padding:90px 8% 80px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.connect-left h2{
+  font-size:clamp(42px,6vw,90px);font-weight:900;
+  letter-spacing:-0.03em;line-height:.9;text-transform:uppercase;
+  margin-bottom:22px;
+}
+.connect-left p{
+  font-size:clamp(14px,1.2vw,16px);font-weight:500;color:var(--ink2);
+  line-height:1.65;max-width:38ch;
+}
+.connect-right{display:flex;flex-direction:column;gap:14px}
+.connect-btn{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 24px;border-radius:18px;
+  background:rgba(255,255,255,.7);border:1px solid var(--line);
+  text-decoration:none;color:var(--ink);
+  transition:transform .2s,box-shadow .2s,background .2s;
+  font-weight:700;font-size:15px;
+}
+.connect-btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.1);background:#fff}
+.connect-btn .cb-ico{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.connect-btn .cb-ico img{width:22px;height:22px;object-fit:contain}
+.connect-btn .cb-txt{flex:1}
+.connect-btn .cb-label{font-size:14px;font-weight:800;color:var(--ink)}
+.connect-btn .cb-sub{font-size:12px;font-weight:500;color:var(--ink3);margin-top:1px}
+.connect-btn .cb-arr{font-size:18px;color:var(--ink3);transition:transform .2s}
+.connect-btn:hover .cb-arr{transform:translateX(3px)}
+@media(max-width:860px){
+  .connect{grid-template-columns:1fr;gap:40px;padding:70px 7% 60px}
+  .connect-left p{max-width:100%}
+}
+
 /* ═══════════ SCROLL REVEALS (pure CSS class toggled by JS) ═══════════ */
 .rv{opacity:0;transform:translateY(56px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
 .rv.in{opacity:1;transform:translateY(0)}
@@ -1678,21 +1764,23 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 
       <a class="hey-cta rv" href="#projects">See my work <span class="circ">↗</span></a>
       <div class="hey-actions rv">
-        <a class="hey-btn brand" href="https://www.linkedin.com/in/shubham0660" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-          <img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="LinkedIn">
+        <a class="hey-btn brand" href="https://bit.ly/4q6TsjT" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
         </a>
-        <a class="hey-btn brand" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+        <a class="hey-btn brand" href="https://bit.ly/4xvC0be" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
           <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
         </a>
         <a class="hey-btn brand" href="mailto:sharmashubham0660@gmail.com" aria-label="Email" title="Gmail">
           <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Gmail">
         </a>
-        <button class="hey-dl" aria-label="Resume">
+        <a class="hey-dl" href="resume/shubham-sharma-resume.pdf" download aria-label="Download Resume">
           <svg class="dl-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
             <path d="M8 2v8"/><path d="m4.6 7 3.4 3.4L11.4 7"/><path d="M2.6 13.4h10.8"/>
           </svg>
           Resume
-        </button>
+        </a>
       </div>
     </div>
   </section>
@@ -1827,7 +1915,7 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- KIND WORDS -->
 <section class="sec" id="testimonials" style="padding-top:40px">
   <div class="sec-head">
     <h2 class="sec-title rv"><svg class="sec-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1835,22 +1923,53 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
         <path d="M12.4 11.4c-1.9 0-3 1.3-3 3s1.2 2.7 2.6 2.7c.3 1.4-.7 2.3-1.7 2.7 2.9-.2 5-2.5 5-5.4 0-1.7-1.1-3-2.9-3Zm9 0c-1.9 0-3 1.3-3 3s1.2 2.7 2.6 2.7c.3 1.4-.7 2.3-1.7 2.7 2.9-.2 5-2.5 5-5.4 0-1.7-1.1-3-2.9-3Z" fill="#5B2BD9" opacity=".55"/>
       </svg>Kind<br><span class="thin">Words</span></h2>
   </div>
-  <div class="testi-grid" id="testiGrid"><!-- filled by data/testimonials.js --></div>
+  <div class="hrow-wrap" id="wrap_rowKindWords" style="perspective:900px">
+    <div class="kw-row" id="rowKindWords"><!-- auto-filled from kind-words/*.html --></div>
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2 class="rv">Let's Talk</h2>
-  <p class="rv">Open to Growth PM roles in fintech, SaaS & consumer products. Always happy to talk product, data or growth.</p>
-  <div class="contact-btns rv">
-    <a class="cbn cbn-dark" href="mailto:sharmashubham0660@gmail.com">✉ Email Me</a>
-    <a class="cbn cbn-line" href="#">LinkedIn ↗</a>
-    <a class="cbn cbn-line" href="#">Resume ↓</a>
+<!-- LET'S CONNECT -->
+<section class="connect rv" id="contact">
+  <div class="connect-left">
+    <h2 class="rv">Let's<br>Connect.</h2>
+    <p class="rv">Always up for a virtual coffee - whether you're a recruiter, founder, or fellow PM. Happy to talk product, growth, or what I'm building next.</p>
+  </div>
+  <div class="connect-right rv">
+    <a class="connect-btn" href="https://bit.ly/4q6TsjT" target="_blank" rel="noopener">
+      <span class="cb-ico" style="background:#EBF3FB">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </span>
+      <span class="cb-txt">
+        <span class="cb-label">LinkedIn</span>
+        <span class="cb-sub">DM or connect</span>
+      </span>
+      <span class="cb-arr">&#8599;</span>
+    </a>
+    <a class="connect-btn" href="https://bit.ly/4xvC0be" target="_blank" rel="noopener">
+      <span class="cb-ico" style="background:#FFF0F3">
+        <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
+      </span>
+      <span class="cb-txt">
+        <span class="cb-label">Instagram</span>
+        <span class="cb-sub">Say hi</span>
+      </span>
+      <span class="cb-arr">&#8599;</span>
+    </a>
+    <a class="connect-btn" href="mailto:sharmashubham0660@gmail.com?subject=Hey%20Shubham%20-%20Let%27s%20chat&body=Hi%20Shubham%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect." target="_blank" rel="noopener">
+      <span class="cb-ico" style="background:#FEF2F2">
+        <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Gmail">
+      </span>
+      <span class="cb-txt">
+        <span class="cb-label">Gmail</span>
+        <span class="cb-sub">sharmashubham0660@gmail.com</span>
+      </span>
+      <span class="cb-arr">&#8599;</span>
+    </a>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Shubham Sharma · Growth PM · Bengaluru</p>
+  <p>© 2026 Shubham Sharma · PM · Bengaluru</p>
   <div class="fl">
     <a href="#home">Home</a><a href="#hey">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
   </div>
@@ -2395,19 +2514,6 @@ function modalHTML(d){
   });
 })();
 
-function testiHTML(t){
-  return '<div class="tcard rv">'
-    + '<p class="q">"' + t.quote + '"</p>'
-    + '<div class="who"><div class="av">' + t.initials + '</div>'
-    + '<div><div class="wn">' + t.name + '</div><div class="wr">' + t.role + '</div></div></div>'
-    + '</div>';
-}
-
-function renderTestimonials(containerId, data){
-  var el = document.getElementById(containerId);
-  if (el && data) el.innerHTML = data.map(testiHTML).join('');
-}
-
 renderRow('rowProjects', typeof PROJECTS !== 'undefined' ? PROJECTS : []);
 renderRow('rowAI', typeof AI_ITEMS !== 'undefined' ? AI_ITEMS : []);
 
@@ -2483,18 +2589,100 @@ renderRow('rowAI', typeof AI_ITEMS !== 'undefined' ? AI_ITEMS : []);
       })
     : Promise.reject();
 
-  /* 2 ─ manifest.json fallback */
+  /* 2 ─ manifest.json fallback — supports both bare strings and {name,order,enabled} */
   viaApi.then(mountAll).catch(function(){
     fetch(DIR + '/manifest.json')
       .then(function(r){ if(!r.ok) throw new Error('manifest'); return r.json(); })
       .then(function(list){
-        mountAll(Array.isArray(list) ? list : (list.files || []));
+        var raw = Array.isArray(list) ? list : (list.files || []);
+        /* normalise to name strings, respecting order + enabled flags */
+        var entries = raw.map(function(f){
+          if (typeof f === 'string') return { name: f, order: 999, enabled: true };
+          return { name: f.name || f, order: f.order != null ? f.order : 999, enabled: f.enabled !== false };
+        }).filter(function(f){ return f.enabled; })
+          .sort(function(a,b){ return a.order - b.order; });
+        mountAll(entries.map(function(f){ return f.name; }));
       })
       .catch(function(){ /* nothing discoverable, leave row as-is */ });
   });
 })();
 renderRow('rowCases', typeof CASE_ITEMS !== 'undefined' ? CASE_ITEMS : []);
-renderTestimonials('testiGrid', typeof TESTIMONIALS !== 'undefined' ? TESTIMONIALS : []);
+
+/* ── KIND WORDS: auto-discovered from kind-words/*.html ─────────────────────
+   Same pattern as ai_projects. Drop a .html card file in kind-words/ and
+   it appears here. Order is controlled by kind-words/manifest.json.
+   ──────────────────────────────────────────────────────────────────────── */
+(function(){
+  var row = document.getElementById('rowKindWords');
+  if (!row) return;
+  var DIR = 'kind-words';
+
+  function ghApiUrl(){
+    var host = location.hostname;
+    if (host.indexOf('.github.io') === -1) return null;
+    var owner = host.split('.github.io')[0];
+    var seg = location.pathname.split('/').filter(Boolean);
+    var repo = seg.length && seg[seg.length-1].indexOf('.html') === -1
+                 ? seg[0] : (seg.length > 1 ? seg[0] : owner + '.github.io');
+    return 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + DIR;
+  }
+
+  function mountKW(src, index){
+    return fetch(src).then(function(r){
+      if (!r.ok) throw new Error(src);
+      return r.text();
+    }).then(function(txt){
+      var wrap = document.createElement('div');
+      wrap.innerHTML = txt.trim();
+      wrap.querySelectorAll('style').forEach(function(st){ document.head.appendChild(st); });
+      var card = wrap.querySelector('article');
+      if (!card) return;
+      card.dataset.order = index;
+      row.appendChild(card);
+    }).catch(function(){});
+  }
+
+  function mountAllKW(files){
+    if (!files || !files.length) return;
+    /* manifest may carry {name, order, enabled} objects or bare strings */
+    var entries = files.map(function(f){
+      if (typeof f === 'string') return { name: f, order: 999, enabled: true };
+      return { name: f.name || f, order: f.order != null ? f.order : 999, enabled: f.enabled !== false };
+    }).filter(function(f){ return f.enabled && /\.html$/i.test(f.name); });
+    entries.sort(function(a,b){ return a.order - b.order; });
+    Promise.all(entries.map(function(f, i){ return mountKW(DIR + '/' + f.name, f.order); }))
+      .then(function(){
+        /* sort DOM by data-order */
+        var cards = Array.prototype.slice.call(row.querySelectorAll('article[data-order]'));
+        cards.sort(function(a,b){ return a.dataset.order - b.dataset.order; });
+        cards.forEach(function(c){ row.appendChild(c); });
+        /* trigger flip-in for visible cards */
+        triggerKWFlip();
+      });
+  }
+
+  function triggerKWFlip(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    row.querySelectorAll('.kw-card').forEach(function(c){ io.observe(c); });
+  }
+
+  var api = ghApiUrl();
+  var viaApi = api
+    ? fetch(api).then(function(r){ if(!r.ok) throw new Error('api'); return r.json(); })
+        .then(function(list){ return list.filter(function(f){ return f.type==='file' && /\.html$/i.test(f.name); }).map(function(f){ return f.name; }); })
+    : Promise.reject();
+
+  viaApi.then(mountAllKW).catch(function(){
+    fetch(DIR + '/manifest.json')
+      .then(function(r){ if(!r.ok) throw new Error('manifest'); return r.json(); })
+      .then(function(list){ mountAllKW(Array.isArray(list) ? list : (list.files || [])); })
+      .catch(function(){});
+  });
+})();
 
 /* ══ ALL VANILLA JS — ZERO EXTERNAL LIBRARIES ══ */
 
