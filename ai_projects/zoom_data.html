@@ -1,0 +1,515 @@
+<!-- ═══════════════════════════════════════════════════════════
+     AI PROJECT · Zoom Data Automation
+     Auto-discovered from ai_projects/. No index.html edit needed.
+     Distinct visual language: teal/slate palette, fork-flow diagram.
+     CSS prefix: .zdm-
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+.zdm{
+  flex:0 0 calc(40% - 12px);min-width:320px;scroll-snap-align:start;
+  position:relative;overflow:hidden;
+  background:linear-gradient(168deg,#F5F3EF 0%,#EFEDE7 100%);
+  border:1px solid rgba(17,17,17,.09);
+  border-radius:22px;
+  padding:17px 18px 17px;display:flex;flex-direction:column;gap:0;
+  box-shadow:0 1px 2px rgba(17,17,17,.03),0 12px 32px rgba(17,17,17,.05);
+}
+@media(max-width:1100px){.zdm{flex:0 0 calc(58% - 12px)}}
+@media(max-width:768px){.zdm{flex:0 0 88%;padding:15px}}
+
+/* ── header ── */
+.zdm-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;flex-wrap:wrap}
+.zdm-kick{font-size:8.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#5B2BD9}
+.zdm-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:4px 4px 4px 10px;border-radius:22px;
+  background:rgba(17,17,17,.05);color:#4a4a46;
+  font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(17,17,17,.08);
+}
+.zdm-tag-arw{color:rgba(17,17,17,.3);font-size:11px}
+.zdm-tag-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 9px;border-radius:16px;
+  background:linear-gradient(135deg,#0D7EA3,#0891B2);color:#fff;
+}
+.zdm-tag-dot{width:5px;height:5px;border-radius:50%;background:#67E8F9;animation:zdmLive 1.7s ease-in-out infinite}
+@keyframes zdmLive{
+  0%,100%{box-shadow:0 0 0 0 rgba(103,232,249,.6)}
+  50%{box-shadow:0 0 0 4px rgba(103,232,249,0)}
+}
+.zdm-title{font-size:18px;font-weight:900;letter-spacing:-.028em;line-height:1.1;margin-bottom:11px;color:#111}
+.zdm-title em{font-style:normal;color:#0D7EA3}
+
+/* ════════ THE PAIN BLOCK ════════ */
+.zdm-pain{
+  position:relative;overflow:hidden;
+  border-radius:15px;padding:12px 13px 11px;margin-bottom:10px;
+  background:
+    radial-gradient(circle at 90% 12%,rgba(13,126,163,.07) 0%,transparent 55%),
+    linear-gradient(152deg,#EFF8FA 0%,#E8F4F8 100%);
+  border:1px solid rgba(13,126,163,.16);
+}
+
+/* ── intern hero row ── */
+.zdm-hero-row{
+  position:relative;z-index:1;display:flex;align-items:flex-end;gap:10px;
+  padding-bottom:9px;border-bottom:1px dashed rgba(13,126,163,.22);margin-bottom:9px;
+}
+.zdm-manual-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 7px;border-radius:5px;flex-shrink:0;margin-bottom:3px;
+  background:#0D7EA3;color:#fff;
+  font-size:6.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+}
+.zdm-manual-badge svg{width:8px;height:8px;stroke:#fff;fill:none;stroke-width:2}
+.zdm-hero-n{position:relative;flex-shrink:0}
+.zdm-hero-v{font-size:30px;font-weight:900;letter-spacing:-.045em;line-height:.9;color:#065A7A;font-style:italic}
+.zdm-hero-v::after{
+  content:'';position:absolute;left:0;right:-2px;bottom:-3px;height:5px;
+  background:linear-gradient(90deg,rgba(13,126,163,.35),transparent);
+  border-radius:3px;animation:zdmHeroUnder 2.8s ease-in-out infinite;transform-origin:left;
+}
+@keyframes zdmHeroUnder{0%,100%{transform:scaleX(.6)}50%{transform:scaleX(1)}}
+.zdm-hero-l{font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#0891B2;margin-top:2px}
+.zdm-hero-txt{flex:1;font-size:10px;font-weight:700;color:#0C5F7A;line-height:1.45;padding-bottom:2px}
+.zdm-hero-txt b{color:#064C66;font-weight:800}
+
+/* ── manual step chips ── */
+.zdm-ops-row{
+  position:relative;z-index:1;display:flex;align-items:center;gap:5px;flex-wrap:wrap;
+  padding-bottom:9px;border-bottom:1px dashed rgba(13,126,163,.22);margin-bottom:9px;
+}
+.zdm-step{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 8px;border-radius:8px;
+  background:#fff;border:1px solid rgba(13,126,163,.2);
+  font-size:8.5px;font-weight:800;color:#334155;letter-spacing:.02em;
+}
+.zdm-step svg{width:11px;height:11px;flex-shrink:0;opacity:.7}
+.zdm-arr{font-size:11px;color:rgba(13,126,163,.35);font-weight:700}
+
+/* ── context switch loss banner ── */
+.zdm-loss{
+  position:relative;z-index:1;display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:11px;
+  background:linear-gradient(120deg,#0D7EA3 0%,#065A7A 100%);
+  box-shadow:0 8px 18px rgba(13,126,163,.2);
+}
+.zdm-loss-icon{
+  width:30px;height:30px;flex-shrink:0;border-radius:9px;
+  background:rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
+.zdm-loss-icon svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.5}
+/* arrows cycling */
+.zdm-loss-icon::after{
+  content:'';position:absolute;left:22%;top:100%;width:2px;height:6px;
+  background:#67E8F9;border-radius:2px;animation:zdmLossDrip 2.4s ease-in-out infinite;
+}
+@keyframes zdmLossDrip{0%{top:60%;opacity:0}30%{opacity:1}100%{top:100%;opacity:0}}
+.zdm-loss-body{flex:1;min-width:0}
+.zdm-loss-k{font-size:11px;font-weight:900;letter-spacing:-.01em;color:#fff;line-height:1.15;margin-bottom:2px}
+.zdm-loss-d{font-size:9px;font-weight:700;color:rgba(255,255,255,.75);line-height:1.35}
+
+/* ════════ DIVIDER ════════ */
+.zdm-div{display:flex;align-items:center;gap:8px;margin:10px 0}
+.zdm-div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(17,17,17,.1),transparent)}
+.zdm-div-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:20px;
+  background:linear-gradient(135deg,#0E0B1A,#181229);
+  font-size:8px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:rgba(196,176,255,.85);
+  white-space:nowrap;flex-shrink:0;
+  border:1px solid rgba(91,43,217,.25);
+  box-shadow:0 0 12px rgba(91,43,217,.15);
+}
+.zdm-div-pill img{width:13px;height:13px;border-radius:3px}
+
+/* ════════ FLOW DIAGRAM ════════ */
+.zdm-flow-wrap{
+  position:relative;overflow:hidden;
+  background:linear-gradient(158deg,#0E0B1A 0%,#181229 45%,#221636 100%);
+  border-radius:14px;padding:14px 13px 13px;margin-bottom:9px;
+}
+.zdm-flow-wrap::after{
+  content:'';position:absolute;left:-40px;top:-40px;width:180px;height:180px;
+  background:radial-gradient(circle,rgba(13,126,163,.15) 0%,transparent 65%);pointer-events:none;
+}
+
+/* ── flow label ── */
+.zdm-flow-label{
+  position:relative;z-index:1;
+  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(103,232,249,.55);margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.zdm-flow-label::after{content:'';flex:1;height:1px;background:rgba(103,232,249,.12)}
+
+/* source node */
+.zdm-source{
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:8px;position:relative;z-index:1;
+}
+.zdm-zoom-node{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:22px;
+  background:rgba(255,255,255,.07);border:1.5px solid rgba(13,126,163,.45);
+  box-shadow:0 0 0 4px rgba(13,126,163,.08),0 4px 12px rgba(13,126,163,.2);
+  animation:zdmNodePulse 3s ease-in-out infinite;
+}
+@keyframes zdmNodePulse{
+  0%,100%{box-shadow:0 0 0 4px rgba(13,126,163,.08),0 4px 12px rgba(13,126,163,.15)}
+  50%{box-shadow:0 0 0 7px rgba(13,126,163,.04),0 4px 16px rgba(13,126,163,.28)}
+}
+.zdm-zoom-logo{
+  width:20px;height:20px;border-radius:5px;
+  background:#2D8CFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.zdm-zoom-logo svg{width:13px;height:13px}
+.zdm-zoom-lbl{font-size:11px;font-weight:900;color:#fff;letter-spacing:.01em}
+.zdm-zoom-sub{font-size:7.5px;font-weight:800;color:#67E8F9;letter-spacing:.06em;text-transform:uppercase}
+
+/* fork line */
+.zdm-fork{position:relative;z-index:1;display:flex;align-items:flex-start;gap:0;margin-bottom:8px}
+.zdm-fork-svg{display:block;width:100%;height:28px;overflow:visible}
+
+/* two branches */
+.zdm-branches{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:relative;z-index:1}
+.zdm-branch{
+  border-radius:11px;padding:10px 9px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  display:flex;flex-direction:column;gap:5px;
+}
+.zdm-branch-hd{display:flex;align-items:center;gap:5px;margin-bottom:2px}
+.zdm-branch-icon{
+  width:22px;height:22px;border-radius:7px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.zdm-branch-icon.teal{background:linear-gradient(135deg,#0D7EA3,#0891B2)}
+.zdm-branch-icon.slate{background:linear-gradient(135deg,#334155,#475569)}
+.zdm-branch-icon svg{width:12px;height:12px}
+.zdm-branch-name{font-size:9px;font-weight:900;color:#fff;letter-spacing:.02em;line-height:1.2}
+
+/* branch steps */
+.zdm-bstep{display:flex;align-items:flex-start;gap:5px}
+.zdm-bstep-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.zdm-bstep-dot.teal{background:#0891B2}
+.zdm-bstep-dot.slate{background:#64748B}
+.zdm-bstep-txt{font-size:8.5px;font-weight:700;color:rgba(255,255,255,.72);line-height:1.45}
+.zdm-bstep-txt b{color:#fff}
+
+/* endpoint chip */
+.zdm-endpoint{
+  display:inline-flex;align-items:center;gap:4px;margin-top:3px;
+  padding:3px 7px;border-radius:20px;
+  font-size:7.5px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;
+  align-self:flex-start;
+}
+.zdm-endpoint.teal{background:rgba(13,126,163,.15);color:#67E8F9;border:1px solid rgba(13,126,163,.25)}
+.zdm-endpoint.slate{background:rgba(100,116,139,.12);color:#CBD5E1;border:1px solid rgba(100,116,139,.2)}
+.zdm-endpoint svg{width:9px;height:9px}
+
+/* sweep pulse across top */
+.zdm-pulse-line{
+  position:absolute;top:0;left:-100%;width:60%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(13,126,163,.45),transparent);
+  animation:zdmPulse 3.5s linear infinite;z-index:2;
+}
+@keyframes zdmPulse{0%{left:-60%}100%{left:100%}}
+
+/* ════════ IMPACT: morph intern count ════════ */
+.zdm-impact{
+  display:flex;align-items:center;gap:9px;
+}
+.zdm-imp-morph{
+  flex:1;border-radius:13px;padding:10px 12px 10px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%);
+}
+.zdm-imp-morph::after{
+  content:'';position:absolute;right:-26px;bottom:-40px;width:130px;height:130px;border-radius:50%;
+  background:radial-gradient(circle,rgba(52,211,153,.3) 0%,transparent 68%);
+  animation:zdmWinGlow 4.8s ease-in-out infinite;
+}
+@keyframes zdmWinGlow{0%,100%{opacity:.55;transform:scale(.9)}55%{opacity:1;transform:scale(1.12)}}
+.zdm-imp-morph-k{font-size:7px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:rgba(167,243,208,.55);margin-bottom:3px;position:relative;z-index:2}
+
+.zdm-morph{position:relative;z-index:2;height:30px;margin:2px 0 1px}
+.zdm-morph span{position:absolute;left:0;top:50%;display:flex;align-items:baseline;gap:5px;white-space:nowrap}
+
+/* 1 intern: starts large, collapses */
+.zdm-morph .m-from{
+  font-size:26px;font-weight:900;letter-spacing:-.045em;line-height:1;color:#FCA5A5;
+  animation:zdmMorphA 5s cubic-bezier(.5,0,.2,1) infinite;
+}
+.zdm-morph .m-from small{font-size:10px;font-weight:800;color:rgba(252,165,165,.6);letter-spacing:.02em}
+@keyframes zdmMorphA{
+  0%,38%{opacity:1;transform:translateY(-50%) scale(1)}
+  50%,100%{opacity:0;transform:translateY(-50%) scale(.28)}
+}
+
+/* 0 interns: bursts in green */
+.zdm-morph .m-to{
+  font-size:20px;font-weight:900;letter-spacing:-.04em;line-height:1;
+  animation:zdmMorphB 5s cubic-bezier(.34,1.56,.64,1) infinite;
+}
+.zdm-morph .m-to .val{
+  background:linear-gradient(93deg,#fff 0%,#6EE7B7 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.zdm-morph .m-to small{font-size:9px;font-weight:800;color:rgba(167,243,208,.72);letter-spacing:.02em}
+@keyframes zdmMorphB{
+  0%,44%{opacity:0;transform:translateY(-50%) scale(2.6)}
+  56%{opacity:1;transform:translateY(-50%) scale(1)}
+  92%{opacity:1;transform:translateY(-50%) scale(1)}
+  100%{opacity:0;transform:translateY(-50%) scale(2.6)}
+}
+
+/* speed streaks on swap */
+.zdm-streaks{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.zdm-streaks i{
+  position:absolute;height:1.5px;border-radius:2px;left:-30%;
+  background:linear-gradient(90deg,transparent,rgba(110,231,183,.7),transparent);
+  animation:zdmStreak 5s ease-in infinite;
+}
+.zdm-streaks i:nth-child(1){top:30%;width:46%;animation-delay:2.15s}
+.zdm-streaks i:nth-child(2){top:50%;width:62%;animation-delay:2.3s}
+.zdm-streaks i:nth-child(3){top:70%;width:38%;animation-delay:2.45s}
+@keyframes zdmStreak{
+  0%,42%{transform:translateX(0);opacity:0}
+  48%{opacity:1}
+  62%,100%{transform:translateX(240%);opacity:0}
+}
+
+/* context-switch blocks */
+.zdm-imp-ctx{
+  flex:1;border-radius:13px;padding:10px 12px 10px;
+  background:rgba(255,255,255,.72);border:1px solid rgba(17,17,17,.08);
+  position:relative;overflow:hidden;
+}
+.zdm-imp-ctx::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(13,126,163,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(13,126,163,.03) 1px,transparent 1px);
+  background-size:12px 12px;
+  mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.7),transparent 70%);
+  -webkit-mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.7),transparent 70%);
+}
+.zdm-ctx-k{position:relative;z-index:2;font-size:7px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#8a8a84;margin-bottom:3px}
+.zdm-ctx-val{position:relative;z-index:2;font-size:20px;font-weight:900;letter-spacing:-.035em;line-height:1;color:#111;margin-bottom:3px}
+.zdm-ctx-val small{font-size:8px;font-weight:800;color:#0D7EA3;letter-spacing:.06em;text-transform:uppercase}
+.zdm-ctx-blocks{position:relative;z-index:2;display:flex;gap:2px;align-items:flex-end;height:11px;margin-top:4px}
+.zdm-ctx-blocks i{
+  width:9px;border-radius:2px;background:#0D7EA3;opacity:.7;
+  transform-origin:bottom;animation:zdmBlockFade 3.6s ease-in-out infinite;
+}
+.zdm-ctx-blocks i:nth-child(1){height:5px;animation-delay:0s}
+.zdm-ctx-blocks i:nth-child(2){height:7px;animation-delay:.28s}
+.zdm-ctx-blocks i:nth-child(3){height:9px;animation-delay:.56s}
+.zdm-ctx-blocks i:nth-child(4){height:11px;animation-delay:.84s}
+@keyframes zdmBlockFade{
+  0%,8%{transform:scaleY(1);opacity:.7}
+  50%,74%{transform:scaleY(.15);opacity:.2}
+  90%,100%{transform:scaleY(1);opacity:.7}
+}
+.zdm-ctx-d{position:relative;z-index:2;font-size:8.5px;font-weight:600;line-height:1.4;margin-top:4px;color:#8a8a84}
+.zdm-ctx-d b{color:#0D7EA3;font-weight:800}
+</style>
+
+<article class="zdm">
+
+  <!-- ── header ── -->
+  <div class="zdm-head">
+    <span class="zdm-kick">AI Project</span>
+    <div class="zdm-tag">
+      <span>Way of Working</span>
+      <span class="zdm-tag-arw">&rsaquo;</span>
+      <span class="zdm-tag-pill">
+        <span class="zdm-tag-dot"></span>
+        Daily, Auto
+      </span>
+    </div>
+  </div>
+
+  <div class="zdm-title">Third-Party Data <em>Automation</em></div>
+
+  <!-- ════════ THE PAIN ════════ -->
+  <div class="zdm-pain">
+
+    <!-- intern row -->
+    <div class="zdm-hero-row">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div class="zdm-manual-badge">
+          <svg viewBox="0 0 16 16"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+          Operational Gap
+        </div>
+        <div class="zdm-hero-n">
+          <div class="zdm-hero-v">1</div>
+          <div class="zdm-hero-l">Intern Required</div>
+        </div>
+      </div>
+      <div class="zdm-hero-txt">
+        <b>Just to copy-paste</b> Zoom attendance into sheets, download recordings, upload to Drive — platform to platform, every time.
+      </div>
+    </div>
+
+    <!-- manual steps row -->
+    <div class="zdm-ops-row">
+      <div class="zdm-step">
+        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#0D7EA3" stroke-width="1.5"/><path d="M5 8h6M8 5v6" stroke="#0D7EA3" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Zoom Portal
+      </div>
+      <span class="zdm-arr">&rarr;</span>
+      <div class="zdm-step">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h7M3 12h5" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Copy Data
+      </div>
+      <span class="zdm-arr">&rarr;</span>
+      <div class="zdm-step">
+        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#334155" stroke-width="1.5"/><path d="M6 6h4M6 9h4" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Paste to Sheet
+      </div>
+      <span class="zdm-arr">&rarr;</span>
+      <div class="zdm-step">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="#334155" stroke-width="1.5"/><path d="M8 5.5v2.5l1.5 1.5" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Repeat
+      </div>
+    </div>
+
+    <!-- context switch loss -->
+    <div class="zdm-loss">
+      <div class="zdm-loss-icon">
+        <!-- switch/arrows icon -->
+        <svg viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="zdm-loss-body">
+        <div class="zdm-loss-k">Context switching across 4 platforms</div>
+        <div class="zdm-loss-d">Mental overhead of keeping data in sync — Zoom, Sheets, Drive, email — with zero creative value.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════ DIVIDER ════════ -->
+  <div class="zdm-div">
+    <div class="zdm-div-line"></div>
+    <div class="zdm-div-pill">
+      <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n" style="filter:brightness(1.6) saturate(.6)">
+      Built on n8n
+    </div>
+    <div class="zdm-div-line"></div>
+  </div>
+
+  <!-- ════════ FLOW DIAGRAM (dark) ════════ -->
+  <div class="zdm-flow-wrap">
+    <div class="zdm-pulse-line"></div>
+
+    <div class="zdm-flow-label">Automated pipeline</div>
+
+    <!-- Zoom source node -->
+    <div class="zdm-source">
+      <div class="zdm-zoom-node">
+        <div class="zdm-zoom-logo">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M14.5 12.5v-3a.5.5 0 0 0-.8-.4L11 11V9.5A1.5 1.5 0 0 0 9.5 8h-5A1.5 1.5 0 0 0 3 9.5v5A1.5 1.5 0 0 0 4.5 16h5A1.5 1.5 0 0 0 11 14.5V13l2.7 1.9a.5.5 0 0 0 .8-.4v-2z"/></svg>
+        </div>
+        <div>
+          <div class="zdm-zoom-lbl">Zoom</div>
+          <div class="zdm-zoom-sub">OAuth, last 24h</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- fork SVG -->
+    <div class="zdm-fork">
+      <svg class="zdm-fork-svg" viewBox="0 0 260 28" fill="none" preserveAspectRatio="none">
+        <line x1="130" y1="0" x2="130" y2="10" stroke="#0891B2" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="130" y1="10" x2="50" y2="28" stroke="#0891B2" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="130" y1="10" x2="210" y2="28" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <circle cx="130" cy="10" r="3" fill="#0891B2"/>
+      </svg>
+    </div>
+
+    <!-- two branches -->
+    <div class="zdm-branches">
+
+      <!-- Branch 1: Attendance -->
+      <div class="zdm-branch">
+        <div class="zdm-branch-hd">
+          <div class="zdm-branch-icon teal">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#fff" stroke-width="1.5"/><path d="M5 7h6M5 9.5h4" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="zdm-branch-name">Attendance Data</div>
+        </div>
+        <div class="zdm-bstep">
+          <div class="zdm-bstep-dot teal"></div>
+          <div class="zdm-bstep-txt">Pull registrants and attendees</div>
+        </div>
+        <div class="zdm-bstep">
+          <div class="zdm-bstep-dot teal"></div>
+          <div class="zdm-bstep-txt"><b>Smart upsert</b> — update or append</div>
+        </div>
+        <div class="zdm-bstep">
+          <div class="zdm-bstep-dot teal"></div>
+          <div class="zdm-bstep-txt">Split across <b>department sheets</b></div>
+        </div>
+        <div class="zdm-endpoint teal">
+          <svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 7.5h6M5 9.5h3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Training Dashboards
+        </div>
+      </div>
+
+      <!-- Branch 2: Recordings -->
+      <div class="zdm-branch">
+        <div class="zdm-branch-hd">
+          <div class="zdm-branch-icon slate">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h5A1.5 1.5 0 0 1 10 5.5v5A1.5 1.5 0 0 1 8.5 12h-5A1.5 1.5 0 0 1 2 10.5v-5z" stroke="#fff" stroke-width="1.3"/><path d="M10 6.8l2.8-1.7A.4.4 0 0 1 13.5 5.4v5.2a.4.4 0 0 1-.7.3L10 9.2" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="zdm-branch-name">Recordings Pipeline</div>
+        </div>
+        <div class="zdm-bstep">
+          <div class="zdm-bstep-dot slate"></div>
+          <div class="zdm-bstep-txt">Fetch recordings via OAuth</div>
+        </div>
+        <div class="zdm-bstep">
+          <div class="zdm-bstep-dot slate"></div>
+          <div class="zdm-bstep-txt">Route to <b>7 category folders</b></div>
+        </div>
+        <div class="zdm-bstep">
+          <div class="zdm-bstep-dot slate"></div>
+          <div class="zdm-bstep-txt"><b>Notify</b> training POC on upload</div>
+        </div>
+        <div class="zdm-endpoint slate">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 4.5C3 3.67 3.67 3 4.5 3h7C12.33 3 13 3.67 13 4.5v7c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 0 1 3 11.5v-7z" stroke="currentColor" stroke-width="1.3"/><path d="M6 7h4M6 9h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Drive + Email Alert
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════ IMPACT ════════ -->
+  <div class="zdm-impact">
+
+    <!-- morph: 1 intern → 0 interns -->
+    <div class="zdm-imp-morph">
+      <div class="zdm-streaks"><i></i><i></i><i></i></div>
+      <div class="zdm-imp-morph-k">Data Ops Headcount</div>
+      <div class="zdm-morph">
+        <span class="m-from">1<small> intern</small></span>
+        <span class="m-to"><span class="val">0</span><small> fully automated</small></span>
+      </div>
+    </div>
+
+    <!-- context switch reduction -->
+    <div class="zdm-imp-ctx">
+      <div class="zdm-ctx-k">Context Switches</div>
+      <div class="zdm-ctx-val">Zero <small>per week</small></div>
+      <div class="zdm-ctx-blocks">
+        <i></i><i></i><i></i><i></i>
+      </div>
+      <div class="zdm-ctx-d">Blocks shrink as <b>automation</b> takes over</div>
+    </div>
+
+  </div>
+
+</article>
