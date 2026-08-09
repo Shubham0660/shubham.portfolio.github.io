@@ -1,13 +1,12 @@
 <!-- ═══════════════════════════════════════════════════════════
      AI PROJECT · Dashboards Built by AI
-     Self-contained card. Sits inside index.html's #rowAI swipe row.
      ═══════════════════════════════════════════════════════════ -->
 <style>
 .adb{
   flex:0 0 calc(40% - 12px);min-width:320px;scroll-snap-align:start;
   position:relative;overflow:hidden;
-  background:linear-gradient(168deg,#F5F3F9 0%,#F0EEF6 100%);
-  border:1px solid rgba(79,70,229,.09);
+  background:linear-gradient(168deg,#F5F3EF 0%,#EFEDE7 100%);
+  border:1px solid rgba(17,17,17,.09);
   border-radius:22px;
   padding:17px 18px 17px;display:flex;flex-direction:column;gap:0;
   box-shadow:0 1px 2px rgba(17,17,17,.03),0 12px 32px rgba(17,17,17,.05);
@@ -20,9 +19,9 @@
 .adb-tag{
   display:inline-flex;align-items:center;gap:7px;
   padding:4px 4px 4px 10px;border-radius:22px;
-  background:rgba(79,70,229,.06);color:#4a4a46;
+  background:rgba(17,17,17,.05);color:#4a4a46;
   font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
-  border:1px solid rgba(79,70,229,.1);
+  border:1px solid rgba(17,17,17,.08);
 }
 .adb-tag-arw{color:rgba(17,17,17,.3);font-size:11px}
 .adb-tag-pill{
@@ -36,202 +35,185 @@
 .adb-title{font-size:18px;font-weight:900;letter-spacing:-.028em;line-height:1.1;margin-bottom:11px;color:#111}
 .adb-title em{font-style:normal;color:#4F46E5}
 
-/* problem scene */
+/* ═══ PROBLEM SCENE ═══ */
 .adb-scene{
   position:relative;overflow:hidden;
-  border-radius:15px;padding:12px 13px 11px;margin-bottom:10px;
-  background:linear-gradient(150deg,#F8F7FC 0%,#F2F0FA 100%);
-  border:1px solid rgba(79,70,229,.12);
+  border-radius:15px;padding:12px 13px 11px;margin-bottom:9px;
+  background:linear-gradient(150deg,#FBF4F2 0%,#F9F1EE 100%);
+  border:1px solid rgba(179,38,30,.14);
 }
-.adb-scene-text{font-size:11px;font-weight:600;line-height:1.55;color:#3E3A52}
-.adb-scene-text strong{font-weight:800;color:#1B1533}
+.adb-pain-row{
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:9px;border-bottom:1px dashed rgba(179,38,30,.22);margin-bottom:9px;
+}
+.adb-pain-ico{
+  width:30px;height:30px;border-radius:9px;flex-shrink:0;
+  background:rgba(179,38,30,.08);
+  display:flex;align-items:center;justify-content:center;
+}
+.adb-pain-ico svg{width:16px;height:16px;stroke:#9C4A42;fill:none;stroke-width:1.5;stroke-linecap:round}
+.adb-pain-txt{font-size:10.5px;font-weight:700;color:#7A342E;line-height:1.45}
+.adb-pain-txt b{color:#4a1c18;font-weight:800}
+.adb-loss{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:11px;
+  background:linear-gradient(120deg,#B3261E 0%,#7A1D18 100%);
+  box-shadow:0 8px 18px rgba(179,38,30,.2);
+}
+.adb-loss-ico{
+  width:30px;height:30px;flex-shrink:0;border-radius:9px;
+  background:rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center;
+}
+.adb-loss-ico svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.5}
+.adb-loss-body{flex:1}
+.adb-loss-k{font-size:11px;font-weight:900;letter-spacing:-.01em;color:#fff;line-height:1.15;margin-bottom:2px}
+.adb-loss-d{font-size:9px;font-weight:700;color:rgba(255,255,255,.75);line-height:1.35}
 
-/* time cost */
-.adb-cost{
-  display:flex;align-items:center;gap:9px;
-  padding:8px 11px;border-radius:10px;margin-bottom:10px;
-  background:rgba(179,38,30,.05);border:1px solid rgba(179,38,30,.1);
+/* ═══ DARK PIPELINE WRAP ═══ */
+.adb-built{
+  position:relative;overflow:hidden;
+  background:linear-gradient(158deg,#0E0B1A 0%,#181229 45%,#221636 100%);
+  border-radius:14px;padding:11px 13px 11px;margin-bottom:9px;
 }
-.adb-cost-ico{
-  width:22px;height:22px;border-radius:7px;background:rgba(179,38,30,.08);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+.adb-built::after{
+  content:'';position:absolute;left:-40px;top:-40px;width:180px;height:180px;
+  background:radial-gradient(circle,rgba(79,70,229,.15) 0%,transparent 65%);pointer-events:none;
 }
-.adb-cost-ico svg{width:12px;height:12px;stroke:#9C4A42;fill:none;stroke-width:1.4}
-.adb-cost-text{font-size:9.5px;font-weight:700;color:#7A342E;line-height:1.4}
+.adb-built-label{
+  position:relative;z-index:1;
+  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(167,176,255,.62);margin-bottom:9px;display:flex;align-items:center;gap:8px;
+}
+.adb-built-label::after{content:'';flex:1;height:1px;background:rgba(167,176,255,.14)}
+.adb-flow{position:relative;z-index:1;display:flex;align-items:flex-start;gap:2px}
+.adb-fn{
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;
+  flex:1;min-width:0;cursor:default;
+}
+.adb-fn-ico{
+  width:28px;height:28px;border-radius:9px;flex-shrink:0;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s ease,border-color .28s ease,background .28s ease;
+}
+.adb-fn-ico svg{width:14px;height:14px}
+.adb-fn:hover .adb-fn-ico{
+  transform:translateY(-3px) scale(1.1);
+  box-shadow:0 10px 20px rgba(79,70,229,.4);
+  border-color:rgba(167,176,255,.5);background:rgba(255,255,255,.14);
+}
+.adb-fn-txt{font-size:7.5px;font-weight:800;letter-spacing:-.01em;text-align:center;line-height:1.25;color:rgba(255,255,255,.82);white-space:nowrap}
+.adb-farr{flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(167,176,255,.35);font-size:10px;padding-top:11px}
+.adb-pii-note{
+  position:relative;z-index:1;margin-top:8px;
+  font-size:7px;font-weight:700;color:rgba(167,176,255,.5);
+  display:flex;align-items:center;gap:4px;
+}
+.adb-pii-note svg{width:8px;height:8px;stroke:rgba(167,176,255,.5);fill:none;stroke-width:1.6}
 
-/* divider */
-.adb-div{display:flex;align-items:center;gap:8px;margin:6px 0}
-.adb-div-line{flex:1;height:1px;background:rgba(79,70,229,.15)}
-.adb-div-text{
-  font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;
-  color:#4F46E5;padding:3px 9px;border-radius:12px;
-  background:rgba(79,70,229,.06);border:1px solid rgba(79,70,229,.1);
-  display:flex;align-items:center;gap:5px;flex-shrink:0;
-}
-.adb-div-text svg{width:10px;height:10px;fill:#4F46E5}
-
-/* pipeline */
-.adb-pipe{
-  display:flex;align-items:center;justify-content:center;gap:0;
-  padding:10px 0;margin-bottom:8px;
-}
-.adb-pn{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
-.adb-pn-ico{
-  width:32px;height:32px;border-radius:9px;
-  background:#fff;border:1px solid rgba(79,70,229,.12);
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.adb-pn-ico img{width:18px;height:18px;object-fit:contain}
-.adb-pn-name{font-size:7px;font-weight:800;color:#3E3A52;text-align:center;max-width:50px;line-height:1.2}
-.adb-pn.hero .adb-pn-ico{
-  border-color:#4F46E5;border-width:2px;
-  background:linear-gradient(135deg,#EEF2FF,#F0F0FF);
-  box-shadow:0 0 0 4px rgba(79,70,229,.08);
-}
-.adb-arr{
-  display:flex;align-items:center;margin:0 3px;flex-shrink:0;
-}
-.adb-arr-line{width:12px;height:2px;background:rgba(79,70,229,.2);border-radius:1px}
-.adb-arr-tip{
-  width:0;height:0;
-  border-top:3px solid transparent;border-bottom:3px solid transparent;
-  border-left:4px solid rgba(79,70,229,.25);
-}
-
-/* PII note */
-.adb-pii{
-  display:flex;align-items:center;gap:5px;
-  padding:4px 9px;border-radius:8px;margin-bottom:8px;
-  background:rgba(79,70,229,.04);border:1px solid rgba(79,70,229,.08);
-  font-size:7.5px;font-weight:700;color:#4F46E5;
-}
-.adb-pii svg{width:9px;height:9px;fill:none;stroke:#4F46E5;stroke-width:1.6;flex-shrink:0}
-
-/* impact tiles */
-.adb-impact{display:flex;gap:6px;margin-bottom:8px}
-.adb-imp{
-  flex:1;border-radius:10px;padding:8px 9px;
-  border:1px solid rgba(17,17,17,.06);
-}
-.adb-imp-ico{
-  width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;
-  margin-bottom:4px;
-}
-.adb-imp-ico svg{width:11px;height:11px}
-.adb-imp-t{font-size:9px;font-weight:800;line-height:1.2;color:#111;margin-bottom:2px}
-.adb-imp-d{font-size:7.5px;font-weight:600;color:#8a8a84;line-height:1.3}
-
-/* intent tags */
-.adb-intent{display:flex;flex-wrap:wrap;gap:5px}
-.adb-itag{
-  font-size:8px;font-weight:700;letter-spacing:.03em;color:#4F46E5;
-  padding:3px 8px;border-radius:6px;
-  background:rgba(79,70,229,.05);border:1px solid rgba(79,70,229,.08);
-}
+/* ═══ IMPACT ═══ */
+.adb-impact{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.adb-imp{border-radius:13px;padding:10px 10px 9px;position:relative;overflow:hidden}
+.adb-imp-k{font-size:7px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;color:#8a8a84}
+.adb-imp-v{font-size:13px;font-weight:900;letter-spacing:-.02em;line-height:1;color:#111;margin-bottom:4px}
+.adb-imp-d{font-size:8px;font-weight:600;line-height:1.35;color:#8a8a84}
+.adb-imp-d b{font-weight:800}
+.adb-imp.i1{background:rgba(255,255,255,.72);border:1px solid rgba(17,17,17,.08)}
+.adb-imp.i1 .adb-imp-v{color:#4F46E5}
+.adb-imp.i1 .adb-imp-d b{color:#4F46E5}
+.adb-imp.i2{background:rgba(255,255,255,.72);border:1px solid rgba(17,17,17,.08)}
+.adb-imp.i2 .adb-imp-v{color:#DC2626}
+.adb-imp.i2 .adb-imp-d b{color:#DC2626}
+.adb-imp.i3{background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%)}
+.adb-imp.i3 .adb-imp-k{color:rgba(167,243,208,.62)}
+.adb-imp.i3 .adb-imp-v{color:#6EE7B7}
+.adb-imp.i3 .adb-imp-d{color:rgba(209,250,229,.6)}
 </style>
 
 <article class="adb">
+
   <div class="adb-head">
     <span class="adb-kick">AI Project</span>
     <span class="adb-tag">
       Activation Analytics
-      <span class="adb-tag-arw">&#8250;</span>
+      <span class="adb-tag-arw">&rarr;</span>
       <span class="adb-tag-pill"><span class="adb-tag-dot"></span> AI Native</span>
     </span>
   </div>
-  <div class="adb-title">Dashboards <em>Built by AI</em></div>
 
-  <!-- problem -->
+  <h3 class="adb-title">Dashboards <em>Built by AI</em></h3>
+
   <div class="adb-scene">
-    <div class="adb-scene-text">
-      Setting up dashboards meant <strong>hours on formulas, spreadsheet layouts, and BI tool limits</strong>. Every new chart or slice meant rebuilding from scratch.
-    </div>
-  </div>
-
-  <div class="adb-cost">
-    <div class="adb-cost-ico">
-      <svg viewBox="0 0 14 14" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><path d="M7 4v3.5l2.5 1.5"/></svg>
-    </div>
-    <div class="adb-cost-text">Time spent setting up charts, not reading them</div>
-  </div>
-
-  <!-- the new approach -->
-  <div class="adb-div">
-    <span class="adb-div-line"></span>
-    <span class="adb-div-text">
-      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 1l2 5h5l-4 3.5 1.5 5L8 11.5 3.5 14.5 5 9.5 1 6h5z"/></svg>
-      The New Approach
-    </span>
-    <span class="adb-div-line"></span>
-  </div>
-
-  <!-- pipeline: Metabase > Python > Hash PII > Claude AI > Dashboard -->
-  <div class="adb-pipe">
-    <div class="adb-pn">
-      <div class="adb-pn-ico"><img src="https://cdn.simpleicons.org/metabase/509EE3" alt="Metabase"></div>
-      <div class="adb-pn-name">Metabase</div>
-    </div>
-    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
-    <div class="adb-pn">
-      <div class="adb-pn-ico"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></div>
-      <div class="adb-pn-name">Python</div>
-    </div>
-    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
-    <div class="adb-pn">
-      <div class="adb-pn-ico">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#4F46E5" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="2" width="10" height="12" rx="2"/><path d="M6 6h4M6 9h4"/></svg>
+    <div class="adb-pain-row">
+      <div class="adb-pain-ico">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2.5 1.5"/></svg>
       </div>
-      <div class="adb-pn-name">Hash PII</div>
-    </div>
-    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
-    <div class="adb-pn hero">
-      <div class="adb-pn-ico"><img src="https://cdn.simpleicons.org/anthropic/4F46E5" alt="Claude AI"></div>
-      <div class="adb-pn-name">Claude AI</div>
-    </div>
-    <div class="adb-arr"><div class="adb-arr-line"></div><div class="adb-arr-tip"></div></div>
-    <div class="adb-pn">
-      <div class="adb-pn-ico" style="background:#F0FDF4;border-color:rgba(22,163,74,.15)">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="3" width="12" height="8" rx="1.5"/><path d="M3 7h2v4H3zM6 5h2v6H6zM9 6h2v5H9z"/></svg>
+      <div class="adb-pain-txt">
+        Setting up dashboards meant <b>hours on formulas, spreadsheet layouts, and BI tool limits.</b> Every new slice meant rebuilding from scratch.
       </div>
-      <div class="adb-pn-name" style="color:#16A34A">Dashboard</div>
+    </div>
+    <div class="adb-loss">
+      <div class="adb-loss-ico">
+        <svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M4 8h2v5H4zM7 6h2v7H7zM10 7h2v6h-2z"/></svg>
+      </div>
+      <div class="adb-loss-body">
+        <div class="adb-loss-k">Time spent setting up charts, not reading them</div>
+        <div class="adb-loss-d">Formulas, layouts, BI tool config on repeat</div>
+      </div>
     </div>
   </div>
 
-  <!-- PII note -->
-  <div class="adb-pii">
-    <svg viewBox="0 0 12 12"><rect x="2" y="1" width="8" height="10" rx="1.5"/><path d="M5 4h2M5 6h2"/></svg>
-    PII hashed before AI processing
+  <div class="adb-built">
+    <div class="adb-built-label">Data in. Dashboard out.</div>
+    <div class="adb-flow">
+      <span class="adb-fn">
+        <span class="adb-fn-ico"><svg viewBox="0 0 14 14" fill="none" stroke="#C4B0FF" stroke-width="1.5"><ellipse cx="7" cy="3.2" rx="5" ry="2"/><path d="M2 3.2v7.6c0 1.1 2.2 2 5 2s5-.9 5-2V3.2M2 7c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg></span>
+        <span class="adb-fn-txt">Metabase</span>
+      </span>
+      <span class="adb-farr">&rarr;</span>
+      <span class="adb-fn">
+        <span class="adb-fn-ico"><svg viewBox="0 0 14 14" fill="none" stroke="#C4B0FF" stroke-width="1.5" stroke-linecap="round"><path d="M4 2v4l3 2 3-2V2"/><path d="M4 10v2h6v-2"/><path d="M7 8v4"/></svg></span>
+        <span class="adb-fn-txt">Python</span>
+      </span>
+      <span class="adb-farr">&rarr;</span>
+      <span class="adb-fn">
+        <span class="adb-fn-ico"><svg viewBox="0 0 14 14" fill="none" stroke="#C4B0FF" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="2" width="8" height="10" rx="1.5"/><path d="M5.5 5h3M5.5 7.5h3"/></svg></span>
+        <span class="adb-fn-txt">Hash PII</span>
+      </span>
+      <span class="adb-farr">&rarr;</span>
+      <span class="adb-fn">
+        <span class="adb-fn-ico" style="border-color:rgba(167,176,255,.4);background:rgba(79,70,229,.15)"><svg viewBox="0 0 14 14" fill="none" stroke="#A7B0FF" stroke-width="1.5" stroke-linecap="round"><path d="M7 2L4 7h3l-1 5 4-6H7l1-4z"/></svg></span>
+        <span class="adb-fn-txt">Claude AI</span>
+      </span>
+      <span class="adb-farr">&rarr;</span>
+      <span class="adb-fn">
+        <span class="adb-fn-ico" style="border-color:rgba(110,231,183,.3);background:rgba(22,163,74,.1)"><svg viewBox="0 0 14 14" fill="none" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round"><rect x="1.5" y="3.5" width="11" height="7" rx="1.5"/><path d="M4 7h1.5v3.5H4zM6.5 5.5h1.5v5H6.5zM9 6.5h1.5v4H9z"/></svg></span>
+        <span class="adb-fn-txt">Dashboard</span>
+      </span>
+    </div>
+    <div class="adb-pii-note">
+      <svg viewBox="0 0 10 10"><rect x="2" y="1" width="6" height="8" rx="1"/><path d="M4 3.5h2M4 5.5h2"/></svg>
+      PII hashed before AI sees it
+    </div>
   </div>
 
-  <!-- impact -->
   <div class="adb-impact">
-    <div class="adb-imp" style="background:linear-gradient(150deg,#F5F3FF 0%,#fff 60%)">
-      <div class="adb-imp-ico" style="background:#EDE9FE">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#4F46E5" stroke-width="1.3"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.2 3.3 12.3l.7-4.1-3-2.9 4.2-.7z"/></svg>
-      </div>
-      <div class="adb-imp-t">AI Insights</div>
-      <div class="adb-imp-d">Numbers read alongside you</div>
+    <div class="adb-imp i1">
+      <div class="adb-imp-k">Outcome</div>
+      <div class="adb-imp-v">AI Insights</div>
+      <div class="adb-imp-d">Numbers <b>read alongside</b> you</div>
     </div>
-    <div class="adb-imp" style="background:linear-gradient(150deg,#FEF2F2 0%,#fff 60%)">
-      <div class="adb-imp-ico" style="background:#FEE2E2">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#DC2626" stroke-width="1.3"><path d="M7 1v8M4 9h6M3.5 12h7"/></svg>
-      </div>
-      <div class="adb-imp-t">Hygiene Alerts</div>
-      <div class="adb-imp-d">Metric drops trigger email</div>
+    <div class="adb-imp i2">
+      <div class="adb-imp-k">Safety net</div>
+      <div class="adb-imp-v">Hygiene Alerts</div>
+      <div class="adb-imp-d">Metric drops <b>trigger email</b></div>
     </div>
-    <div class="adb-imp" style="background:linear-gradient(150deg,#F0FDF4 0%,#fff 60%)">
-      <div class="adb-imp-ico" style="background:#DCFCE7">
-        <svg viewBox="0 0 14 14" fill="none" stroke="#16A34A" stroke-width="1.3"><path d="M3 7h8M8 4l3 3-3 3"/></svg>
-      </div>
-      <div class="adb-imp-t">Beyond BI</div>
+    <div class="adb-imp i3">
+      <div class="adb-imp-k">Unlocked</div>
+      <div class="adb-imp-v">Beyond BI</div>
       <div class="adb-imp-d">No platform limits</div>
     </div>
   </div>
 
-  <!-- intent -->
-  <div class="adb-intent">
-    <span class="adb-itag">Focus on what to track</span>
-    <span class="adb-itag">Not how to build</span>
-    <span class="adb-itag">Privacy-Safe</span>
-  </div>
 </article>
