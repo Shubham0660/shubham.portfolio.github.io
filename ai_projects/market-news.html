@@ -1,9 +1,8 @@
 <!-- ═══════════════════════════════════════════════════════════
      AI PROJECT · Automated Daily Market News
-     Self-contained card. Sits inside index.html's #rowAI swipe row.
-     Deliberately distinct from certificate.html:
-     newsroom/ticker language, amber time-drain palette,
-     light "wire" pipeline instead of a dark block.
+     Auto-discovered from ai_projects/. No index.html edit needed.
+     Distinct visual language from certificate.html:
+     newsroom sources, amber time-drain palette, light wire rail.
      ═══════════════════════════════════════════════════════════ -->
 <style>
 .dmn{
@@ -18,7 +17,7 @@
 @media(max-width:1100px){.dmn{flex:0 0 calc(58% - 12px)}}
 @media(max-width:768px){.dmn{flex:0 0 88%;padding:14px}}
 
-/* ── header: kick + live clock-swap pill ── */
+/* ── header ── */
 .dmn-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;flex-wrap:wrap}
 .dmn-kick{font-size:8.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#5B2BD9}
 .dmn-tag{
@@ -33,100 +32,79 @@
   padding:3px 9px;border-radius:16px;
   background:linear-gradient(135deg,#0F7B63,#16A34A);color:#fff;
 }
-.dmn-tag-dot{
-  width:5px;height:5px;border-radius:50%;background:#86EFAC;
-  animation:dmnLive 1.7s ease-in-out infinite;
-}
+.dmn-tag-dot{width:5px;height:5px;border-radius:50%;background:#86EFAC;animation:dmnLive 1.7s ease-in-out infinite}
 @keyframes dmnLive{
   0%,100%{box-shadow:0 0 0 0 rgba(134,239,172,.6)}
   50%{box-shadow:0 0 0 4px rgba(134,239,172,0)}
 }
 .dmn-title{font-size:17.5px;font-weight:900;letter-spacing:-.028em;line-height:1.12;margin-bottom:5px;color:#111}
 .dmn-title em{font-style:normal;color:#5B2BD9}
-.dmn-sub{font-size:10px;font-weight:700;color:#6b6b66;line-height:1.45;margin-bottom:11px}
+.dmn-sub{font-size:10.5px;font-weight:700;color:#5c5c58;line-height:1.45;margin-bottom:11px}
 .dmn-sub b{color:#111;font-weight:800}
 
-/* ═══════════ THE OLD NEWSROOM GRIND ═══════════ */
+/* ═══════════ THE OLD DESK ═══════════ */
 .dmn-grind{
   position:relative;overflow:hidden;
-  border-radius:15px;padding:0 0 11px;margin-bottom:10px;
+  border-radius:15px;padding:13px 13px 12px;margin-bottom:10px;
   background:linear-gradient(152deg,#FDF6EC 0%,#FBF2E6 100%);
   border:1px solid rgba(180,83,9,.18);
 }
 
-/* ── source ticker: infinite scroll of outlets they read by hand ── */
-.dmn-ticker{
-  position:relative;overflow:hidden;
-  background:rgba(180,83,9,.08);
-  border-bottom:1px solid rgba(180,83,9,.16);
-  padding:6px 0;margin-bottom:11px;
+/* ── 3 HOURS: the hero of this block ── */
+.dmn-hero{
+  display:flex;align-items:center;gap:13px;
+  padding-bottom:11px;border-bottom:1px dashed rgba(180,83,9,.26);margin-bottom:11px;
 }
-.dmn-ticker::before,.dmn-ticker::after{
-  content:'';position:absolute;top:0;bottom:0;width:34px;z-index:2;pointer-events:none;
+.dmn-hero-n{position:relative;flex-shrink:0;line-height:1}
+.dmn-hero-v{
+  font-size:46px;font-weight:900;letter-spacing:-.05em;line-height:.86;
+  color:#8A4708;font-style:italic;position:relative;display:inline-block;
 }
-.dmn-ticker::before{left:0;background:linear-gradient(90deg,#FDF6EC,transparent)}
-.dmn-ticker::after{right:0;background:linear-gradient(270deg,#FDF6EC,transparent)}
-.dmn-ticker-track{display:flex;width:max-content;animation:dmnRoll 22s linear infinite}
-@keyframes dmnRoll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.dmn-hero-v small{
+  font-size:15px;font-weight:900;letter-spacing:-.02em;font-style:normal;
+  color:#B45309;margin-left:2px;
+}
+/* draining fill sweeping the numeral, reads as time bleeding away */
+.dmn-hero-v::after{
+  content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:6px;border-radius:4px;
+  background:linear-gradient(90deg,rgba(180,83,9,.5),rgba(180,83,9,.05));
+  transform-origin:left;animation:dmnDrain 3.6s ease-in-out infinite;
+}
+@keyframes dmnDrain{0%,100%{transform:scaleX(.4)}52%{transform:scaleX(1)}}
+.dmn-hero-l{
+  font-size:8px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:#B45309;margin-top:7px;
+}
+.dmn-hero-txt{flex:1;font-size:10.5px;font-weight:700;color:#7A4A18;line-height:1.5}
+.dmn-hero-txt b{color:#5c3b0c;font-weight:900}
+
+/* ── sources surfacing one by one, subtle ── */
+.dmn-srcs{margin-bottom:11px}
+.dmn-srcs-l{
+  font-size:7px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:#a07a45;margin-bottom:7px;
+}
+.dmn-src-list{display:flex;flex-wrap:wrap;gap:5px}
 .dmn-src{
   display:inline-flex;align-items:center;gap:5px;
-  padding:0 11px;white-space:nowrap;flex-shrink:0;
-  font-size:8.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#8a5a1e;
+  padding:4px 9px;border-radius:16px;
+  background:rgba(255,255,255,.8);border:1px solid rgba(180,83,9,.18);
+  font-size:8.5px;font-weight:800;letter-spacing:.02em;color:#7A4A18;white-space:nowrap;
+  opacity:0;animation:dmnSurface 7s ease-in-out infinite;
 }
-.dmn-src i{
-  width:4px;height:4px;border-radius:50%;background:#B45309;opacity:.6;flex-shrink:0;
+.dmn-src i{width:4px;height:4px;border-radius:50%;background:#B45309;flex-shrink:0;opacity:.65}
+.dmn-src:nth-child(1){animation-delay:0s}
+.dmn-src:nth-child(2){animation-delay:.5s}
+.dmn-src:nth-child(3){animation-delay:1s}
+.dmn-src:nth-child(4){animation-delay:1.5s}
+.dmn-src:nth-child(5){animation-delay:2s}
+.dmn-src:nth-child(6){animation-delay:2.5s}
+.dmn-src:nth-child(7){animation-delay:3s}
+@keyframes dmnSurface{
+  0%{opacity:0;transform:translateY(5px)}
+  9%,74%{opacity:1;transform:translateY(0)}
+  92%,100%{opacity:.28;transform:translateY(0)}
 }
-
-.dmn-inner{padding:0 13px}
-
-/* ── the 3-hour daily window, drawn as a clock-face timeline ── */
-.dmn-window{
-  display:flex;align-items:center;gap:11px;margin-bottom:10px;
-}
-.dmn-clock{position:relative;width:42px;height:42px;flex-shrink:0}
-.dmn-clock svg{width:100%;height:100%;transform:rotate(-90deg)}
-.dmn-clock-track{fill:none;stroke:rgba(180,83,9,.16);stroke-width:5}
-.dmn-clock-fill{
-  fill:none;stroke:#B45309;stroke-width:5;stroke-linecap:round;
-  stroke-dasharray:113;stroke-dashoffset:113;
-  animation:dmnDrain 4.2s cubic-bezier(.5,0,.3,1) infinite;
-}
-@keyframes dmnDrain{
-  0%{stroke-dashoffset:113}
-  55%,88%{stroke-dashoffset:28}
-  100%{stroke-dashoffset:113}
-}
-.dmn-clock-v{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;line-height:1;
-}
-.dmn-clock-n{font-size:14px;font-weight:900;letter-spacing:-.04em;color:#7A3A08}
-.dmn-clock-u{font-size:6.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#B45309;margin-top:1px}
-
-/* time-of-day bar: 3:30 to 6:00 blocked out every single evening */
-.dmn-bar-wrap{flex:1;min-width:0}
-.dmn-bar-l{
-  display:flex;justify-content:space-between;
-  font-size:7px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#a07a45;margin-bottom:4px;
-}
-.dmn-bar{
-  position:relative;height:13px;border-radius:4px;overflow:hidden;
-  background:rgba(255,255,255,.75);border:1px solid rgba(180,83,9,.18);
-}
-/* hatched "blocked" zone that sweeps in nightly */
-.dmn-bar-block{
-  position:absolute;left:34%;top:0;bottom:0;right:0;
-  background:repeating-linear-gradient(
-    -45deg,rgba(180,83,9,.55) 0 4px,rgba(180,83,9,.28) 4px 8px);
-  transform-origin:left;animation:dmnBlock 4.2s ease-in-out infinite;
-}
-@keyframes dmnBlock{
-  0%,6%{transform:scaleX(0)}
-  40%,88%{transform:scaleX(1)}
-  100%{transform:scaleX(0)}
-}
-.dmn-bar-cap{font-size:8px;font-weight:800;color:#8a5a1e;margin-top:4px;line-height:1.35}
-.dmn-bar-cap b{color:#5c3b0c;font-weight:900}
 
 /* ── the real concern ── */
 .dmn-concern{
@@ -143,15 +121,15 @@
 .dmn-concern-ico svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .dmn-concern-ico::after{
   content:'';position:absolute;left:0;right:0;top:0;height:100%;
-  background:linear-gradient(180deg,transparent,rgba(255,255,255,.18),transparent);
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.2),transparent);
   animation:dmnScan 2.8s ease-in-out infinite;
 }
 @keyframes dmnScan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
 .dmn-concern-body{flex:1;min-width:0}
 .dmn-concern-k{font-size:10.5px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.01em;margin-bottom:2px}
-.dmn-concern-d{font-size:8.5px;font-weight:700;color:rgba(255,255,255,.75);line-height:1.35}
+.dmn-concern-d{font-size:8.5px;font-weight:700;color:rgba(255,255,255,.76);line-height:1.35}
 
-/* ═══════════ THE AUTOMATED WIRE (light, horizontal rail) ═══════════ */
+/* ═══════════ THE AUTOMATED WIRE ═══════════ */
 .dmn-wire{
   position:relative;
   border-radius:14px;padding:10px 12px 11px;margin-bottom:9px;
@@ -159,7 +137,6 @@
   border:1px solid rgba(91,43,217,.16);
   overflow:hidden;
 }
-/* a pulse travelling down the rail, left to right */
 .dmn-wire::after{
   content:'';position:absolute;left:0;top:0;height:2px;width:36%;
   background:linear-gradient(90deg,transparent,#8B5CF6,transparent);
@@ -175,7 +152,6 @@
   color:#5B2BD9;margin-bottom:9px;display:flex;align-items:center;gap:8px;
 }
 .dmn-wire-l::after{content:'';flex:1;height:1px;background:rgba(91,43,217,.14)}
-
 .dmn-rail{display:flex;align-items:flex-start;gap:2px}
 .dmn-node{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:0;cursor:default}
 .dmn-node-ico{
@@ -198,12 +174,11 @@
 .dmn-impact{display:grid;grid-template-columns:1fr 1.3fr;gap:9px}
 .dmn-imp{border-radius:13px;padding:10px 12px 11px;position:relative;overflow:hidden}
 
-/* left: half a day returned */
+/* left: half day returned */
 .dmn-imp.back{background:rgba(255,255,255,.72);border:1px solid rgba(17,17,17,.08)}
-/* day-blocks: half of them flip to purple = time handed back */
-.dmn-daygrid{position:relative;z-index:2;display:flex;gap:2px;margin-top:6px}
+.dmn-daygrid{position:relative;z-index:2;display:flex;gap:2px;margin-top:7px}
 .dmn-daygrid i{
-  width:8px;height:8px;border-radius:2px;background:rgba(17,17,17,.1);
+  width:9px;height:9px;border-radius:2px;background:rgba(17,17,17,.1);
   animation:dmnGive 3.8s ease-in-out infinite;
 }
 .dmn-daygrid i:nth-child(1){animation-delay:0s}
@@ -214,17 +189,15 @@
 .dmn-daygrid i:nth-child(6){animation-delay:.8s}
 @keyframes dmnGive{
   0%,10%{background:rgba(17,17,17,.1);transform:scale(1)}
-  30%,76%{background:#5B2BD9;transform:scale(1.12)}
+  30%,76%{background:#5B2BD9;transform:scale(1.14)}
   95%,100%{background:rgba(17,17,17,.1);transform:scale(1)}
 }
 .dmn-imp-k{position:relative;z-index:2;font-size:7px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;color:#8a8a84}
 .dmn-imp.back .dmn-imp-v{
-  position:relative;z-index:2;font-size:19px;font-weight:900;letter-spacing:-.035em;line-height:1;color:#111;
+  position:relative;z-index:2;font-size:20px;font-weight:900;letter-spacing:-.04em;line-height:1;color:#111;
   display:flex;align-items:baseline;gap:4px;
 }
 .dmn-imp.back .dmn-imp-v small{font-size:8px;font-weight:800;color:#5B2BD9;letter-spacing:.05em;text-transform:uppercase}
-.dmn-imp-d{position:relative;z-index:2;font-size:8.5px;font-weight:600;line-height:1.4;margin-top:5px;color:#8a8a84}
-.dmn-imp-d b{color:#5B2BD9;font-weight:800}
 
 /* right: hero morph 3 HOURS → 1 MINUTE */
 .dmn-imp.win{background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%)}
@@ -235,8 +208,6 @@
 }
 @keyframes dmnGlow{0%,100%{opacity:.55;transform:scale(.9)}55%{opacity:1;transform:scale(1.12)}}
 .dmn-imp.win .dmn-imp-k{color:rgba(167,243,208,.62)}
-
-/* falling-sand streaks on the swap */
 .dmn-sand{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
 .dmn-sand i{
   position:absolute;width:1.5px;height:9px;border-radius:2px;top:-14px;
@@ -252,16 +223,15 @@
   48%{opacity:1}
   64%,100%{transform:translateY(80px);opacity:0}
 }
-
-.dmn-morph{position:relative;z-index:2;height:33px;margin:2px 0 1px}
+.dmn-morph{position:relative;z-index:2;height:38px;margin:3px 0 1px}
 .dmn-morph span{position:absolute;left:0;top:50%;display:flex;align-items:baseline;gap:5px;white-space:nowrap}
 .dmn-morph .m-from{
-  font-size:28px;font-weight:900;letter-spacing:-.045em;line-height:1;color:#FBBF77;
+  font-size:32px;font-weight:900;letter-spacing:-.05em;line-height:1;color:#FBBF77;
   animation:dmnA 4.6s cubic-bezier(.5,0,.2,1) infinite;
 }
-.dmn-morph .m-from small{font-size:11px;font-weight:800;color:rgba(251,191,119,.6);letter-spacing:.02em}
+.dmn-morph .m-from small{font-size:12px;font-weight:800;color:rgba(251,191,119,.6);letter-spacing:.02em}
 .dmn-morph .m-to{
-  font-size:22px;font-weight:900;letter-spacing:-.04em;line-height:1;
+  font-size:24px;font-weight:900;letter-spacing:-.04em;line-height:1;
   animation:dmnB 4.6s cubic-bezier(.34,1.56,.64,1) infinite;
 }
 .dmn-morph .m-to .val{
@@ -271,140 +241,106 @@
 .dmn-morph .m-to small{font-size:10px;font-weight:800;color:rgba(167,243,208,.72);letter-spacing:.02em}
 @keyframes dmnA{
   0%,38%{opacity:1;transform:translateY(-50%) scale(1)}
-  50%,100%{opacity:0;transform:translateY(-50%) scale(.28)}
+  50%,100%{opacity:0;transform:translateY(-50%) scale(.24)}
 }
 @keyframes dmnB{
-  0%,44%{opacity:0;transform:translateY(-50%) scale(2.6)}
+  0%,44%{opacity:0;transform:translateY(-50%) scale(2.8)}
   56%{opacity:1;transform:translateY(-50%) scale(1)}
   92%{opacity:1;transform:translateY(-50%) scale(1)}
-  100%{opacity:0;transform:translateY(-50%) scale(2.6)}
+  100%{opacity:0;transform:translateY(-50%) scale(2.8)}
 }
-.dmn-imp.win .dmn-imp-d{color:rgba(209,250,229,.6)}
 </style>
 
 <article class="dmn">
 
-  <!-- ═══ header ═══ -->
   <div class="dmn-head">
     <span class="dmn-kick">AI Project</span>
     <span class="dmn-tag">
-      Daily manual desk
+      Manual desk
       <span class="dmn-tag-arw">&rarr;</span>
       <span class="dmn-tag-pill"><span class="dmn-tag-dot"></span>Auto-published</span>
     </span>
   </div>
 
   <h3 class="dmn-title">Automated Daily <em>Market News</em> for Wealth Advisors</h3>
-  <p class="dmn-sub">
-    Every evening the content team read a dozen financial sites, hand-picked the headlines that mattered to our advisors, <b>rewrote them, keyed in the market numbers and laid out the format.</b>
-  </p>
+<p></p>
 
-  <!-- ═══ THE OLD NEWSROOM GRIND ═══ -->
   <div class="dmn-grind">
 
-    <!-- infinite source ticker -->
-    <div class="dmn-ticker" aria-hidden="true">
-      <div class="dmn-ticker-track">
+    <!-- 3 HOURS: dominant -->
+    <div class="dmn-hero">
+      <div class="dmn-hero-n">
+        <div class="dmn-hero-v">3<small>hrs</small></div>
+        <div class="dmn-hero-l">every single day</div>
+      </div>
+      <div class="dmn-hero-txt">
+        Reading, shortlisting, rewriting, keying in market numbers and laying out the format.
+        <b>All by hand, all over again tomorrow.</b>
+      </div>
+    </div>
+
+    <!-- sources surfacing one by one -->
+    <div class="dmn-srcs">
+      <div class="dmn-srcs-l">Read manually, every day</div>
+      <div class="dmn-src-list">
         <span class="dmn-src"><i></i>CNBC</span>
         <span class="dmn-src"><i></i>Moneycontrol</span>
         <span class="dmn-src"><i></i>Economic Times</span>
         <span class="dmn-src"><i></i>NDTV Profit</span>
         <span class="dmn-src"><i></i>Financial Express</span>
         <span class="dmn-src"><i></i>Business Standard</span>
-        <span class="dmn-src"><i></i>Mint</span>
-        <span class="dmn-src"><i></i>CNBC</span>
-        <span class="dmn-src"><i></i>Moneycontrol</span>
-        <span class="dmn-src"><i></i>Economic Times</span>
-        <span class="dmn-src"><i></i>NDTV Profit</span>
-        <span class="dmn-src"><i></i>Financial Express</span>
-        <span class="dmn-src"><i></i>Business Standard</span>
-        <span class="dmn-src"><i></i>Mint</span>
+
       </div>
     </div>
 
-    <div class="dmn-inner">
-
-      <!-- draining clock + blocked evening window -->
-      <div class="dmn-window">
-        <div class="dmn-clock">
-          <svg viewBox="0 0 42 42">
-            <circle class="dmn-clock-track" cx="21" cy="21" r="18"/>
-            <circle class="dmn-clock-fill" cx="21" cy="21" r="18"/>
-          </svg>
-          <div class="dmn-clock-v">
-            <span class="dmn-clock-n">3</span>
-            <span class="dmn-clock-u">hrs</span>
-          </div>
-        </div>
-
-        <div class="dmn-bar-wrap">
-          <div class="dmn-bar-l"><span>3:30 pm close</span><span>6:00 pm send</span></div>
-          <div class="dmn-bar"><div class="dmn-bar-block"></div></div>
-          <div class="dmn-bar-cap">Evenings <b>blocked every working day</b>, waiting on market close</div>
-        </div>
+    <div class="dmn-concern">
+      <div class="dmn-concern-ico">
+        <svg viewBox="0 0 15 15"><path d="M2 3h11v9H2z"/><path d="M4.5 6h6M4.5 8.5h4"/></svg>
       </div>
-
-      <!-- the real concern -->
-      <div class="dmn-concern">
-        <div class="dmn-concern-ico">
-          <svg viewBox="0 0 15 15">
-            <path d="M2 3h11v9H2z"/><path d="M4.5 6h6M4.5 8.5h4"/>
-          </svg>
-        </div>
-        <div class="dmn-concern-body">
-          <div class="dmn-concern-k">Time spent compiling from sources</div>
-          <div class="dmn-concern-d">Instead of sharpening the quality of what advisors actually read</div>
-        </div>
+      <div class="dmn-concern-body">
+        <div class="dmn-concern-k">Time spent compiling from sources</div>
+        <div class="dmn-concern-d">Instead of improving the quality of what advisors actually read</div>
       </div>
-
     </div>
+
   </div>
 
-  <!-- ═══ THE AUTOMATED WIRE ═══ -->
   <div class="dmn-wire">
     <div class="dmn-wire-l">Runs itself. Team only approves.</div>
     <div class="dmn-rail">
-
       <span class="dmn-node">
         <span class="dmn-node-ico"><img src="https://cdn.simpleicons.org/n8n/EA4B71" alt=""></span>
         <span class="dmn-node-txt">n8n<br>scrape</span>
       </span>
       <span class="dmn-rail-arw">&rarr;</span>
-
       <span class="dmn-node">
         <span class="dmn-node-ico"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt=""></span>
         <span class="dmn-node-txt">JS ranking<br>logic</span>
       </span>
       <span class="dmn-rail-arw">&rarr;</span>
-
       <span class="dmn-node">
         <span class="dmn-node-ico"><img src="https://cdn.simpleicons.org/openai/111111" alt=""></span>
         <span class="dmn-node-txt">GPT API<br>write-up</span>
       </span>
       <span class="dmn-rail-arw">&rarr;</span>
-
       <span class="dmn-node">
         <span class="dmn-node-ico"><img src="https://cdn.simpleicons.org/googledrive/1A73E8" alt=""></span>
         <span class="dmn-node-txt">Layout<br>to Drive</span>
       </span>
       <span class="dmn-rail-arw">&rarr;</span>
-
       <span class="dmn-node">
         <span class="dmn-node-ico"><img src="https://cdn.simpleicons.org/gmail/EA4335" alt=""></span>
         <span class="dmn-node-txt">Sent for<br>approval</span>
       </span>
-
     </div>
   </div>
 
-  <!-- ═══ IMPACT ═══ -->
   <div class="dmn-impact">
 
     <div class="dmn-imp back">
       <div class="dmn-imp-k">Given back</div>
-      <div class="dmn-imp-v">½ <small>a workday</small></div>
+      <div class="dmn-imp-v">Half <small>a day</small></div>
       <div class="dmn-daygrid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="dmn-imp-d">Evenings freed up, <b>every single working day.</b></div>
     </div>
 
     <div class="dmn-imp win">
@@ -414,7 +350,6 @@
         <span class="m-from">3 <small>hours</small></span>
         <span class="m-to"><span class="val">1</span> <small>min approval</small></span>
       </div>
-      <div class="dmn-imp-d">Team reviews, does not build</div>
     </div>
 
   </div>
