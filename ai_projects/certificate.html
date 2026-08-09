@@ -1,8 +1,6 @@
 <!-- ═══════════════════════════════════════════════════════════
      AI PROJECT · One-Click Partner Certification Pipeline
      Self-contained card. Sits inside index.html's #rowAI swipe row.
-     Card bg #F5F3EF lifts it off the page bg #EFEDE7.
-     Visual-first: minimal text, animated frustration scene.
      ═══════════════════════════════════════════════════════════ -->
 <style>
 .cert{
@@ -11,125 +9,90 @@
   background:linear-gradient(168deg,#F5F3EF 0%,#EFEDE7 100%);
   border:1px solid rgba(17,17,17,.09);
   border-radius:22px;
-  padding:20px 20px 20px;display:flex;flex-direction:column;gap:0;
+  padding:17px 18px 17px;display:flex;flex-direction:column;gap:0;
   box-shadow:0 1px 2px rgba(17,17,17,.03),0 12px 32px rgba(17,17,17,.05);
 }
 @media(max-width:1100px){.cert{flex:0 0 calc(58% - 12px)}}
-@media(max-width:768px){.cert{flex:0 0 88%;padding:17px}}
+@media(max-width:768px){.cert{flex:0 0 88%;padding:15px}}
 
-/* ── header row: kick + subtle-tone tag pill ── */
-.cert-head{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  margin-bottom:8px;flex-wrap:wrap;
-}
-.cert-kick{
-  font-size:8.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
-  color:#5B2BD9;
-}
-
-/* playful tag: MANUAL WORKFLOW → [1][cursor] CLICK, subtle outer tone now */
+/* ── header ── */
+.cert-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;flex-wrap:wrap}
+.cert-kick{font-size:8.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#5B2BD9}
 .cert-tag{
   display:inline-flex;align-items:center;gap:7px;
-  padding:5px 5px 5px 11px;border-radius:22px;
+  padding:4px 4px 4px 10px;border-radius:22px;
   background:rgba(17,17,17,.05);color:#4a4a46;
-  font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  font-size:8.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
   border:1px solid rgba(17,17,17,.08);
 }
 .cert-tag-arw{color:rgba(17,17,17,.3);font-size:11px}
 .cert-tag-pill{
   display:inline-flex;align-items:center;gap:4px;
-  padding:4px 9px 4px 7px;border-radius:16px;
-  background:linear-gradient(135deg,#5B2BD9,#8B5CF6);
-  color:#fff;position:relative;
+  padding:3px 9px 3px 7px;border-radius:16px;
+  background:linear-gradient(135deg,#5B2BD9,#8B5CF6);color:#fff;
 }
-.cert-tag-one{
-  font-size:12px;font-weight:900;letter-spacing:-.03em;line-height:1;
-  font-style:italic;
-}
-.cert-tag-cur{
-  width:11px;height:11px;fill:#fff;
-  animation:curClick 2.4s ease-in-out infinite;
-}
+.cert-tag-one{font-size:12px;font-weight:900;letter-spacing:-.03em;line-height:1;font-style:italic}
+.cert-tag-cur{width:11px;height:11px;fill:#fff;animation:curClick 2.4s ease-in-out infinite}
 @keyframes curClick{
   0%,72%,100%{transform:translate(0,0) scale(1)}
   80%{transform:translate(-1px,-1px) scale(1.1)}
   86%{transform:translate(0,0) scale(.88)}
   92%{transform:translate(0,0) scale(1)}
 }
-
-.cert-title{
-  font-size:19px;font-weight:900;letter-spacing:-.028em;line-height:1.1;
-  margin-bottom:14px;color:#111;
-}
+.cert-title{font-size:18px;font-weight:900;letter-spacing:-.028em;line-height:1.1;margin-bottom:11px;color:#111}
 .cert-title em{font-style:normal;color:#5B2BD9}
 
 /* ═══════════ FRUSTRATION SCENE ═══════════ */
 .cert-scene{
   position:relative;overflow:hidden;
-  border-radius:16px;padding:14px 14px 13px;margin-bottom:12px;
+  border-radius:15px;padding:12px 13px 11px;margin-bottom:10px;
   background:
-    radial-gradient(circle at 90% 15%,rgba(179,38,30,.08) 0%,transparent 55%),
+    radial-gradient(circle at 90% 12%,rgba(179,38,30,.08) 0%,transparent 55%),
     linear-gradient(150deg,#FBF4F2 0%,#F9F1EE 100%);
   border:1px solid rgba(179,38,30,.14);
 }
-
-/* drifting certificate icons in the background */
-.cert-drift{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.32}
-.cert-drift svg{position:absolute;width:22px;height:16px;animation:drift 9s linear infinite}
+.cert-drift{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.3}
+.cert-drift svg{position:absolute;width:20px;height:15px;animation:drift 9s linear infinite}
 .cert-drift svg:nth-child(1){top:8%;left:-6%;animation-delay:0s;animation-duration:11s}
-.cert-drift svg:nth-child(2){top:30%;left:-6%;animation-delay:2.2s;animation-duration:8.5s;transform:scale(.85)}
-.cert-drift svg:nth-child(3){top:80%;left:-6%;animation-delay:4.5s;animation-duration:10s;transform:scale(1.1)}
-.cert-drift svg:nth-child(4){top:62%;left:-6%;animation-delay:6.8s;animation-duration:9.5s;transform:scale(.75)}
-@keyframes drift{
-  0%{transform:translateX(0) rotate(-4deg)}
-  100%{transform:translateX(120vw) rotate(6deg)}
-}
+.cert-drift svg:nth-child(2){top:34%;left:-6%;animation-delay:2.4s;animation-duration:8.5s;transform:scale(.85)}
+.cert-drift svg:nth-child(3){top:74%;left:-6%;animation-delay:5s;animation-duration:10s;transform:scale(1.1)}
+@keyframes drift{0%{transform:translateX(0) rotate(-4deg)}100%{transform:translateX(120vw) rotate(6deg)}}
 
-/* row 1: MANUAL badge + 500+ hero */
+/* row 1: manual badge + 500+ + line */
 .cert-hero-row{
   position:relative;z-index:1;display:flex;align-items:flex-end;gap:10px;
-  padding-bottom:10px;border-bottom:1px dashed rgba(179,38,30,.22);margin-bottom:10px;
+  padding-bottom:9px;border-bottom:1px dashed rgba(179,38,30,.22);margin-bottom:9px;
 }
 .cert-manual-badge{
   display:inline-flex;align-items:center;gap:4px;
-  padding:3px 8px;border-radius:5px;flex-shrink:0;margin-bottom:4px;
+  padding:3px 7px;border-radius:5px;flex-shrink:0;margin-bottom:3px;
   background:#B3261E;color:#fff;
-  font-size:7px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  font-size:6.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
 }
 .cert-manual-badge svg{width:8px;height:8px;stroke:#fff;fill:none;stroke-width:2}
 .cert-hero-n{position:relative;flex-shrink:0}
-.cert-hero-v{
-  font-size:32px;font-weight:900;letter-spacing:-.045em;line-height:.9;
-  color:#7A1D18;font-style:italic;
-}
+.cert-hero-v{font-size:30px;font-weight:900;letter-spacing:-.045em;line-height:.9;color:#7A1D18;font-style:italic}
 .cert-hero-v::after{
-  content:'';position:absolute;left:0;right:-2px;bottom:-3px;height:6px;
+  content:'';position:absolute;left:0;right:-2px;bottom:-3px;height:5px;
   background:linear-gradient(90deg,rgba(179,38,30,.35),transparent);
   border-radius:3px;animation:heroUnderline 2.8s ease-in-out infinite;transform-origin:left;
 }
 @keyframes heroUnderline{0%,100%{transform:scaleX(.6)}50%{transform:scaleX(1)}}
-.cert-hero-l{font-size:8px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A5750;margin-top:2px}
-
-/* explainable sentence, expanded a touch */
-.cert-hero-txt{
-  flex:1;font-size:10.5px;font-weight:700;color:#7A342E;line-height:1.45;
-  padding-bottom:3px;
-}
+.cert-hero-l{font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9A5750;margin-top:2px}
+.cert-hero-txt{flex:1;font-size:10px;font-weight:700;color:#7A342E;line-height:1.45;padding-bottom:2px}
 .cert-hero-txt b{color:#4a1c18;font-weight:800}
 
-/* row 2: department depiction + calendar, side by side */
+/* row 2: departments LEFT, days pushed RIGHT */
 .cert-ops-row{
-  position:relative;z-index:1;display:flex;align-items:center;gap:16px;
-  padding-bottom:10px;border-bottom:1px dashed rgba(179,38,30,.22);margin-bottom:10px;
+  position:relative;z-index:1;display:flex;align-items:center;
+  justify-content:space-between;gap:14px;
+  padding-bottom:9px;border-bottom:1px dashed rgba(179,38,30,.22);margin-bottom:9px;
   flex-wrap:wrap;
 }
-
-/* departments: 4 icon badges depicting BA / Content / Design / Campaign */
 .cert-dept{display:flex;align-items:center;gap:6px}
 .cert-dept-icons{display:flex}
 .cert-dept-icons i{
-  width:20px;height:20px;border-radius:6px;
-  border:1.5px solid #FBF4F2;margin-left:-6px;
+  width:19px;height:19px;border-radius:6px;border:1.5px solid #FBF4F2;margin-left:-6px;
   display:flex;align-items:center;justify-content:center;
   animation:teamFloat 2.6s ease-in-out infinite;
 }
@@ -140,174 +103,195 @@
 .cert-dept-icons i:nth-child(3){background:#0F7B63;animation-delay:.3s}
 .cert-dept-icons i:nth-child(4){background:#B3261E;animation-delay:.45s}
 @keyframes teamFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-.cert-dept-l{font-size:9px;font-weight:800;color:#4a4a46;line-height:1.1}
-.cert-dept-l b{font-size:12px;color:#111;font-weight:900;display:block}
+.cert-dept-l{font-size:8.5px;font-weight:800;color:#4a4a46;line-height:1.1}
+.cert-dept-l b{font-size:11.5px;color:#111;font-weight:900;display:block}
 
-/* 3-day calendar strip */
-.cert-days{display:flex;align-items:center;gap:6px}
+.cert-days{display:flex;align-items:center;gap:6px;margin-left:auto}
 .cert-days-cal{display:flex;gap:2px}
 .cert-days-cal i{
-  width:14px;height:16px;border-radius:3px;
+  width:13px;height:15px;border-radius:3px;
   background:#fff;border:1px solid rgba(179,38,30,.28);position:relative;display:inline-block;
 }
-.cert-days-cal i::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:#B3261E;border-radius:2px 2px 0 0;opacity:.55;
-}
+.cert-days-cal i::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#B3261E;border-radius:2px 2px 0 0;opacity:.55}
 .cert-days-cal i::after{
   content:'\2715';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:9px;font-weight:900;color:#B3261E;line-height:1;padding-top:2px;opacity:0;
+  font-size:8px;font-weight:900;color:#B3261E;line-height:1;padding-top:2px;opacity:0;
   animation:xMark 3s ease-in-out infinite;
 }
 .cert-days-cal i:nth-child(1)::after{animation-delay:0s}
 .cert-days-cal i:nth-child(2)::after{animation-delay:.8s}
 .cert-days-cal i:nth-child(3)::after{animation-delay:1.6s}
 @keyframes xMark{0%,80%,100%{opacity:0}20%,70%{opacity:.85}}
-.cert-days-l{font-size:9px;font-weight:800;color:#4a4a46;line-height:1.1}
-.cert-days-l b{font-size:12px;color:#111;font-weight:900;display:block}
+.cert-days-l{font-size:8.5px;font-weight:800;color:#4a4a46;line-height:1.1}
+.cert-days-l b{font-size:11.5px;color:#111;font-weight:900;display:block}
 
-/* INTELLECTUAL LOSS — the punchline, made prominent */
+/* BANDWIDTH LOSS banner */
 .cert-loss{
-  position:relative;z-index:1;display:flex;align-items:center;gap:11px;
-  padding:11px 13px;border-radius:12px;
+  position:relative;z-index:1;display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:11px;
   background:linear-gradient(120deg,#B3261E 0%,#7A1D18 100%);
-  box-shadow:0 8px 20px rgba(179,38,30,.22);
+  box-shadow:0 8px 18px rgba(179,38,30,.2);
 }
 .cert-line-brain{
-  width:34px;height:34px;flex-shrink:0;border-radius:10px;
+  width:30px;height:30px;flex-shrink:0;border-radius:9px;
   background:rgba(255,255,255,.14);
   display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
 }
-.cert-line-brain svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:1.5}
+.cert-line-brain svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.5}
 .cert-line-brain::after{
   content:'';position:absolute;left:20%;top:100%;width:2px;height:6px;
   background:#FCA5A5;border-radius:2px;animation:brainDrip 2.4s ease-in-out infinite;
 }
 @keyframes brainDrip{0%{top:60%;opacity:0}30%{opacity:1}100%{top:100%;opacity:0}}
 .cert-loss-body{flex:1;min-width:0}
-.cert-loss-k{
-  font-size:12.5px;font-weight:900;letter-spacing:-.01em;color:#fff;line-height:1.15;
-  margin-bottom:2px;
-}
-.cert-loss-d{font-size:9.5px;font-weight:700;color:rgba(255,255,255,.72);line-height:1.35}
+.cert-loss-k{font-size:11px;font-weight:900;letter-spacing:-.01em;color:#fff;line-height:1.15;margin-bottom:2px}
+.cert-loss-d{font-size:9px;font-weight:700;color:rgba(255,255,255,.75);line-height:1.35}
 
-/* ═══════════ WHAT I BUILT (premium dark, icon-over-text nodes) ═══════════ */
+/* ═══════════ WHAT I BUILT ═══════════ */
 .cert-built-wrap{
   position:relative;overflow:hidden;
   background:linear-gradient(158deg,#0E0B1A 0%,#181229 45%,#221636 100%);
-  border-radius:15px;padding:13px 14px 13px;margin-bottom:11px;
+  border-radius:14px;padding:11px 13px 11px;margin-bottom:9px;
 }
 .cert-built-wrap::after{
   content:'';position:absolute;left:-40px;top:-40px;width:180px;height:180px;
-  background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 65%);
-  pointer-events:none;
+  background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 65%);pointer-events:none;
 }
 .cert-built-label{
   position:relative;z-index:1;
-  font-size:8px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(196,176,255,.62);margin-bottom:11px;
-  display:flex;align-items:center;gap:8px;
+  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(196,176,255,.62);margin-bottom:9px;display:flex;align-items:center;gap:8px;
 }
 .cert-built-label::after{content:'';flex:1;height:1px;background:rgba(196,176,255,.14)}
-
 .cert-flow{position:relative;z-index:1;display:flex;align-items:flex-start;gap:2px}
 .cert-n{
-  position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;
-  flex:1;min-width:0;padding:2px 2px;cursor:default;
-  transition:transform .28s cubic-bezier(.34,1.56,.64,1);
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;
+  flex:1;min-width:0;cursor:default;
 }
 .cert-n-ico{
-  width:30px;height:30px;border-radius:9px;flex-shrink:0;
+  width:28px;height:28px;border-radius:9px;flex-shrink:0;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
   display:flex;align-items:center;justify-content:center;
   transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s ease,border-color .28s ease,background .28s ease;
 }
-.cert-n img{width:15px;height:15px;object-fit:contain}
-.cert-n-ico svg{width:15px;height:15px}
+.cert-n img{width:14px;height:14px;object-fit:contain}
+.cert-n-ico svg{width:14px;height:14px}
 .cert-n:hover .cert-n-ico{
   transform:translateY(-3px) scale(1.1);
   box-shadow:0 10px 20px rgba(91,43,217,.4);
-  border-color:rgba(196,176,255,.5);
-  background:rgba(255,255,255,.14);
+  border-color:rgba(196,176,255,.5);background:rgba(255,255,255,.14);
 }
-.cert-n-txt{
-  font-size:8px;font-weight:800;letter-spacing:-.01em;text-align:center;line-height:1.25;
-  color:rgba(255,255,255,.82);white-space:nowrap;
-}
-.cert-arrow{
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  color:rgba(196,176,255,.35);font-size:11px;padding-top:12px;
-}
+.cert-n-txt{font-size:7.5px;font-weight:800;letter-spacing:-.01em;text-align:center;line-height:1.25;color:rgba(255,255,255,.82);white-space:nowrap}
+.cert-arrow{flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(196,176,255,.35);font-size:10px;padding-top:11px}
 
-/* ═══════════ IMPACT — build cost (left, compact) | cycle time (right, hero) ═══════════ */
-.cert-impact{display:grid;grid-template-columns:1fr 1.28fr;gap:9px}
-.cert-imp{border-radius:13px;padding:11px 13px 12px;position:relative;overflow:hidden}
+/* ═══════════ IMPACT ═══════════ */
+.cert-impact{display:grid;grid-template-columns:1fr 1.3fr;gap:9px}
+.cert-imp{border-radius:13px;padding:10px 12px 11px;position:relative;overflow:hidden}
 
-/* build cost: subtle, blueprint + gears */
-.cert-imp.build{background:rgba(255,255,255,.7);border:1px solid rgba(17,17,17,.08)}
+/* ── BUILD COST: blueprint + assembling blocks + gears ── */
+.cert-imp.build{background:rgba(255,255,255,.72);border:1px solid rgba(17,17,17,.08)}
 .cert-imp.build::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background-image:
-    linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);
-  background-size:14px 14px;
-  mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.7),transparent 68%);
-  -webkit-mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.7),transparent 68%);
+    linear-gradient(rgba(17,17,17,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(17,17,17,.04) 1px,transparent 1px);
+  background-size:12px 12px;
+  mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.8),transparent 70%);
+  -webkit-mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.8),transparent 70%);
 }
-.cert-gears{position:absolute;right:8px;bottom:6px;width:34px;height:34px;z-index:1}
-.cert-gears svg{position:absolute;stroke:#111;fill:none;stroke-width:1.4}
-.cert-gears .g1{width:22px;height:22px;top:0;left:8px;opacity:.24;animation:spinCW 6s linear infinite}
-.cert-gears .g2{width:15px;height:15px;bottom:0;left:0;opacity:.2;animation:spinCCW 4.5s linear infinite}
+.cert-gears{position:absolute;right:6px;bottom:4px;width:32px;height:32px;z-index:1}
+.cert-gears svg{position:absolute;stroke:#5B2BD9;fill:none;stroke-width:1.5}
+.cert-gears .g1{width:21px;height:21px;top:0;left:8px;opacity:.3;animation:spinCW 6s linear infinite}
+.cert-gears .g2{width:14px;height:14px;bottom:0;left:0;opacity:.24;animation:spinCCW 4.5s linear infinite}
 @keyframes spinCW{to{transform:rotate(360deg)}}
 @keyframes spinCCW{to{transform:rotate(-360deg)}}
-.cert-imp-k{position:relative;z-index:2;font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;color:#8a8a84}
-.cert-imp-v{position:relative;z-index:2;font-size:14px;font-weight:900;letter-spacing:-.03em;line-height:1.1;color:#111}
-.cert-imp-d{position:relative;z-index:2;font-size:9px;font-weight:600;line-height:1.4;margin-top:4px;color:#8a8a84}
+
+/* assembling brick row: blocks stack in one by one, then reset */
+.cert-bricks{position:relative;z-index:2;display:flex;gap:2px;align-items:flex-end;height:11px;margin-top:6px}
+.cert-bricks i{
+  width:9px;border-radius:2px;background:#5B2BD9;opacity:.75;
+  transform-origin:bottom;animation:brickUp 3.6s ease-in-out infinite;
+}
+.cert-bricks i:nth-child(1){height:5px;animation-delay:0s}
+.cert-bricks i:nth-child(2){height:7px;animation-delay:.28s}
+.cert-bricks i:nth-child(3){height:9px;animation-delay:.56s}
+.cert-bricks i:nth-child(4){height:11px;animation-delay:.84s}
+@keyframes brickUp{
+  0%,8%{transform:scaleY(0);opacity:0}
+  22%,74%{transform:scaleY(1);opacity:.8}
+  90%,100%{transform:scaleY(0);opacity:0}
+}
+.cert-imp-k{position:relative;z-index:2;font-size:7px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;color:#8a8a84}
+.cert-imp.build .cert-imp-v{
+  position:relative;z-index:2;font-size:20px;font-weight:900;letter-spacing:-.035em;line-height:1;color:#111;
+  display:flex;align-items:baseline;gap:4px;
+}
+.cert-imp.build .cert-imp-v small{font-size:8px;font-weight:800;color:#5B2BD9;letter-spacing:.06em;text-transform:uppercase}
+.cert-imp-d{position:relative;z-index:2;font-size:8.5px;font-weight:600;line-height:1.4;margin-top:5px;color:#8a8a84}
 .cert-imp-d b{color:#5B2BD9;font-weight:800}
 
-/* cycle time: the hero card, animated morph */
-.cert-imp.win{
-  background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%);
-}
+/* ── CYCLE TIME: hero morph, 3 DAYS huge → shrinks into green 5 MINUTES ── */
+.cert-imp.win{background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%)}
 .cert-imp.win::after{
-  content:'';position:absolute;right:-28px;bottom:-38px;width:130px;height:130px;border-radius:50%;
-  background:radial-gradient(circle,rgba(52,211,153,.32) 0%,transparent 68%);
+  content:'';position:absolute;right:-26px;bottom:-40px;width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(52,211,153,.34) 0%,transparent 68%);
+  animation:winGlow 4.6s ease-in-out infinite;
 }
-.cert-imp.win .cert-imp-k{position:relative;z-index:2;color:rgba(167,243,208,.62);font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+@keyframes winGlow{0%,100%{opacity:.55;transform:scale(.9)}55%{opacity:1;transform:scale(1.12)}}
+.cert-imp.win .cert-imp-k{color:rgba(167,243,208,.62)}
 
-/* the morph: 3 DAYS crossfades into 5 MINUTES, forever */
-.cert-morph{position:relative;z-index:2;height:24px;margin-bottom:3px}
-.cert-morph span{
-  position:absolute;left:0;top:0;display:flex;align-items:baseline;gap:5px;white-space:nowrap;
-  font-size:19px;font-weight:900;letter-spacing:-.03em;line-height:1;
+/* speed streaks sweeping across on the swap */
+.cert-streaks{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.cert-streaks i{
+  position:absolute;height:1.5px;border-radius:2px;left:-30%;
+  background:linear-gradient(90deg,transparent,rgba(110,231,183,.75),transparent);
+  animation:streak 4.6s ease-in infinite;
 }
-.cert-morph .m-from{color:#EF9A9A;animation:morphA 4.5s ease-in-out infinite}
-.cert-morph .m-from small{font-size:10px;font-weight:700;color:rgba(239,154,154,.7);text-decoration:line-through}
-.cert-morph .m-to{animation:morphB 4.5s ease-in-out infinite}
-.cert-morph .m-to small{
-  font-size:10px;font-weight:700;
-  background:linear-gradient(93deg,#fff 0%,#6EE7B7 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+.cert-streaks i:nth-child(1){top:28%;width:46%;animation-delay:2.05s}
+.cert-streaks i:nth-child(2){top:48%;width:62%;animation-delay:2.2s}
+.cert-streaks i:nth-child(3){top:68%;width:38%;animation-delay:2.35s}
+@keyframes streak{
+  0%,42%{transform:translateX(0);opacity:0}
+  48%{opacity:1}
+  62%,100%{transform:translateX(240%);opacity:0}
 }
-@keyframes morphA{
-  0%,38%{opacity:1;transform:translateY(0) scale(1)}
-  50%,100%{opacity:0;transform:translateY(-9px) scale(.9)}
+
+.cert-morph{position:relative;z-index:2;height:34px;margin:2px 0 1px}
+.cert-morph span{position:absolute;left:0;top:50%;display:flex;align-items:baseline;gap:5px;white-space:nowrap}
+
+/* 3 DAYS: large, then collapses away */
+.cert-morph .m-from{
+  font-size:29px;font-weight:900;letter-spacing:-.045em;line-height:1;color:#EF9A9A;
+  animation:morphA 4.6s cubic-bezier(.5,0,.2,1) infinite;
 }
-@keyframes morphB{
-  0%,44%{opacity:0;transform:translateY(9px) scale(.9)}
-  56%,94%{opacity:1;transform:translateY(0) scale(1)}
-  100%{opacity:0;transform:translateY(9px) scale(.9)}
+.cert-morph .m-from small{font-size:11px;font-weight:800;color:rgba(239,154,154,.62);letter-spacing:.02em}
+
+/* 5 MINUTES: bursts out of the green, settles small */
+.cert-morph .m-to{
+  font-size:22px;font-weight:900;letter-spacing:-.04em;line-height:1;
+  animation:morphB 4.6s cubic-bezier(.34,1.56,.64,1) infinite;
 }
 .cert-morph .m-to .val{
   background:linear-gradient(93deg,#fff 0%,#6EE7B7 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-.cert-imp.win .cert-imp-d{position:relative;z-index:2;font-size:9.5px;font-weight:600;line-height:1.4;color:rgba(209,250,229,.62)}
+.cert-morph .m-to small{font-size:10px;font-weight:800;color:rgba(167,243,208,.72);letter-spacing:.02em}
+
+@keyframes morphA{
+  0%,38%{opacity:1;transform:translateY(-50%) scale(1)}
+  50%,100%{opacity:0;transform:translateY(-50%) scale(.28)}
+}
+@keyframes morphB{
+  0%,44%{opacity:0;transform:translateY(-50%) scale(2.6)}
+  56%{opacity:1;transform:translateY(-50%) scale(1)}
+  92%{opacity:1;transform:translateY(-50%) scale(1)}
+  100%{opacity:0;transform:translateY(-50%) scale(2.6)}
+}
+.cert-imp.win .cert-imp-d{color:rgba(209,250,229,.6)}
 </style>
 
 <article class="cert">
 
-  <!-- ═══ header row: kick + playful tag (subtle tone) ═══ -->
   <div class="cert-head">
     <span class="cert-kick">AI Project</span>
     <span class="cert-tag">
@@ -315,9 +299,7 @@
       <span class="cert-tag-arw">&rarr;</span>
       <span class="cert-tag-pill">
         <span class="cert-tag-one">1</span>
-        <svg class="cert-tag-cur" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 1.5 2 10 4.6 7.6 6.2 11 7.5 10.5 5.9 7 9 7Z"/>
-        </svg>
+        <svg class="cert-tag-cur" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.5 2 10 4.6 7.6 6.2 11 7.5 10.5 5.9 7 9 7Z"/></svg>
         click
       </span>
     </span>
@@ -325,17 +307,14 @@
 
   <h3 class="cert-title">One-Click Partner <em>Certification Pipeline</em></h3>
 
-  <!-- ═══ FRUSTRATION SCENE ═══ -->
   <div class="cert-scene">
 
     <div class="cert-drift" aria-hidden="true">
       <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="15" rx="2" stroke="#B3261E"/><path d="M4 5h14M4 8h9M4 11h6" stroke="#B3261E" stroke-linecap="round"/><circle cx="17" cy="11" r="2" stroke="#B3261E"/></svg>
       <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="15" rx="2" stroke="#B3261E"/><path d="M4 5h14M4 8h9M4 11h6" stroke="#B3261E" stroke-linecap="round"/><circle cx="17" cy="11" r="2" stroke="#B3261E"/></svg>
       <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="15" rx="2" stroke="#B3261E"/><path d="M4 5h14M4 8h9M4 11h6" stroke="#B3261E" stroke-linecap="round"/><circle cx="17" cy="11" r="2" stroke="#B3261E"/></svg>
-      <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="15" rx="2" stroke="#B3261E"/><path d="M4 5h14M4 8h9M4 11h6" stroke="#B3261E" stroke-linecap="round"/><circle cx="17" cy="11" r="2" stroke="#B3261E"/></svg>
     </div>
 
-    <!-- row 1: manual badge + 500+ + explainable sentence -->
     <div class="cert-hero-row">
       <div class="cert-hero-n">
         <div class="cert-manual-badge">
@@ -350,7 +329,6 @@
       </div>
     </div>
 
-    <!-- row 2: departments + days, side by side -->
     <div class="cert-ops-row">
       <div class="cert-dept">
         <div class="cert-dept-icons">
@@ -368,64 +346,51 @@
       </div>
     </div>
 
-    <!-- INTELLECTUAL LOSS: the punchline -->
     <div class="cert-loss">
-      <div class="cert-line-brain" title="Intellectual loss">
+      <div class="cert-line-brain">
         <svg viewBox="0 0 16 16">
           <path d="M8 2a3 3 0 0 0-3 3v.5a2.5 2.5 0 0 0-1 4.7A2.5 2.5 0 0 0 6 14h4a2.5 2.5 0 0 0 2-3.8 2.5 2.5 0 0 0-1-4.7V5a3 3 0 0 0-3-3Z"/>
           <path d="M8 5v9M6 8h4M6 11h4"/>
         </svg>
       </div>
       <div class="cert-loss-body">
-        <div class="cert-loss-k">Intellectual loss</div>
-        <div class="cert-loss-d">Marketers formatting, not thinking</div>
+        <div class="cert-loss-k">Bandwidth going into repetitive operational work</div>
+        <div class="cert-loss-d">Instead of creative thinking for product marketers</div>
       </div>
     </div>
 
   </div>
 
-  <!-- ═══ WHAT I BUILT: icon above, label below, tools recruiters recognise ═══ -->
   <div class="cert-built-wrap">
     <div class="cert-built-label">One trigger. Fully automated.</div>
     <div class="cert-flow">
-
       <span class="cert-n">
         <span class="cert-n-ico"><svg viewBox="0 0 14 14" fill="none" stroke="#C4B0FF" stroke-width="1.5"><ellipse cx="7" cy="3.2" rx="5" ry="2"/><path d="M2 3.2v7.6c0 1.1 2.2 2 5 2s5-.9 5-2V3.2M2 7c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg></span>
         <span class="cert-n-txt">Data<br>from DB</span>
       </span>
-
       <span class="cert-arrow">&rarr;</span>
-
       <span class="cert-n">
         <span class="cert-n-ico"><img src="https://cdn.simpleicons.org/googlegemini/C4B0FF" alt=""></span>
         <span class="cert-n-txt">Gemini<br>design</span>
       </span>
-
       <span class="cert-arrow">&rarr;</span>
-
       <span class="cert-n">
         <span class="cert-n-ico"><img src="https://cdn.simpleicons.org/n8n/EA4B71" alt=""></span>
         <span class="cert-n-txt">n8n<br>orchestration</span>
       </span>
-
       <span class="cert-arrow">&rarr;</span>
-
       <span class="cert-n">
         <span class="cert-n-ico"><img src="https://cdn.simpleicons.org/googlesheets/34A853" alt=""></span>
         <span class="cert-n-txt">Sheets<br>+ Drive</span>
       </span>
-
       <span class="cert-arrow">&rarr;</span>
-
       <span class="cert-n">
         <span class="cert-n-ico"><img src="https://cdn.simpleicons.org/gmail/EA4335" alt=""></span>
         <span class="cert-n-txt">Gmail<br>send</span>
       </span>
-
     </div>
   </div>
 
-  <!-- ═══ IMPACT: build cost (left) | cycle time hero (right) ═══ -->
   <div class="cert-impact">
 
     <div class="cert-imp build">
@@ -434,15 +399,17 @@
         <svg class="g2" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="4"/><path d="M7.5 .5v2.5M7.5 12v2.5M.5 7.5h2.5M12 7.5h2.5"/></svg>
       </div>
       <div class="cert-imp-k">Build cost</div>
-      <div class="cert-imp-v">2 days</div>
-      <div class="cert-imp-d">One-time build to automate it, set <b>against a monthly bill, forever.</b></div>
+      <div class="cert-imp-v">2 <small>days</small></div>
+      <div class="cert-bricks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="cert-imp-d">One-time build, set against a <b>monthly bill, forever.</b></div>
     </div>
 
     <div class="cert-imp win">
+      <div class="cert-streaks" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="cert-imp-k">Cycle time</div>
       <div class="cert-morph">
-        <span class="m-from"><small>3 days</small></span>
-        <span class="m-to"><span class="val">5 minutes</span></span>
+        <span class="m-from">3 <small>days</small></span>
+        <span class="m-to"><span class="val">5</span> <small>minutes</small></span>
       </div>
       <div class="cert-imp-d">No person in the loop</div>
     </div>
