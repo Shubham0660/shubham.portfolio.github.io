@@ -1,150 +1,238 @@
 <!-- ═══════════════════════════════════════════════════════════
      AI PROJECT · One-Click Partner Certification Pipeline
-     Self-contained card. Edit freely, index.html only hosts it.
+     Self-contained card. Sits inside index.html's #rowAI swipe row.
+     Card bg #F5F3EF lifts it off the page bg #EFEDE7.
      ═══════════════════════════════════════════════════════════ -->
 <style>
 .cert{
-  flex:0 0 calc(40% - 12px);min-width:310px;scroll-snap-align:start;
+  flex:0 0 calc(40% - 12px);min-width:320px;scroll-snap-align:start;
   position:relative;overflow:hidden;
-  background:#FAFAF8;
-  border:1px solid rgba(17,17,17,.12);border-radius:20px;
-  padding:19px 19px 20px;display:flex;flex-direction:column;gap:0;
+  background:linear-gradient(168deg,#F5F3EF 0%,#F0EDE7 100%);
+  border:1px solid rgba(17,17,17,.09);
+  border-radius:22px;
+  padding:22px 22px 22px;display:flex;flex-direction:column;gap:0;
+  box-shadow:0 1px 2px rgba(17,17,17,.03), 0 12px 32px rgba(17,17,17,.05);
 }
 @media(max-width:1100px){.cert{flex:0 0 calc(58% - 12px)}}
-@media(max-width:768px){.cert{flex:0 0 88%;padding:17px}}
+@media(max-width:768px){.cert{flex:0 0 88%;padding:18px}}
 
 /* ── header ── */
-.cert-kick{font-size:8.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#5B2BD9;margin-bottom:6px}
-.cert-title{font-size:18px;font-weight:900;letter-spacing:-.028em;line-height:1.13;margin-bottom:14px}
+.cert-kick{
+  font-size:8.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:#5B2BD9;margin-bottom:7px;
+}
+.cert-title{
+  font-size:19px;font-weight:900;letter-spacing:-.028em;line-height:1.1;
+  margin-bottom:16px;color:#111;
+}
 .cert-title em{font-style:normal;color:#5B2BD9}
 
-/* ── WHY block: context + scale ── */
+/* ── quiet section label ── */
+.cert-label{
+  font-size:7.5px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
+  color:#8a8a84;margin-bottom:9px;display:flex;align-items:center;gap:8px;
+}
+.cert-label::after{content:'';flex:1;height:1px;background:rgba(17,17,17,.08)}
+
+/* ═══════════ 1. THE RECURRING TASK ═══════════ */
 .cert-why{
-  display:grid;grid-template-columns:.72fr 1fr;gap:8px;margin-bottom:12px;
+  display:grid;grid-template-columns:.86fr 1fr;gap:10px;margin-bottom:16px;
 }
 
-/* scale (dark) */
+/* Left: 500+ with frustration/repetition motion */
 .cert-scale{
-  position:relative;overflow:hidden;border-radius:14px;padding:14px 12px 14px;
-  background:linear-gradient(155deg,#171425 0%,#241C36 60%,#2E1F4D 100%);
+  position:relative;overflow:hidden;
+  border-radius:15px;padding:14px 14px 12px;
+  background:linear-gradient(158deg,#161225 0%,#241C36 55%,#2E1F4D 100%);
   display:flex;flex-direction:column;
 }
-.cert-scale-wm{position:absolute;right:-16px;bottom:-18px;width:96px;height:96px;opacity:.13}
+.cert-scale-wm{position:absolute;right:-14px;bottom:-16px;width:88px;height:88px;opacity:.12}
+
 .cert-scale-v{
-  position:relative;z-index:1;font-size:30px;font-weight:900;letter-spacing:-.04em;line-height:.95;
+  position:relative;z-index:1;font-size:32px;font-weight:900;
+  letter-spacing:-.04em;line-height:.95;
   background:linear-gradient(93deg,#fff 0%,#C4B0FF 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-.cert-scale-l{position:relative;z-index:1;font-size:10px;font-weight:800;color:rgba(255,255,255,.72);line-height:1.35;margin-top:5px}
-
-/* context: why certs exist */
-.cert-context{
-  display:flex;flex-direction:column;gap:6px;
+.cert-scale-l{
+  position:relative;z-index:1;font-size:10px;font-weight:800;
+  color:rgba(255,255,255,.7);line-height:1.35;margin-top:5px;
 }
+
+/* frustration bar: 5 tiny certs pulsing infinitely, wave motion */
+.cert-loop{
+  position:relative;z-index:1;margin-top:10px;
+  padding-top:9px;border-top:1px solid rgba(255,255,255,.14);
+}
+.cert-loop-bar{
+  display:flex;align-items:flex-end;gap:3px;height:14px;margin-bottom:5px;
+}
+.cert-loop-bar i{
+  flex:1;height:100%;border-radius:2px;
+  background:linear-gradient(180deg,#C4B0FF 0%,#8B5CF6 100%);
+  transform-origin:bottom;transform:scaleY(.35);opacity:.5;
+  animation:certPulse 1.6s ease-in-out infinite;
+}
+.cert-loop-bar i:nth-child(1){animation-delay:0s}
+.cert-loop-bar i:nth-child(2){animation-delay:.12s}
+.cert-loop-bar i:nth-child(3){animation-delay:.24s}
+.cert-loop-bar i:nth-child(4){animation-delay:.36s}
+.cert-loop-bar i:nth-child(5){animation-delay:.48s}
+.cert-loop-bar i:nth-child(6){animation-delay:.6s}
+.cert-loop-bar i:nth-child(7){animation-delay:.72s}
+.cert-loop-bar i:nth-child(8){animation-delay:.84s}
+@keyframes certPulse{
+  0%,100%{transform:scaleY(.3);opacity:.35}
+  50%{transform:scaleY(1);opacity:1}
+}
+.cert-loop-cap{
+  font-size:9px;font-weight:800;letter-spacing:.08em;
+  color:rgba(196,176,255,.85);font-style:italic;line-height:1.3;
+}
+
+/* Right: 3 connected context items showing why certs exist */
+.cert-context{display:flex;flex-direction:column;gap:6px}
 .cert-ctx-item{
-  border-radius:10px;padding:8px 10px;
-  background:rgba(255,255,255,.85);border:1px solid rgba(17,17,17,.09);
-  display:flex;align-items:flex-start;gap:8px;
+  border-radius:11px;padding:9px 11px;
+  background:rgba(255,255,255,.72);border:1px solid rgba(17,17,17,.07);
+  display:flex;align-items:center;gap:9px;
+  transition:background .2s,transform .2s;
 }
+.cert-ctx-item:hover{background:rgba(255,255,255,.95);transform:translateX(2px)}
 .cert-ctx-ico{
-  width:20px;height:20px;border-radius:6px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  margin-top:1px;
-}
-.cert-ctx-ico svg{width:12px;height:12px}
-.cert-ctx-ico.purple{background:#EEE9FB}
-.cert-ctx-ico.orange{background:#FEF3E2}
-.cert-ctx-ico.green{background:#E6F4EE}
-.cert-ctx-ico.purple svg{stroke:#5B2BD9}
-.cert-ctx-ico.orange svg{stroke:#B45309}
-.cert-ctx-ico.green svg{stroke:#1E7A50}
-.cert-ctx-txt{font-size:9.5px;font-weight:700;color:#4a4a46;line-height:1.4}
-.cert-ctx-txt b{color:#111;font-weight:800}
-
-/* ── BEFORE section ── */
-.cert-section-label{
-  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
-  color:#8a8a84;margin-bottom:7px;display:flex;align-items:center;gap:7px;
-}
-.cert-section-label::after{content:'';flex:1;height:1px;background:rgba(17,17,17,.1)}
-
-.cert-before{
-  background:linear-gradient(135deg,#FDF5F4 0%,#FFF8F7 70%);
-  border:1px solid rgba(240,180,175,.5);
-  border-radius:13px;padding:11px 12px;margin-bottom:10px;
-}
-
-/* 3-item before grid */
-.cert-before-grid{display:flex;flex-direction:column;gap:6px}
-.cert-b-row{display:flex;align-items:center;gap:8px}
-.cert-b-ico{
   width:22px;height:22px;border-radius:7px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.9);border:1px solid rgba(179,38,30,.14);
 }
-.cert-b-ico svg{width:12px;height:12px;stroke:#B3261E}
-.cert-b-text{flex:1}
-.cert-b-k{font-size:7px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#B3261E;line-height:1}
-.cert-b-v{font-size:11.5px;font-weight:900;letter-spacing:-.02em;color:#4a1c18;line-height:1.2}
-.cert-b-d{font-size:9.5px;font-weight:600;color:#9A5750;line-height:1.3}
+.cert-ctx-ico svg{width:12px;height:12px}
+.cert-ctx-ico.purple{background:#EDE7FB}.cert-ctx-ico.purple svg{stroke:#5B2BD9}
+.cert-ctx-ico.amber{background:#FCEEDA}.cert-ctx-ico.amber svg{stroke:#B45309}
+.cert-ctx-ico.teal{background:#DCF0EA}.cert-ctx-ico.teal svg{stroke:#0F7B63}
 
-/* intellectual loss as a highlight bar */
+.cert-ctx-txt{font-size:10px;font-weight:600;color:#4a4a46;line-height:1.4;flex:1}
+.cert-ctx-txt b{color:#111;font-weight:800}
+.cert-ctx-chain{
+  color:#8a8a84;font-size:11px;padding:0 3px;flex-shrink:0;
+}
+
+/* ═══════════ 2. BEFORE (what we used to do) ═══════════ */
+.cert-before{
+  background:linear-gradient(148deg,#FBF1EF 0%,#FEFAF9 60%);
+  border:1px solid rgba(224,180,175,.55);
+  border-radius:15px;padding:14px 14px 13px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.cert-before::after{
+  content:'';position:absolute;right:-30px;top:-30px;width:120px;height:120px;
+  background:radial-gradient(circle,rgba(179,38,30,.06) 0%,transparent 68%);
+  pointer-events:none;
+}
+
+/* 2-column row: 4 teams | ~3 days */
+.cert-b-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:11px;
+  position:relative;z-index:1;
+}
+.cert-b-cell{
+  background:rgba(255,255,255,.78);border:1px solid rgba(179,38,30,.12);
+  border-radius:11px;padding:10px 11px;
+  display:flex;flex-direction:column;gap:2px;
+}
+.cert-b-head{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+.cert-b-ico{
+  width:20px;height:20px;border-radius:6px;flex-shrink:0;
+  background:#F6DCD8;color:#B3261E;
+  display:flex;align-items:center;justify-content:center;
+}
+.cert-b-ico svg{width:11px;height:11px;stroke:#B3261E;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cert-b-k{
+  font-size:7.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;
+  color:#B3261E;
+}
+.cert-b-v{
+  font-size:14px;font-weight:900;letter-spacing:-.02em;color:#4a1c18;line-height:1.15;
+}
+.cert-b-d{
+  font-size:9.5px;font-weight:600;color:#9A5750;line-height:1.35;margin-top:2px;
+}
+
+/* Intellectual loss: the real cost, restored and prominent */
 .cert-loss{
-  margin-top:8px;padding-top:8px;
-  border-top:1px dashed rgba(179,38,30,.2);
-  display:flex;align-items:center;gap:8px;
+  position:relative;z-index:1;
+  display:flex;align-items:center;gap:11px;
+  padding:11px 13px;border-radius:11px;
+  background:linear-gradient(120deg,#B3261E 0%,#8A1C16 100%);
+  color:#fff;
 }
-.cert-loss-bar{flex:1;height:6px;border-radius:3px;background:rgba(179,38,30,.1);overflow:hidden;position:relative}
-.cert-loss-fill{
-  position:absolute;left:0;top:0;bottom:0;width:80%;border-radius:3px;
-  background:linear-gradient(90deg,#E53935,#EF9A9A);
+.cert-loss-ico{
+  width:26px;height:26px;border-radius:8px;flex-shrink:0;
+  background:rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center;
 }
-.cert-loss-txt{font-size:9px;font-weight:800;color:#8F2A22;white-space:nowrap}
+.cert-loss-ico svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cert-loss-body{flex:1;min-width:0}
+.cert-loss-k{
+  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);margin-bottom:2px;
+}
+.cert-loss-t{
+  font-size:12px;font-weight:800;color:#fff;line-height:1.3;letter-spacing:-.01em;
+}
+.cert-loss-t b{color:#FCA5A5;font-weight:800}
 
-/* ── transition arrow ── */
+/* ═══════════ 3. TRANSITION ═══════════ */
 .cert-divider{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  margin:8px 0;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin:0 0 12px;
 }
-.cert-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(91,43,217,.2),transparent)}
+.cert-divider-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(91,43,217,.22),transparent);
+}
 .cert-divider-pill{
-  font-size:8px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
-  color:#5B2BD9;background:#EEE9FB;border:1px solid #DDD5F7;
-  padding:4px 10px;border-radius:20px;white-space:nowrap;
+  font-size:8.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;
+  color:#5B2BD9;background:#EDE7FB;border:1px solid #DCD2F7;
+  padding:5px 12px;border-radius:20px;white-space:nowrap;
 }
 
-/* ── BUILT section (premium) ── */
+/* ═══════════ 4. WHAT I BUILT (premium dark) ═══════════ */
 .cert-built-wrap{
-  background:linear-gradient(150deg,#171425 0%,#1E1630 55%,#221B33 100%);
-  border-radius:13px;padding:12px 12px 13px;margin-bottom:8px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(158deg,#0E0B1A 0%,#181229 45%,#221636 100%);
+  border-radius:15px;padding:14px 14px 15px;margin-bottom:12px;
+}
+.cert-built-wrap::after{
+  content:'';position:absolute;left:-40px;top:-40px;width:180px;height:180px;
+  background:radial-gradient(circle,rgba(139,92,246,.14) 0%,transparent 65%);
+  pointer-events:none;
 }
 .cert-built-label{
-  font-size:7.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(196,176,255,.6);margin-bottom:9px;display:flex;align-items:center;gap:7px;
+  position:relative;z-index:1;
+  font-size:8px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(196,176,255,.6);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
 }
-.cert-built-label::after{content:'';flex:1;height:1px;background:rgba(196,176,255,.15)}
+.cert-built-label::after{content:'';flex:1;height:1px;background:rgba(196,176,255,.14)}
 
-/* pipeline nodes */
-.cert-flow{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.cert-flow{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .cert-n{
-  position:relative;display:inline-flex;align-items:center;gap:5px;
-  padding:6px 10px;border-radius:10px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-  font-size:10px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;cursor:default;
-  color:rgba(255,255,255,.9);
+  position:relative;display:inline-flex;align-items:center;gap:6px;
+  padding:7px 11px;border-radius:10px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);
+  font-size:10.5px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;cursor:default;
+  color:rgba(255,255,255,.92);
   transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s ease,border-color .28s ease,background .28s ease;
 }
 .cert-n img{width:13px;height:13px;object-fit:contain;transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
 .cert-n svg{width:13px;height:13px;flex-shrink:0}
 .cert-n:hover{
-  transform:translateY(-4px) scale(1.07);z-index:3;
-  box-shadow:0 10px 22px rgba(91,43,217,.35);
+  transform:translateY(-4px) scale(1.06);z-index:3;
+  box-shadow:0 12px 26px rgba(91,43,217,.4);
   border-color:rgba(196,176,255,.5);
-  background:rgba(255,255,255,.14);
+  background:rgba(255,255,255,.13);
 }
 .cert-n:hover img{transform:scale(1.14)}
 .cert-n::after{
-  content:attr(data-step);position:absolute;left:50%;bottom:calc(100% + 7px);
+  content:attr(data-step);position:absolute;left:50%;bottom:calc(100% + 8px);
   transform:translate(-50%,4px);white-space:nowrap;
   background:#000;color:#fff;font-size:9px;font-weight:800;letter-spacing:.04em;
   padding:5px 9px;border-radius:7px;opacity:0;pointer-events:none;
@@ -153,26 +241,62 @@
 .cert-n:hover::after{opacity:1;transform:translate(-50%,0)}
 .cert-arrow{display:flex;align-items:center;color:rgba(196,176,255,.4);font-size:10px}
 
-/* ── impact, side by side ── */
-.cert-impact{display:grid;grid-template-columns:1.22fr 1fr;gap:8px}
-.cert-imp{border-radius:12px;padding:10px 12px 11px;position:relative;overflow:hidden}
-.cert-imp.win{background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%)}
+/* ═══════════ 5. IMPACT ═══════════ */
+.cert-impact{display:grid;grid-template-columns:1.24fr 1fr;gap:9px}
+.cert-imp{
+  border-radius:13px;padding:11px 13px 12px;
+  position:relative;overflow:hidden;
+}
+
+/* left: cycle time win */
+.cert-imp.win{
+  background:linear-gradient(135deg,#0E1F1A 0%,#123128 56%,#16402F 100%);
+}
 .cert-imp.win::after{
   content:'';position:absolute;right:-28px;bottom:-38px;width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(52,211,153,.32) 0%,transparent 68%);
+  background:radial-gradient(circle,rgba(52,211,153,.3) 0%,transparent 68%);
 }
-.cert-imp.flat{background:rgba(255,255,255,.8);border:1px solid rgba(17,17,17,.1)}
-.cert-imp-k{position:relative;z-index:1;font-size:7.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
-.cert-imp.win .cert-imp-k{color:rgba(167,243,208,.62)}
-.cert-imp.flat .cert-imp-k{color:#8a8a84}
-.cert-imp-v{position:relative;z-index:1;font-size:15px;font-weight:900;letter-spacing:-.03em;line-height:1.05}
+
+/* right: build cost with construction motif */
+.cert-imp.build{
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(17,17,17,.08);
+}
+.cert-imp.build::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);
+  background-size:14px 14px;
+  mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.7),transparent 68%);
+  -webkit-mask-image:radial-gradient(circle at 100% 100%,rgba(0,0,0,.7),transparent 68%);
+}
+.cert-imp.build .cert-build-tools{
+  position:absolute;right:8px;bottom:6px;width:36px;height:36px;opacity:.16;
+  z-index:1;
+}
+
+.cert-imp-k{
+  position:relative;z-index:2;font-size:7.5px;font-weight:900;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;
+}
+.cert-imp.win .cert-imp-k{color:rgba(167,243,208,.6)}
+.cert-imp.build .cert-imp-k{color:#8a8a84}
+
+.cert-imp-v{
+  position:relative;z-index:2;font-size:15px;font-weight:900;
+  letter-spacing:-.03em;line-height:1.05;
+}
 .cert-imp.win .cert-imp-v{
   background:linear-gradient(93deg,#fff 0%,#6EE7B7 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-.cert-imp-d{position:relative;z-index:1;font-size:9.5px;font-weight:600;line-height:1.35;margin-top:4px}
-.cert-imp.win .cert-imp-d{color:rgba(209,250,229,.6)}
-.cert-imp.flat .cert-imp-d{color:#8a8a84}
+.cert-imp.build .cert-imp-v{color:#111}
+.cert-imp-d{
+  position:relative;z-index:2;font-size:9.5px;font-weight:600;line-height:1.35;margin-top:4px;
+}
+.cert-imp.win .cert-imp-d{color:rgba(209,250,229,.62)}
+.cert-imp.build .cert-imp-d{color:#8a8a84}
 </style>
 
 <article class="cert">
@@ -181,8 +305,8 @@
   <div class="cert-kick">From manual workflows to automated systems</div>
   <div class="cert-title">One-Click Partner <em>Certification Pipeline</em></div>
 
-  <!-- WHY: context + scale -->
-  <div class="cert-section-label">The recurring task</div>
+  <!-- ═══ 1. THE RECURRING TASK ═══ -->
+  <div class="cert-label">The recurring task</div>
   <div class="cert-why">
 
     <div class="cert-scale">
@@ -193,95 +317,111 @@
       </svg>
       <div class="cert-scale-v">500+</div>
       <div class="cert-scale-l">partner certificates,<br>every single month</div>
+
+      <!-- animated repetition: bars pulse forever, showing the never ending stream -->
+      <div class="cert-loop" aria-hidden="true">
+        <div class="cert-loop-bar">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="cert-loop-cap">Same work. Same cycle. Every month.</div>
+      </div>
     </div>
 
     <div class="cert-context">
+
       <div class="cert-ctx-item">
         <div class="cert-ctx-ico purple">
           <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 1l1.5 3H11l-2.5 2 1 3L6 7.5 3.5 9l1-3L2 4h3.5z"/>
           </svg>
         </div>
-        <div class="cert-ctx-txt"><b>Partner recognition</b> for sales milestones</div>
+        <div class="cert-ctx-txt">Rewards partners hitting <b>sales milestones</b></div>
       </div>
-      <div class="cert-ctx-item">
-        <div class="cert-ctx-ico orange">
-          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 1v3M1 6h3M8 6h3M6 8v3"/><circle cx="6" cy="6" r="2"/>
-          </svg>
-        </div>
-        <div class="cert-ctx-txt">Reward & <b>retain partners</b> driving revenue</div>
-      </div>
-      <div class="cert-ctx-item">
-        <div class="cert-ctx-ico green">
-          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="1" y="3" width="10" height="7" rx="1.5"/><path d="M4 3V2a2 2 0 0 1 4 0v1"/>
-          </svg>
-        </div>
-        <div class="cert-ctx-txt">Personalised per partner — <b>every cycle</b></div>
-      </div>
-    </div>
 
+      <div class="cert-ctx-item">
+        <div class="cert-ctx-ico amber">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 10V6l4 3 4-3v4M2 6l4 3 4-3M2 4l4-2 4 2"/>
+          </svg>
+        </div>
+        <div class="cert-ctx-txt">Retains the ones <b>driving revenue</b></div>
+      </div>
+
+      <div class="cert-ctx-item">
+        <div class="cert-ctx-ico teal">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="4" r="2"/><path d="M2 11a4 4 0 0 1 8 0"/>
+          </svg>
+        </div>
+        <div class="cert-ctx-txt"><b>Personalised</b> per partner, every cycle</div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- BEFORE -->
-  <div class="cert-section-label" style="margin-top:4px">What we used to do</div>
+  <!-- ═══ 2. WHAT WE USED TO DO ═══ -->
+  <div class="cert-label">What we used to do</div>
   <div class="cert-before">
-    <div class="cert-before-grid">
 
-      <div class="cert-b-row">
-        <div class="cert-b-ico">
-          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="4" cy="4" r="2.5"/><path d="M1 10a3 3 0 0 1 6 0"/><circle cx="9" cy="4" r="2"/><path d="M8 8.5a2.5 2.5 0 0 1 3 2"/>
-          </svg>
-        </div>
-        <div class="cert-b-text">
+    <div class="cert-b-row">
+
+      <div class="cert-b-cell">
+        <div class="cert-b-head">
+          <div class="cert-b-ico">
+            <svg viewBox="0 0 12 12"><circle cx="4" cy="4" r="2"/><path d="M1 11a3 3 0 0 1 6 0"/><circle cx="9" cy="4" r="1.6"/><path d="M8 8.5a2.4 2.4 0 0 1 3 2.3"/></svg>
+          </div>
           <div class="cert-b-k">Teams pulled in</div>
-          <div class="cert-b-v">4 teams every cycle</div>
-          <div class="cert-b-d">BA · Content · Design · Campaign</div>
         </div>
+        <div class="cert-b-v">4 teams, every cycle</div>
+        <div class="cert-b-d">BA · Content · Design · Campaign</div>
       </div>
 
-      <div class="cert-b-row">
-        <div class="cert-b-ico">
-          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="6" cy="7" r="4"/><path d="M6 5v2l1.5 1.5"/><path d="m3 2 1.2-1M9 2 7.8 1"/>
-          </svg>
-        </div>
-        <div class="cert-b-text">
+      <div class="cert-b-cell">
+        <div class="cert-b-head">
+          <div class="cert-b-ico">
+            <svg viewBox="0 0 12 12"><circle cx="6" cy="7" r="4"/><path d="M6 5v2l1.5 1.5"/><path d="m3 2 1.2-1M9 2 7.8 1"/></svg>
+          </div>
           <div class="cert-b-k">Time per cycle</div>
-          <div class="cert-b-v">~3 days, fully manual</div>
-          <div class="cert-b-d">Collect → create → distribute by hand</div>
         </div>
+        <div class="cert-b-v">~3 days, fully manual</div>
+        <div class="cert-b-d">Collect, create, distribute by hand</div>
       </div>
 
     </div>
 
-    <!-- intellectual loss bar -->
+    <!-- REAL COST: intellectual loss restored as the punchline -->
     <div class="cert-loss">
-      <div class="cert-loss-txt">80% time lost</div>
-      <div class="cert-loss-bar"><div class="cert-loss-fill"></div></div>
-      <div class="cert-loss-txt" style="color:#9A5750;font-weight:700;font-size:8.5px">formatting, not thinking</div>
+      <div class="cert-loss-ico">
+        <svg viewBox="0 0 14 14">
+          <path d="M7 1a4.5 4.5 0 0 1 2.8 8V11H4.2V9A4.5 4.5 0 0 1 7 1Z"/>
+          <path d="M5 12.5h4M5.5 13.6h3"/>
+        </svg>
+      </div>
+      <div class="cert-loss-body">
+        <div class="cert-loss-k">Real cost</div>
+        <div class="cert-loss-t">Intellectual loss. <b>Marketers formatting, not thinking.</b></div>
+      </div>
     </div>
+
   </div>
 
-  <!-- transition -->
+  <!-- ═══ 3. TRANSITION ═══ -->
   <div class="cert-divider">
     <div class="cert-divider-line"></div>
     <div class="cert-divider-pill">↓ What I built instead</div>
     <div class="cert-divider-line"></div>
   </div>
 
-  <!-- BUILT (premium) -->
+  <!-- ═══ 4. WHAT I BUILT (premium dark) ═══ -->
   <div class="cert-built-wrap">
-    <div class="cert-built-label">One trigger → fully automated</div>
+    <div class="cert-built-label">One trigger. Fully automated.</div>
     <div class="cert-flow">
       <span class="cert-n" data-step="Always current">
         <svg viewBox="0 0 14 14" fill="none" stroke="#C4B0FF" stroke-width="1.5"><ellipse cx="7" cy="3.2" rx="5" ry="2"/><path d="M2 3.2v7.6c0 1.1 2.2 2 5 2s5-.9 5-2V3.2M2 7c0 1.1 2.2 2 5 2s5-.9 5-2"/></svg>
         Data from DB
       </span>
       <span class="cert-arrow">&rarr;</span>
-      <span class="cert-n" data-step="Auto-refreshed templates">
+      <span class="cert-n" data-step="Auto refreshed templates">
         <img src="https://cdn.simpleicons.org/googlegemini/C4B0FF" alt="">Design via Gemini
       </span>
       <span class="cert-arrow">&rarr;</span>
@@ -299,18 +439,26 @@
     </div>
   </div>
 
-  <!-- impact -->
+  <!-- ═══ 5. IMPACT ═══ -->
   <div class="cert-impact">
+
     <div class="cert-imp win">
       <div class="cert-imp-k">Cycle time</div>
-      <div class="cert-imp-v">3 days &rarr; 5 min</div>
+      <div class="cert-imp-v">3 days &rarr; 5 minutes</div>
       <div class="cert-imp-d">No person in the loop</div>
     </div>
-    <div class="cert-imp flat">
+
+    <div class="cert-imp build">
+      <!-- construction motif: crossed hammer and wrench watermark -->
+      <svg class="cert-build-tools" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 30 20 16l4 4L10 34a2.83 2.83 0 0 1-4-4Z" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M22 14c-1-3 .5-6 3.5-7l3 3-2 2 1.5 1.5 2-2 3 3c-1 3-4 4.5-7 3.5" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
       <div class="cert-imp-k">Build cost</div>
-      <div class="cert-imp-v">2 days</div>
-      <div class="cert-imp-d">One-time, against a monthly bill</div>
+      <div class="cert-imp-v">2 days, one time</div>
+      <div class="cert-imp-d">Against a monthly bill, forever</div>
     </div>
+
   </div>
 
 </article>
