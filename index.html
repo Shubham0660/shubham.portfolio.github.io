@@ -198,6 +198,23 @@ button{font-family:inherit;cursor:pointer}
 }
 .hey-btn svg{width:17px;height:17px;flex-shrink:0}
 .hey-btn:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+/* real brand logos: keep the mark in its own colour, lift the chip on hover */
+.hey-btn.brand{background:#fff;border:1px solid var(--line)}
+.hey-btn.brand img{width:18px;height:18px;object-fit:contain;display:block;transition:transform .2s}
+.hey-btn.brand:hover{
+  background:#fff;transform:translateY(-3px);
+  box-shadow:0 10px 22px rgba(17,17,17,.13);border-color:rgba(17,17,17,.2);
+}
+.hey-btn.brand:hover img{transform:scale(1.12)}
+.hey-dl .dl-ico{
+  width:15px;height:15px;flex-shrink:0;
+  animation:dlNudge 2.8s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes dlNudge{
+  0%,62%,100%{transform:translateY(0)}
+  74%{transform:translateY(2.5px)}
+  86%{transform:translateY(0)}
+}
 .hey-dl{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--ink);color:#fff;
@@ -1437,6 +1454,54 @@ button{font-family:inherit;cursor:pointer}
   text-align:center;padding:14px 0 0;
 }
 
+
+/* ═══════════ SWIPE AFFORDANCE ═══════════ */
+.hrow-wrap{position:relative}
+/* edge fades hint that content continues past the cut */
+.hrow-wrap::before,.hrow-wrap::after{
+  content:'';position:absolute;top:0;bottom:18px;width:64px;z-index:4;
+  pointer-events:none;opacity:0;transition:opacity .3s ease;
+}
+.hrow-wrap::before{left:-1px;background:linear-gradient(90deg,var(--bg) 12%,transparent)}
+.hrow-wrap::after{right:-1px;background:linear-gradient(270deg,var(--bg) 12%,transparent)}
+.hrow-wrap.can-l::before{opacity:1}
+.hrow-wrap.can-r::after{opacity:1}
+
+/* animated swipe pill in the section head */
+.sec-hint{display:inline-flex;align-items:center;gap:9px}
+.swipe-hint{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px 7px 12px;border-radius:22px;
+  background:rgba(255,255,255,.7);border:1px solid var(--line);
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink2);white-space:nowrap;
+}
+.swipe-hint b{color:var(--ink);font-weight:900;font-variant-numeric:tabular-nums}
+.swipe-hint .hand{
+  width:15px;height:15px;flex-shrink:0;
+  animation:swipeHand 2.6s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes swipeHand{
+  0%,58%,100%{transform:translateX(0)}
+  22%{transform:translateX(-4px)}
+  40%{transform:translateX(5px)}
+}
+@media(max-width:900px){.swipe-hint{padding:6px 11px 6px 9px;font-size:9.5px;gap:6px}}
+
+/* progress rail under each row, sits with the arrow buttons */
+.hrow-nav{align-items:center;gap:14px}
+.hrow-rail{
+  position:relative;width:clamp(90px,16vw,170px);height:4px;border-radius:3px;
+  background:rgba(17,17,17,.12);overflow:hidden;flex-shrink:0;
+}
+.hrow-rail i{
+  position:absolute;left:0;top:0;bottom:0;border-radius:3px;
+  background:linear-gradient(90deg,#5B2BD9,#8B5CF6);
+  width:30%;transition:transform .18s ease,width .25s ease;
+}
+.hrow-nav button:disabled{opacity:.26;cursor:default}
+.hrow-nav button:disabled:hover{background:transparent;color:var(--ink)}
+
 body.mv-lock{overflow:hidden}
 .hrow-nav{display:flex;gap:8px;margin-top:20px;justify-content:center}
 .hrow-nav button{
@@ -1613,16 +1678,21 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
 
       <a class="hey-cta rv" href="#projects">See my work <span class="circ">↗</span></a>
       <div class="hey-actions rv">
-        <a class="hey-btn" href="https://www.linkedin.com/in/shubham0660" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.4 5.6H.9V14h2.5V5.6ZM2.15 1.4a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9ZM15.1 9.2c0-2.4-1.3-3.8-3.2-3.8-1.2 0-2 .66-2.35 1.3H9.5V5.6H7.1V14h2.5V9.6c0-1.15.2-2.25 1.65-2.25 1.4 0 1.4 1.3 1.4 2.3V14h2.45V9.2Z"/></svg>
+        <a class="hey-btn brand" href="https://www.linkedin.com/in/shubham0660" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="LinkedIn">
         </a>
-        <a class="hey-btn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.9" y="1.9" width="12.2" height="12.2" rx="3.6"/><circle cx="8" cy="8" r="3"/><circle cx="11.7" cy="4.3" r=".9" fill="currentColor" stroke="none"/></svg>
+        <a class="hey-btn brand" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram">
         </a>
-        <a class="hey-btn" href="mailto:sharmashubham0660@gmail.com" aria-label="Email" title="Email">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.6" y="3.2" width="12.8" height="9.6" rx="1.6"/><path d="m2.2 4.2 5.8 4.2 5.8-4.2"/></svg>
+        <a class="hey-btn brand" href="mailto:sharmashubham0660@gmail.com" aria-label="Email" title="Gmail">
+          <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Gmail">
         </a>
-        <button class="hey-dl">Download Resume &darr;</button>
+        <button class="hey-dl" aria-label="Resume">
+          <svg class="dl-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 2v8"/><path d="m4.6 7 3.4 3.4L11.4 7"/><path d="M2.6 13.4h10.8"/>
+          </svg>
+          Resume
+        </button>
       </div>
     </div>
   </section>
@@ -1707,12 +1777,14 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
       </div>
     </div>
 
-    <div class="sec-hint">Swipe →</div>
+    <div class="sec-hint"><span class="swipe-hint"><svg class="hand" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 7.4V3.1a1.1 1.1 0 0 1 2.2 0v3.6"/><path d="M7.4 6.4V5a1.1 1.1 0 0 1 2.2 0v1.8"/><path d="M9.6 6.6V5.6a1.1 1.1 0 0 1 2.2 0v4.2c0 2.1-1.5 3.6-3.6 3.6h-.8c-1.5 0-2.3-.6-3.1-1.7L2.4 9.4a1.05 1.05 0 0 1 1.7-1.2l1.1 1.3"/></svg><span><b id="cnt_rowProjects">0</b> projects &middot; swipe</span></span></div>
   </div>
-  <div class="hrow" id="rowProjects"><!-- filled by data/projects.js --></div>
+  <div class="hrow-wrap" id="wrap_rowProjects"><div class="hrow" id="rowProjects"><!-- filled by data/projects.js --></div>
+</div>
   <div class="hrow-nav">
-    <button onclick="slide('rowProjects',-1)">←</button>
-    <button onclick="slide('rowProjects',1)">→</button>
+    <button id="prev_rowProjects" onclick="slide('rowProjects',-1)">←</button>
+    <div class="hrow-rail" id="rail_rowProjects"><i></i></div>
+    <button id="next_rowProjects" onclick="slide('rowProjects',1)">→</button>
   </div>
 </section>
 
@@ -1724,12 +1796,14 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
         <rect x="14.5" y="14.5" width="5" height="5" rx="1" fill="#5B2BD9"/>
         <path d="M13.5 9.5V5M20.5 9.5V5M13.5 29v-4.5M20.5 29v-4.5M9.5 13.5H5M9.5 20.5H5M29 13.5h-4.5M29 20.5h-4.5" stroke="#5B2BD9" stroke-width="1.9" stroke-linecap="round"/>
       </svg>AI<br><span class="thin">Usage</span></h2>
-    <div class="sec-hint">Swipe →</div>
+    <div class="sec-hint"><span class="swipe-hint"><svg class="hand" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 7.4V3.1a1.1 1.1 0 0 1 2.2 0v3.6"/><path d="M7.4 6.4V5a1.1 1.1 0 0 1 2.2 0v1.8"/><path d="M9.6 6.6V5.6a1.1 1.1 0 0 1 2.2 0v4.2c0 2.1-1.5 3.6-3.6 3.6h-.8c-1.5 0-2.3-.6-3.1-1.7L2.4 9.4a1.05 1.05 0 0 1 1.7-1.2l1.1 1.3"/></svg><span><b id="cnt_rowAI">0</b> projects &middot; swipe</span></span></div>
   </div>
-  <div class="hrow" id="rowAI"><!-- filled by data/ai.js --></div>
+  <div class="hrow-wrap" id="wrap_rowAI"><div class="hrow" id="rowAI"><!-- filled by data/ai.js --></div>
+</div>
   <div class="hrow-nav">
-    <button onclick="slide('rowAI',-1)">←</button>
-    <button onclick="slide('rowAI',1)">→</button>
+    <button id="prev_rowAI" onclick="slide('rowAI',-1)">←</button>
+    <div class="hrow-rail" id="rail_rowAI"><i></i></div>
+    <button id="next_rowAI" onclick="slide('rowAI',1)">→</button>
   </div>
 </section>
 
@@ -1742,12 +1816,14 @@ footer p{font-size:12.5px;font-weight:600;color:var(--ink3)}
         <circle cx="16" cy="20" r="4.6" stroke="#5B2BD9" stroke-width="1.9"/>
         <path d="m19.6 23.6 3.4 3.4" stroke="#5B2BD9" stroke-width="1.9" stroke-linecap="round"/>
       </svg>Case<br><span class="thin">Studies</span></h2>
-    <div class="sec-hint">Swipe →</div>
+    <div class="sec-hint"><span class="swipe-hint"><svg class="hand" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 7.4V3.1a1.1 1.1 0 0 1 2.2 0v3.6"/><path d="M7.4 6.4V5a1.1 1.1 0 0 1 2.2 0v1.8"/><path d="M9.6 6.6V5.6a1.1 1.1 0 0 1 2.2 0v4.2c0 2.1-1.5 3.6-3.6 3.6h-.8c-1.5 0-2.3-.6-3.1-1.7L2.4 9.4a1.05 1.05 0 0 1 1.7-1.2l1.1 1.3"/></svg><span><b id="cnt_rowCases">0</b> projects &middot; swipe</span></span></div>
   </div>
-  <div class="hrow" id="rowCases"><!-- filled by data/cases.js --></div>
+  <div class="hrow-wrap" id="wrap_rowCases"><div class="hrow" id="rowCases"><!-- filled by data/cases.js --></div>
+</div>
   <div class="hrow-nav">
-    <button onclick="slide('rowCases',-1)">←</button>
-    <button onclick="slide('rowCases',1)">→</button>
+    <button id="prev_rowCases" onclick="slide('rowCases',-1)">←</button>
+    <div class="hrow-rail" id="rail_rowCases"><i></i></div>
+    <button id="next_rowCases" onclick="slide('rowCases',1)">→</button>
   </div>
 </section>
 
@@ -2335,18 +2411,86 @@ function renderTestimonials(containerId, data){
 renderRow('rowProjects', typeof PROJECTS !== 'undefined' ? PROJECTS : []);
 renderRow('rowAI', typeof AI_ITEMS !== 'undefined' ? AI_ITEMS : []);
 
-/* ── AI project cards: markup lives in ai_projects/*.html ── */
+/* ── AI project cards: AUTO-DISCOVERED from ai_projects/*.html ──
+   Drop a new .html file into ai_projects/ and it shows up here.
+   No edit to index.html is ever needed.
+
+   Discovery order:
+     1. GitHub Contents API (works on github.io, zero config)
+     2. ai_projects/manifest.json  (optional, for non-GitHub hosting)
+     3. Nothing found -> row simply stays empty
+   ─────────────────────────────────────────────────────────── */
 (function(){
   var row = document.getElementById('rowAI');
   if (!row) return;
-  ['ai_projects/certificate.html'].forEach(function(src){
-    fetch(src).then(function(r){ return r.text(); }).then(function(txt){
+
+  var DIR = 'ai_projects';
+
+  /* Build the GitHub Contents API URL from wherever this page is served.
+     Handles both  user.github.io/repo/  and  user.github.io/  layouts. */
+  function ghApiUrl(){
+    var host = location.hostname;                       // e.g. shubham.github.io
+    if (host.indexOf('.github.io') === -1) return null;
+    var owner = host.split('.github.io')[0];
+    var seg   = location.pathname.split('/').filter(Boolean);
+    /* if the page lives at /repo/index.html the first segment is the repo,
+       otherwise the repo is the owner's root pages repo */
+    var repo  = seg.length && seg[seg.length-1].indexOf('.html') === -1
+                  ? seg[0]
+                  : (seg.length > 1 ? seg[0] : owner + '.github.io');
+    return 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + DIR;
+  }
+
+  /* Inject one card file into the row, preserving alphabetical order. */
+  function mount(src, index){
+    return fetch(src).then(function(r){
+      if (!r.ok) throw new Error(src);
+      return r.text();
+    }).then(function(txt){
       var wrap = document.createElement('div');
       wrap.innerHTML = txt.trim();
       wrap.querySelectorAll('style').forEach(function(st){ document.head.appendChild(st); });
       var card = wrap.querySelector('article');
-      if (card) row.insertBefore(card, row.firstChild);
+      if (!card) return;
+      card.dataset.order = index;
+      row.appendChild(card);
     }).catch(function(){});
+  }
+
+  function mountAll(files){
+    if (!files || !files.length) return;
+    files.sort();
+    Promise.all(files.map(function(f, i){ return mount(DIR + '/' + f, i); }))
+      .then(function(){
+        /* keep AI-project cards ahead of any data-driven ones, in file order */
+        var cards = Array.prototype.slice.call(row.querySelectorAll('article[data-order]'));
+        cards.sort(function(a,b){ return a.dataset.order - b.dataset.order; });
+        cards.reverse().forEach(function(c){ row.insertBefore(c, row.firstChild); });
+        if (window.refreshRowHints) window.refreshRowHints();
+      });
+  }
+
+  /* 1 ─ GitHub Contents API */
+  var api = ghApiUrl();
+  var viaApi = api
+    ? fetch(api).then(function(r){
+        if (!r.ok) throw new Error('api');
+        return r.json();
+      }).then(function(list){
+        return list.filter(function(f){
+          return f.type === 'file' && /\.html$/i.test(f.name);
+        }).map(function(f){ return f.name; });
+      })
+    : Promise.reject();
+
+  /* 2 ─ manifest.json fallback */
+  viaApi.then(mountAll).catch(function(){
+    fetch(DIR + '/manifest.json')
+      .then(function(r){ if(!r.ok) throw new Error('manifest'); return r.json(); })
+      .then(function(list){
+        mountAll(Array.isArray(list) ? list : (list.files || []));
+      })
+      .catch(function(){ /* nothing discoverable, leave row as-is */ });
   });
 })();
 renderRow('rowCases', typeof CASE_ITEMS !== 'undefined' ? CASE_ITEMS : []);
@@ -2522,10 +2666,69 @@ renderTestimonials('testiGrid', typeof TESTIMONIALS !== 'undefined' ? TESTIMONIA
 
 /* ── 5. Swipe row arrows ── */
 function slide(id, dir){
-  var row = document.getElementById(id);
-  var card = row.querySelector('.hcard');
-  row.scrollBy({ left: dir * (card.offsetWidth + 20) * 2, behavior:'smooth' });
+  var row  = document.getElementById(id);
+  var card = row.querySelector('.hcard, article');
+  if (!card) return;
+  row.scrollBy({ left: dir * (card.offsetWidth + 20), behavior:'smooth' });
 }
+
+/* ── SWIPE AFFORDANCE: live count, progress rail, edge fades, arrow states ──
+   Runs on scroll + resize, and again whenever cards are injected async. */
+(function(){
+  var IDS = ['rowProjects','rowAI','rowCases'];
+
+  function sync(id){
+    var row  = document.getElementById(id);
+    var wrap = document.getElementById('wrap_' + id);
+    var rail = document.getElementById('rail_' + id);
+    var cnt  = document.getElementById('cnt_' + id);
+    var prev = document.getElementById('prev_' + id);
+    var next = document.getElementById('next_' + id);
+    if (!row || !wrap) return;
+
+    var cards   = row.children.length;
+    var max     = row.scrollWidth - row.clientWidth;
+    var left    = row.scrollLeft;
+    var canL    = left > 4;
+    var canR    = left < max - 4;
+
+    if (cnt) cnt.textContent = cards;
+
+    wrap.classList.toggle('can-l', canL);
+    wrap.classList.toggle('can-r', canR);
+    if (prev) prev.disabled = !canL;
+    if (next) next.disabled = !canR;
+
+    if (rail){
+      var bar     = rail.firstElementChild;
+      var visible = max > 0 ? row.clientWidth / row.scrollWidth : 1;
+      var pct     = Math.max(visible, .18);
+      bar.style.width = (pct * 100) + '%';
+      var travel  = max > 0 ? (left / max) : 0;
+      bar.style.transform = 'translateX(' + (travel * (100/pct - 100)) + '%)';
+    }
+  }
+
+  function syncAll(){ IDS.forEach(sync); }
+
+  IDS.forEach(function(id){
+    var row = document.getElementById(id);
+    if (row) row.addEventListener('scroll', function(){ sync(id); }, { passive:true });
+  });
+  window.addEventListener('resize', syncAll);
+
+  /* re-run after async card injection (AI projects fetch, data render) */
+  window.refreshRowHints = syncAll;
+  IDS.forEach(function(id){
+    var row = document.getElementById(id);
+    if (!row || !window.MutationObserver) return;
+    new MutationObserver(syncAll).observe(row, { childList:true });
+  });
+
+  syncAll();
+  setTimeout(syncAll, 400);
+  setTimeout(syncAll, 1400);
+})();
 
 /* ── 6. Nav dropdown ── */
 document.getElementById('navBtn').addEventListener('click', function(e){
